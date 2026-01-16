@@ -22,7 +22,7 @@ public class IngerdentFood : MonoBehaviour
     }
     public void DataSet()
     {
-        this.GetComponent<SpriteRenderer>().sprite = FoodImage;
+        //this.GetComponent<SpriteRenderer>().sprite = FoodImage;
     }
 
 }

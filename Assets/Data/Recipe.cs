@@ -24,7 +24,6 @@ public class Recipe : ScriptableObject
         miwon,
         hot,
         olive
-
     }
 
     [SerializeField] private Base Recipe_Base;
