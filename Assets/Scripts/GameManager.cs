@@ -4,6 +4,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [SerializeField] private SceneLoader sceneLoader;
+
     [SerializeField] private bool _isPlay;
     public bool isPlay { get => _isPlay; }
 
@@ -13,20 +15,26 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Recipe _chosenRecipe;
     public Recipe chosenRecipe { get => _chosenRecipe; }
 
-    public void setRecipe(Recipe recipe) { 
+    public void setRecipe(Recipe recipe)
+    {
         _chosenRecipe = recipe;
+    }
+
+    private void Awake()
+    {
+        instance = this;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        instance = this;
+        sceneLoader.StartGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isPlay)
+        if (isPlay)
             _time -= Time.deltaTime;
     }
 }
