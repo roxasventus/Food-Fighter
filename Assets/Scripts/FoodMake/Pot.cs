@@ -6,7 +6,6 @@ public class Pot : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
     private Recipe recipe;
-    public Recipe GetRecipe() { return recipe; }
 
     [SerializeField]
     private float CookingTime;
@@ -23,12 +22,14 @@ public class Pot : MonoBehaviour, IPointerClickHandler
 
     private SpriteRenderer SelfSprite;
 
-    bool isCompletionTime = false;
     [SerializeField]
     bool isOrder = false;
 
     [SerializeField]
+    bool isFail;
+    [SerializeField]
     MouseHand mouseHand;
+
 
     public void Start()
     {
@@ -37,7 +38,10 @@ public class Pot : MonoBehaviour, IPointerClickHandler
 
     public void Update()
     {
-        CookingProcess();
+        TestDebug(); 
+        Decidebroth();
+        UpdateStatus();
+        UpdateSprite();
     }
     public void PotReSet()
     {
@@ -48,35 +52,32 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         recipe.SetSpecial(Recipe.Special.none);
         recipe.SetStatus(Recipe.Status.Cooking);
         SelfSprite = GetComponent<SpriteRenderer>();
+        SelfSprite.color = Color.white;
     }
-    public void CookingProcess()
+   
+    public void UpdateSprite() 
     {
-        Decidebroth();
-        UpdateStatus();
-        TestDebug();
-    }
+        var status = recipe.GetStatus;
 
+        switch (status) 
+        {
+            case Recipe.Status.fail: SelfSprite.color = Color.black; break;
+            case Recipe.Status.incomplete: SelfSprite.color = Color.yellow; break;
+            case Recipe.Status.complete: SelfSprite.color = Color.red; break;
+        }
+    }
     public void UpdateStatus() 
     {
-        bool isFail = recipe.GetStatus == Recipe.Status.fail;
+       isFail = recipe.GetStatus == Recipe.Status.fail;
         if (CookingTime >= DeadTime && !isFail)
-        {
             recipe.SetStatus(Recipe.Status.fail);
-            SelfSprite.color = Color.black;
-        }
 
         //들어있는 조건에 대한거....만 하면 끝.
         if (DecideStatus() == Recipe.Status.incomplete)
-        {
             recipe.SetStatus(Recipe.Status.incomplete);
-            SelfSprite.color = Color.yellow;
-        }
+
         if (DecideStatus() == Recipe.Status.complete)
-        {
-            isCompletionTime = true;
             recipe.SetStatus(Recipe.Status.complete);
-            SelfSprite.color = Color.red;
-        }
 
 
         if (CookingTime < BoilingTime && greenOnionsEggs == true)
@@ -86,7 +87,6 @@ public class Pot : MonoBehaviour, IPointerClickHandler
     }
     public void Decidebroth()
     {
-        bool isFail = recipe.GetStatus == Recipe.Status.fail;
         if (broth == true && !isFail)
             CookingTime += Time.deltaTime;
     }
@@ -94,63 +94,58 @@ public class Pot : MonoBehaviour, IPointerClickHandler
     public Recipe.Status DecideStatus() 
     {
         //여기서 조건 검사 
-        bool isFail = recipe.GetStatus == Recipe.Status.fail;
         bool isBase = recipe.GetBase != Recipe.Base.none;
         bool isSauce = recipe.GetSauce != Recipe.Sauce.none;
 
         // 여기서는 레시피에 다른 것들이 들어있냐? 해당 시간에.
         bool incompleteConditions = CookingTime >= BoilingTime && CookingTime < ComplteTime && !isFail && isBase && isSauce ;
         bool completeConditions = CookingTime >= ComplteTime && CookingTime < DeadTime && !isFail && isOrder && isBase && isSauce;
-       
+
         if (incompleteConditions)
         {
             recipe.SetStatus(Recipe.Status.incomplete);
             SelfSprite.color = Color.yellow;
+            return Recipe.Status.incomplete;
         }
-
+        else
         if (completeConditions)
         {
             //isCompletionTime = true;
             recipe.SetStatus(Recipe.Status.complete);
             SelfSprite.color = Color.red;
+            return Recipe.Status.complete;
         }
-        return Recipe.Status.Cooking;
+        else 
+        {
+            return Recipe.Status.Cooking;
+        }
+        
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        bool isFail = recipe.GetStatus == Recipe.Status.fail;
-        bool isBase = recipe.GetBase != Recipe.Base.none;
-        bool isSauce = recipe.GetSauce != Recipe.Sauce.none;
-
-        // 여기서는 레시피에 다른 것들이 들어있냐? 해당 시간에.
-        bool incompleteConditions = CookingTime >= BoilingTime && CookingTime < ComplteTime && !isFail && isBase && isSauce;
-        bool completeConditions = CookingTime >= ComplteTime && CookingTime < DeadTime && !isFail && isOrder && isBase && isSauce;
-
-        bool isCooking = (recipe.GetStatus == Recipe.Status.Cooking);
+        var s = recipe.GetStatus;
         // 빈손으로 들었을때. isComplte나 Complte면 Manager에게 전달.
         if (mouseHand.handIngerdentFood == null)
         {
-            if (!isFail && (incompleteConditions || completeConditions)) 
+            if (s == Recipe.Status.incomplete || s == Recipe.Status.complete) 
             {
                 // 여기서 데이터 값을 매니저에게 보내줘야함.
-                Debug.Log("요리 완성.");
+                Debug.Log("요리 완성. 단계 : " + recipe.GetStatus);
                 //그리고 초기화.
                 PotReSet();
             }
+            return;
         }
-        else
-        {
-            IngerdentFood ingerdentFood = mouseHand.handIngerdentFood.GetComponent<IngerdentFood>();
-            InputIngerdentFood(ingerdentFood.ingredientData);
-            ingerdentFood.SelfRelease();
-        }
+
+        IngerdentFood ingerdentFood = mouseHand.handIngerdentFood.GetComponent<IngerdentFood>();
+        InputIngerdentFood(ingerdentFood.ingredientData);
+        ingerdentFood.SelfRelease();
     }
 
 
     private void InputIngerdentFood(Ingredient collEnum)
     {
-        bool isfail = recipe.GetStatus == Recipe.Status.fail;
-        if (isfail)
+        if (isFail)
             return;
 
         switch (collEnum)
@@ -183,7 +178,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler
             recipe.SetBase(Recipe.Base.noodle);
         }
         else
-        if (recipe.GetBase != Recipe.Base.none || recipe.GetBase != Recipe.Base.none)
+        if (recipe.GetBase != Recipe.Base.none)
         {
             recipe.SetStatus(Recipe.Status.fail);
         }
@@ -200,14 +195,13 @@ public class Pot : MonoBehaviour, IPointerClickHandler
             recipe.SetSauce(Recipe.Sauce.jjajang);
         }
         else
-        if (recipe.GetSauce == Recipe.Sauce.none || recipe.GetSauce == Recipe.Sauce.none)
+        if (recipe.GetSauce == Recipe.Sauce.none)
         {
             recipe.SetStatus(Recipe.Status.fail);
         }
     }
 
-
-
+    //Debug용 문제 없으면 프로토타입 까지 완료시 지울것.
     public Recipe.Base lookBase;
     public Recipe.Sauce lookSauce;
     public Recipe.Status lookStatus;

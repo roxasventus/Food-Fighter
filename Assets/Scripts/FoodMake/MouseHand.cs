@@ -13,7 +13,7 @@ public class MouseHand : MonoBehaviour
         
     }
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (handIngerdentFood != null)
         {
