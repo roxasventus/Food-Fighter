@@ -32,7 +32,7 @@ public class Pot : MonoBehaviour
         Enum collEnum = collision.GetComponent<IngerdentFood>().ingredientData;
         if (collEnum != null) 
         {
-        
+            
         }
       
 
