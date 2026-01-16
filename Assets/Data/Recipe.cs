@@ -7,6 +7,7 @@ public class Recipe : ScriptableObject
 
     public enum Status
     { 
+        Cooking,
         fail,
         incomplete,
         complete,
