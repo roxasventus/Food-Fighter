@@ -32,7 +32,7 @@ public class IngerdentFood : MonoBehaviour
     {
         //this.GetComponent<SpriteRenderer>().sprite = FoodImage;
     }
-    public void SlefRelease()
+    public void SelfRelease()
     {
         ObjPoolManager.instance.Release(this.gameObject, gameObject.name.ToString().Replace("(Clone)",""));
 

@@ -7,12 +7,15 @@ using static IngerdentFood;
 
 public class Pot : MonoBehaviour, IPointerClickHandler
 {
-    Recipe recipe = new Recipe();
-    
+    private Recipe recipe;
+    public Recipe GetRecipe() { return recipe; }
+
     [SerializeField]
     private float CookingTime;
     [SerializeField]
-    private float DeadTime =5f;
+    private float DeadTime =7f;
+    [SerializeField]
+    private float ComplteTime = 5f;
     [SerializeField]
     private float BoilingTime = 2f;
 
@@ -25,11 +28,13 @@ public class Pot : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     bool isOrder= false;
 
+    [SerializeField]
+    MouseHand mouseHand;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ReSet();
+        PotReSet();
     }
 
     // Update is called once per frame
@@ -38,13 +43,15 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         CookingProcess();
     }
     
-    public void ReSet()
+    public void PotReSet()
     {
+        recipe = ScriptableObject.CreateInstance<Recipe>();
         broth = false;
         recipe.SetBase(Recipe.Base.none);
         recipe.SetSauce(Recipe.Sauce.none);
         recipe.SetSpecial(Recipe.Special.none);
         recipe.SetStatus(Recipe.Status.fail);
+
     }
 
     public void CookingProcess() 
@@ -79,32 +86,22 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         return  greenOnionsEggs && broth && isBase && isSauce && isLife && isBoiling; 
     }
 
-    IngerdentFood currentFood;
-    bool isStayIngerdentFood = false;
-
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (currentFood == null)
+        Debug.Log("≈¨∏Ø µ ");
+        if (mouseHand.handIngerdentFood == null)
             return;
 
-        if (isStayIngerdentFood)
-            InputIngerdentFood(currentFood.ingredientData);
+        Debug.Log("¿Á∑·µµ ¿÷¿Ω");
+        IngerdentFood ingerdentFood = mouseHand.handIngerdentFood.GetComponent<IngerdentFood>();
+        InputIngerdentFood(ingerdentFood.ingredientData);
+        ingerdentFood.SelfRelease();
     }
 
-    public void OnTriggerEnter2D(Collider2D collision) 
-    {
-        currentFood = collision.GetComponent<IngerdentFood>();
-
-    }
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        isStayIngerdentFood = false;
-        currentFood = null;
-    }
     private void InputIngerdentFood(Ingredient collEnum)
     {
-        isStayIngerdentFood = true;
+        Debug.Log("InputIngerdentFood ≥—±Ë");
         switch (collEnum)
         {
             case Ingredient.Broth: Debug.Log("Broth"); broth = true; break;

@@ -10,7 +10,7 @@ public class FoodStation : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         if (mouseHand.handIngerdentFood != null)
-            mouseHand.handIngerdentFood.GetComponent<IngerdentFood>().SlefRelease();
+            mouseHand.handIngerdentFood.GetComponent<IngerdentFood>().SelfRelease();
 
         GameObject go = ObjPoolManager.instance.InstantiateFromPool(IngerdentPrefab.name.ToString());
         go.transform.position = transform.position;
