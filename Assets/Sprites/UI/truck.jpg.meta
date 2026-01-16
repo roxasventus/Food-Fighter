@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a68f9f8e41c9fa34fa3a6dc2a3f8af1c
+guid: 6c57a010207d6614baa7da6c2dfc2346
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7301859184940444090
-    second: chef1_0
+      213: -7346612907530598944
+    second: truck_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chef1_0
+      name: truck_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 22
-        width: 89
-        height: 115
+        x: 0
+        y: 0
+        width: 1300
+        height: 603
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 64693b912c59aaa90800000000000000
-      internalID: -7301859184940444090
+      spriteID: 0e5c6501c769b0a90800000000000000
+      internalID: -7346612907530598944
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      chef1_0: -7301859184940444090
+      truck_0: -7346612907530598944
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
