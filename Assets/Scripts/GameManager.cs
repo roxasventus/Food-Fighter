@@ -17,6 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _time;
     public float time { get => _time; }
 
+    [Header("Bullet")]
+    // 장전이 되어 있는가?
+    [SerializeField] private bool _isLoaded;
+    public bool isLoaded { get => _isLoaded; }
+    public void toogleLoaded() { _isLoaded = !_isLoaded; }
+
+    // 선택된 탄환의 레시피
     [SerializeField] private Recipe _chosenRecipe;
     public Recipe chosenRecipe { get => _chosenRecipe; }
 
