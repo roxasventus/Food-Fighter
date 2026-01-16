@@ -30,29 +30,26 @@ public class Enemy : MonoBehaviour
         Init(new Vector2(-4f, 5.3f), false);
     }
 
+    void Update()
+    {
+        
+    }
+
     // x축으로 랜덤성 구현
     private IEnumerator XRandomize()
     {
         while (true)
         {
             float duration = ec.changeCool;
+            float firstX = transform.position.x;
+            float targetX = Random.Range(initPos.x - ec.changeDist, initPos.x + ec.changeDist);
 
-            // 랜덤 방향 (0 or 1 -> -1 or 1)
-            int r = Random.Range(0, 2);
-            int dir = (r == 0) ? 1 : -1;
-
-            // 랜덤 거리
-            float dist = Random.Range(ec.changeRange[0], ec.changeRange[1]);
-
-            // 이번 턴에 이동할 총 거리 (방향 포함)
-            float totalMove = dir * dist;
-            float moveSpeed = totalMove / duration;
-
+            Debug.Log(targetX);
             float t = 0f;
             while (t < duration)
             {
-                float step = moveSpeed * Time.deltaTime;
-                initPos.x += step;
+                float vX = Mathf.Lerp(firstX, targetX, t/duration);
+                transform.position = new Vector2(vX, transform.position.y);
                 t += Time.deltaTime;
                 yield return null;
             }
@@ -74,8 +71,10 @@ public class Enemy : MonoBehaviour
                 Vector2 delta = Vector2.down * (GetCubicWobblySlope(elapsedTime, ec.moveAmplitude, ec.moveFrequency) - offset);
 
                 // Debug.Log(delta);
-                Vector2 target = initPos + delta;
+                Vector2 target = new Vector2(transform.position.x, initPos.y) + delta;
                 target.x = Mathf.Clamp(target.x, ec.xRange[0], ec.xRange[1]);
+
+                transform.position = target;
             }
 
             yield return null;

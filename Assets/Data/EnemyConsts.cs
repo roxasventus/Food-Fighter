@@ -10,11 +10,11 @@ public class EnemyConsts : ScriptableObject
 
     [Header("곡선으로 다가오는 좀비")]
     [Tooltip("진폭")]
-    public float moveAmplitude = 3f;
+    public float moveAmplitude = 3f; // 돌아가는 범위
     [Tooltip("주기")]
-    public float moveFrequency = 1.0f;
+    public float moveFrequency = 1.0f; // x초마다 흔들림
 
     [Tooltip("x축 방향으로 랜덤성")]
     public float changeCool = 0.2f;
-    public float[] changeRange = {5, 50};
+    public float changeDist = 0.5f;
 }
