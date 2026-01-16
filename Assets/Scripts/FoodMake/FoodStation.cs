@@ -9,8 +9,12 @@ public class FoodStation : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("IPointerClickHandler Å¬¸¯µÊ");
-       GameObject go =  Instantiate(IngerdentPrefab, transform.position, Quaternion.identity);
-        mouseHand.handIngerdentFood = go.GetComponent<IngerdentFood>();
+        if (mouseHand.handIngerdentFood == null)
+        {
+            GameObject go = ObjPoolManager.instance.InstantiateFromPool("DebugRiceCakeIngredent");
+            go.transform.position = transform.position;
+            mouseHand.handIngerdentFood = go;
+        }
+
     }
 }

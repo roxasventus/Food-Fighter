@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class MouseHand : MonoBehaviour
 {
     // 마우스 정보.
-    public IngerdentFood handIngerdentFood = null;
+    public GameObject handIngerdentFood = null;
 
 
     void Start()
@@ -15,7 +15,6 @@ public class MouseHand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (handIngerdentFood != null)
         {
             Vector3 mouseScreen = Mouse.current.position.ReadValue();
@@ -26,11 +25,8 @@ public class MouseHand : MonoBehaviour
         }
 
     }
-    public void Sethand(IngerdentFood ingerdent) 
+    public void Sethand(GameObject ingerdent) 
     {
-        if (handIngerdentFood != null)
-            Destroy(handIngerdentFood.gameObject);
-
         handIngerdentFood = ingerdent;
     }
 }
