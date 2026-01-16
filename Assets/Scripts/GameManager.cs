@@ -6,6 +6,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private SceneLoader sceneLoader;
 
+    [SerializeField] private int _life = 5;
+    public float life { get => _life; }
+    public void loseLife(int num) { _life -= num; }
+    public void getLife(int num) { _life += num; }
+
     [SerializeField] private bool _isPlay;
     public bool isPlay { get => _isPlay; }
 
