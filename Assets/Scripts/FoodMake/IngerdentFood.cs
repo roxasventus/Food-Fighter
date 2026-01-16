@@ -10,10 +10,17 @@ public class IngerdentFood : MonoBehaviour
 
     public enum Ingredient
     {
-        RiceCake,
-        Cotton,
+        noodle,
+        tteok,
+
         soup,
-        jjajang
+        jjajang,
+
+        Broth,
+
+        miwon,
+        hot,
+        olive
     }
 
     public void Start()
@@ -25,5 +32,9 @@ public class IngerdentFood : MonoBehaviour
     {
         //this.GetComponent<SpriteRenderer>().sprite = FoodImage;
     }
+    public void SlefRelease()
+    {
+        ObjPoolManager.instance.Release(this.gameObject, gameObject.name.ToString().Replace("(Clone)",""));
 
+    }
 }
