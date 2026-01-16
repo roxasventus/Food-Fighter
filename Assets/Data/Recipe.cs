@@ -4,7 +4,13 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 [CreateAssetMenu(fileName = "Recipe", menuName = "Scriptable Objects/Recipe")]
 public class Recipe : ScriptableObject
 {
-    public bool isComplete;
+
+    public enum Status
+    { 
+        fail,
+        incomplete,
+        complete,
+    }
 
     public enum Base
     {
@@ -28,6 +34,10 @@ public class Recipe : ScriptableObject
         olive
 
     }
+
+    [SerializeField] private Status Recipe_Status;
+    public Status GetStatus { get => Recipe_Status; }
+    public void SetStatus(Status recipe_status) { Recipe_Status = recipe_status; }
 
     [SerializeField] private Base Recipe_Base;
     public Base GetBase { get => Recipe_Base; }
