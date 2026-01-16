@@ -16,8 +16,6 @@ public class MouseHand : MonoBehaviour
     void Update()
     {
 
-        
-
         if (handIngerdentFood != null)
         {
             Vector3 mouseScreen = Mouse.current.position.ReadValue();
