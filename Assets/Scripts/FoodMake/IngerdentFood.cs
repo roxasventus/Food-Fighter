@@ -18,6 +18,8 @@ public class IngerdentFood : MonoBehaviour
 
         Broth,
 
+        greenOnionsEggs,
+
         miwon,
         hot,
         olive

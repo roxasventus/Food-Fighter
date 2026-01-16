@@ -7,6 +7,7 @@ using static IngerdentFood;
 
 public class Pot : MonoBehaviour, IPointerClickHandler
 {
+    [SerializeField]
     private Recipe recipe;
     public Recipe GetRecipe() { return recipe; }
 
@@ -31,6 +32,8 @@ public class Pot : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     MouseHand mouseHand;
 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,6 +44,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler
     void Update()
     {
         CookingProcess();
+        TestDebug();
     }
     
     public void PotReSet()
@@ -56,19 +60,9 @@ public class Pot : MonoBehaviour, IPointerClickHandler
 
     public void CookingProcess() 
     {
-        if (broth == true) 
-        {
-            CookingTime += Time.deltaTime;
-        }
-        
-
-        if (IsCanUse()) 
-        {
-            if (isCompletionTime && isOrder)
-                recipe.SetStatus(Recipe.Status.complete);
-
-            recipe.SetStatus(Recipe.Status.incomplete);
-        }
+        Decidebroth();
+        DecideisOrder();
+        DecideisCompletion_InComplete();
 
         if (CookingTime >= DeadTime) 
         {
@@ -76,6 +70,42 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         }
 
     }
+    public void Decidebroth()
+    {
+        if (broth == true)
+        {
+            CookingTime += Time.deltaTime;
+            
+        }
+    }
+    public void DecideisOrder()
+    {
+        if (CookingTime < BoilingTime && greenOnionsEggs == true)
+        {
+            isOrder = false;
+            Debug.Log("isOrder = false");
+        } else if (CookingTime >= BoilingTime && greenOnionsEggs == true) 
+        {
+            isOrder = true;
+            Debug.Log("isOrder = true");
+        }
+    }
+
+    public void DecideisCompletion_InComplete() 
+    {
+        if (IsCanUse())
+        {
+            if (isCompletionTime && isOrder)
+            {
+                recipe.SetStatus(Recipe.Status.complete);
+                Debug.Log("complete");
+            }
+            Debug.Log("incomplete");
+            recipe.SetStatus(Recipe.Status.incomplete);
+        }
+    }
+
+
     public bool IsCanUse() 
     {
         bool isBoiling = BoilingTime <= CookingTime;
@@ -89,11 +119,9 @@ public class Pot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("클릭 됨");
         if (mouseHand.handIngerdentFood == null)
             return;
 
-        Debug.Log("재료도 있음");
         IngerdentFood ingerdentFood = mouseHand.handIngerdentFood.GetComponent<IngerdentFood>();
         InputIngerdentFood(ingerdentFood.ingredientData);
         ingerdentFood.SelfRelease();
@@ -101,24 +129,37 @@ public class Pot : MonoBehaviour, IPointerClickHandler
 
     private void InputIngerdentFood(Ingredient collEnum)
     {
-        Debug.Log("InputIngerdentFood 넘김");
         switch (collEnum)
         {
-            case Ingredient.Broth: Debug.Log("Broth"); broth = true; break;
+            case Ingredient.Broth: broth = true; break;
 
-            case Ingredient.tteok: Debug.Log("tteok"); recipe.SetBase(Recipe.Base.tteok); break;
-            case Ingredient.noodle: Debug.Log("noodle"); recipe.SetBase(Recipe.Base.noodle); break;
+            case Ingredient.tteok: recipe.SetBase(Recipe.Base.tteok); break;
+            case Ingredient.noodle: recipe.SetBase(Recipe.Base.noodle); break;
 
-            case Ingredient.soup: Debug.Log("soup"); recipe.SetSauce(Recipe.Sauce.soup); break;
-            case Ingredient.jjajang: Debug.Log("jjajang"); recipe.SetSauce(Recipe.Sauce.jjajang); break;
+            case Ingredient.soup: recipe.SetSauce(Recipe.Sauce.soup); break;
+            case Ingredient.jjajang: recipe.SetSauce(Recipe.Sauce.jjajang); break;
+
+            case Ingredient.greenOnionsEggs: greenOnionsEggs = true; break;
 
             case Ingredient.miwon: recipe.SetSpecial(Recipe.Special.miwon); break;
             case Ingredient.hot: recipe.SetSpecial(Recipe.Special.hot); break;
             case Ingredient.olive: recipe.SetSpecial(Recipe.Special.olive); break;
-
+                
             default: Debug.Log("새로운 음식은 처리를 못해요."); break;
         }
     }
 
+    public Recipe.Base lookBase;
+    public Recipe.Sauce lookSauce;
+    public Recipe.Status lookStatus;
+    public Recipe.Special lookSpecial;
+
+    public void TestDebug() 
+    {
+        lookBase = recipe.GetBase;
+        lookSauce = recipe.GetSauce;
+        lookStatus = recipe.GetStatus;
+        lookSpecial = recipe.GetSpecial;
+    }
 
 }
