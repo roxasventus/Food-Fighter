@@ -6,6 +6,7 @@ public class Recipe : ScriptableObject
 {
     public enum Status
     { 
+        Cooking,
         fail,
         incomplete,
         complete,
@@ -31,7 +32,6 @@ public class Recipe : ScriptableObject
         miwon,
         hot,
         olive
-
     }
 
     [SerializeField] private Status Recipe_Status;
