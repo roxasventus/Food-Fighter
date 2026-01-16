@@ -4,6 +4,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [SerializeField] private bool _isPlay;
+    public bool isPlay { get => _isPlay; }
+
     [SerializeField] private float _time;
     public float time { get => _time; }
 
@@ -23,6 +26,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isPlay)
+            _time -= Time.deltaTime;
     }
 }
