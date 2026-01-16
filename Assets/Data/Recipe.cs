@@ -18,10 +18,23 @@ public class Recipe : ScriptableObject
         jjajang
     }
 
+    public enum Special
+    {
+        none,
+        miwon,
+        hot,
+        olive
+
+    }
+
     [SerializeField] private Base Recipe_Base;
     public Base GetBase { get => Recipe_Base; }
 
     [SerializeField] private Sauce Recipe_Sauce;
 
     public Sauce GetSauce { get => Recipe_Sauce; }
+
+    [SerializeField] private Special Recipe_Special;
+
+    public Special GetSpecial { get => Recipe_Special; }
 }
