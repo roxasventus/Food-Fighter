@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static IngerdentFood;
 
 public class Pot : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class Pot : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Enum collEnum = collision.GetComponent<Food>().ingredient;
+        Enum collEnum = collision.GetComponent<IngerdentFood>().ingredientData;
         if (collEnum != null) 
         {
         

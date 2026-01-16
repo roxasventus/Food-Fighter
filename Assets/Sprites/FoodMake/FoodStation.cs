@@ -1,24 +1,15 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using static IngerdentFood;
 
 public class FoodStation : MonoBehaviour
 {
-    public Food PutinFood;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public GameObject IngerdentPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OnMouseDown()
     {
-        GameObject Food = Instantiate(PutinFood).GameObject();
+        GameObject Food = Instantiate(IngerdentPrefab);
         Food.transform.position = transform.position;
     }
 }
