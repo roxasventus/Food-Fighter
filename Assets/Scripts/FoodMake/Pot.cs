@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static IngerdentFood;
@@ -16,6 +17,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
     [SerializeField]
     private float BoilingTime = 2f;
 
+    [SerializeField]
     bool broth = false;
     bool greenOnionsEggs = false;
 
@@ -29,24 +31,19 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
 
     public Animator SpriteAnimator;
 
-    private SpriteRenderer Watersprite;
-    private SpriteRenderer Saucesprite;
-    private SpriteRenderer Basesprite;
-    private SpriteRenderer Reslutsprite;
-    private SpriteRenderer GreenOnionsEggs;
-
     public GameObject SpwanObject;
     //
     [SerializeField]
-    private Sprite Water;
+    private GameObject WaterSprite,boilingSprite;
     [SerializeField]
-    private Sprite Soupsprite, jjajangsprite;
+    private GameObject Soupsprite, jjajangsprite;
     [SerializeField]
-    private Sprite noodleSprite,tteokSprite;
+    private GameObject noodleSprite,tteokSprite;
+    [SerializeField]
+    private GameObject greenOnionsEggsSprite;
     public void Start()
     {
         PotReSet();
-
     }
 
     public void Update()
@@ -75,26 +72,68 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         SetChildSprite();
     }
     public void SetChildSprite()
-    { 
-        Watersprite = transform.Find("Water").GetComponent<SpriteRenderer>();
-        Saucesprite = transform.Find("Sauce").GetComponent<SpriteRenderer>();
-        Basesprite = transform.Find("Base").GetComponent<SpriteRenderer>();
-        Reslutsprite = transform.Find("Reslut").GetComponent<SpriteRenderer>();
-        GreenOnionsEggs = transform.Find("GreenOnionsEggs").GetComponent<SpriteRenderer>();
+    {
+        WaterSprite.SetActive(false);
+        boilingSprite.SetActive(false);
+        Soupsprite.SetActive(false);
+        jjajangsprite.SetActive(false);
+        noodleSprite.SetActive(false);
+        tteokSprite.SetActive(false);
+        greenOnionsEggsSprite.SetActive(false);
+        /*
+          WaterSprite = transform.Find("Water").gameObject;
+         boilingSprite = transform.Find("boiling").gameObject;
+         Soupsprite = transform.Find("Soup").gameObject;
+         jjajangsprite = transform.Find("jjajang").gameObject;
+         noodleSprite = transform.Find("noodle").gameObject;
+         tteokSprite = transform.Find("tteok").gameObject;
+         greenOnionsEggsSprite = transform.Find("greenOnionsEggs").gameObject;
+         */
+
     }
     public void UpdateAnimation()
     { 
-        bool isBorring = CookingTime >= BoilingTime;
+        bool isBorring = (CookingTime >= BoilingTime);
         Recipe.Status status = recipe.GetStatus;
 
-        if (broth == true && !isFail)
-        //거품 스프라이트 .
+        if (broth == true && isBorring !=true)
         {
-            
+            WaterSprite.SetActive(true);
         }
-        //애니메이션 적용 부분.
-        if (isBorring == true) { SpriteAnimator.SetBool("boiling",true); }
-            
+        else if (broth != true )
+        {
+            WaterSprite.SetActive(false);
+        }
+        //애니메이션 적용 부분.//거품 스프라이트 .
+        if (isBorring == true)
+        {
+            SpriteAnimator.SetBool("boiling", true);
+            boilingSprite.SetActive(true);
+            WaterSprite.SetActive(false);
+
+        }
+        else if (isBorring == false) 
+        {
+            SpriteAnimator.SetBool("boiling", false);
+        }
+ 
+        switch (recipe.GetBase)
+        {
+            case Base.none: noodleSprite.SetActive(false); tteokSprite.SetActive(false); break;
+            case Base.tteok: tteokSprite.SetActive(true); noodleSprite.SetActive(false); break;
+            case Base.noodle: noodleSprite.SetActive(true); tteokSprite.SetActive(false); break;
+        }
+        switch (recipe.GetSauce)
+        {
+            case Sauce.none: noodleSprite.SetActive(false); tteokSprite.SetActive(false); break;
+            case Sauce.soup: tteokSprite.SetActive(true); noodleSprite.SetActive(false); break;
+            case Sauce.jjajang: noodleSprite.SetActive(true); tteokSprite.SetActive(false); break;
+
+        }
+        if (greenOnionsEggs == true)
+            greenOnionsEggsSprite.SetActive(false);
+        else greenOnionsEggsSprite.SetActive(false);
+
         switch (status) 
         {
             case Recipe.Status.fail: break;
