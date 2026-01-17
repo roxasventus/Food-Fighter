@@ -41,7 +41,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         TestDebug(); 
         Decidebroth();
         UpdateStatus();
-        UpdateSprite();
+        UpdateAnimation();
     }
     public void PotReSet()
     {
@@ -56,10 +56,15 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         CookingTime = 0f;
     }
 
-    public void UpdateSprite() 
+    public void UpdateAnimation() 
     {
         var status = recipe.GetStatus;
 
+        if (broth == true && !isFail)
+            //거품 애니메이션 
+
+
+            //애니메이션 적용 부분.
         switch (status) 
         {
             case Recipe.Status.fail: SelfSprite.color = Color.black; break;
