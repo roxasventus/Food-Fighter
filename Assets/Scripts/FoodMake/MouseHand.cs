@@ -5,22 +5,26 @@ using UnityEngine.InputSystem;
 public class MouseHand : MonoBehaviour
 {
     // 마우스 정보.
-    public  GameObject  handIngerdentFood = null;
+    private GameObject handObject = null;
 
     void LateUpdate()
     {
-        if (handIngerdentFood != null)
+        if (handObject != null)
         {
             Vector3 mouseScreen = Mouse.current.position.ReadValue();
             Vector3 mp = new Vector3(mouseScreen.x, mouseScreen.y, -Camera.main.transform.position.z);
             Vector3 world = Camera.main.ScreenToWorldPoint(mp);
 
-            handIngerdentFood.transform.position = world;
+            handObject.transform.position = world;
         }
 
     }
     public void Sethand(GameObject ingerdent) 
     {
-        handIngerdentFood = ingerdent;
+        handObject = ingerdent;
+    }
+    public GameObject Gethand()
+    {
+        return handObject;
     }
 }

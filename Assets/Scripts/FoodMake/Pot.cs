@@ -73,7 +73,6 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         if (CookingTime >= DeadTime && !isFail)
             recipe.SetStatus(Recipe.Status.fail);
 
-        //들어있는 조건에 대한거....만 하면 끝.
         if (DecideStatus() == Recipe.Status.incomplete)
             recipe.SetStatus(Recipe.Status.incomplete);
 
@@ -123,8 +122,8 @@ public class Pot : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         var s = recipe.GetStatus;
-        // 빈손으로 들었을때. isComplte나 Complte면 Manager에게 전달.
-        if (mouseHand.handIngerdentFood == null)
+ 
+        if (mouseHand.Gethand() == null)
         {
             if (s == Recipe.Status.incomplete || s == Recipe.Status.complete) 
             {
@@ -132,11 +131,14 @@ public class Pot : MonoBehaviour, IPointerClickHandler
                 Debug.Log("요리 완성. 단계 : " + recipe.GetStatus);
                 //그리고 초기화.
                 PotReSet();
+            } else if(s == Recipe.Status.fail)
+            {
+                mouseHand.Sethand(gameObject);
             }
             return;
         }
 
-        IngerdentFood ingerdentFood = mouseHand.handIngerdentFood.GetComponent<IngerdentFood>();
+        IngerdentFood ingerdentFood = mouseHand.Gethand().GetComponent<IngerdentFood>();
         InputIngerdentFood(ingerdentFood.ingredientData);
         ingerdentFood.SelfRelease();
     }
@@ -200,7 +202,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    //Debug용 문제 없으면 프로토타입 까지 완료시 지울것.
+    //Debug용 문제 없으면 프로토타입까지 완료시 지울것.
     public Recipe.Base lookBase;
     public Recipe.Sauce lookSauce;
     public Recipe.Status lookStatus;
