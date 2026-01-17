@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int _life = 5;
     public float life { get => _life; }
-    public void loseLife(int num) { _life -= num; }
+    public void loseLife() { _life -= 1; }
     public void getLife(int num) { _life += num; }
 
     [SerializeField] private bool _isPlay;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int _roundCount = 15;
     public int roundCount { get => _roundCount; }
+    public void clearRound() { _roundCount--; }
 
     [SerializeField] private int _score = 0;
     public int score { get => _score; }
@@ -33,6 +35,51 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Recipe _chosenRecipe;
     public Recipe chosenRecipe { get => _chosenRecipe; }
 
+    [Header("Items")]
+    [SerializeField] private int _miwonCount;
+    public int getMiwon { get => _miwonCount; }
+    [SerializeField] private int _hotCount;
+    public int getHot { get => _hotCount; }
+    [SerializeField] private int _oliveCount;
+    public int getOlive { get => _oliveCount; }
+
+    public void getItem(int index) {
+        if (index == 0)
+        {
+            _miwonCount++;
+        }
+
+        if (index == 1)
+        {
+            _hotCount++;
+        }
+
+        if (index == 2)
+        {
+            _oliveCount++;
+        }
+    }
+
+    public void getRandomItems(int num)
+    {
+        if (num > 2) {
+            Debug.LogWarning(num+"개의 아이템은 가져올 수 없음");
+            return;
+        }
+
+        int[] copy = { 0, 1, 2 };
+
+        for (int i = 0; i < num; i++)
+        {
+            int rand = Random.Range(0, copy.Length);
+            getItem(copy[rand]);
+        }
+
+
+    }
+
+
+
     public void initRecipe()
     {
         _chosenRecipe.SetStatus(Recipe.Status.fail);
@@ -46,7 +93,51 @@ public class GameManager : MonoBehaviour
         _chosenRecipe.SetStatus(recipe.GetStatus);
         _chosenRecipe.SetBase(recipe.GetBase);
         _chosenRecipe.SetSauce(recipe.GetSauce);
-        _chosenRecipe.SetSpecial(recipe.GetSpecial);
+    }
+
+    public void setItem(int index)
+    {
+        if (index == 0 && _chosenRecipe.GetSpecial != Recipe.Special.miwon)
+        {
+            _chosenRecipe.SetSpecial(Recipe.Special.miwon);
+        }
+        else if (index == 1 && _chosenRecipe.GetSpecial != Recipe.Special.hot)
+        {
+            _chosenRecipe.SetSpecial(Recipe.Special.hot);
+        }
+        else if (index == 2 && _chosenRecipe.GetSpecial != Recipe.Special.olive)
+        {
+            _chosenRecipe.SetSpecial(Recipe.Special.olive);
+        }
+        else {
+            _chosenRecipe.SetSpecial(Recipe.Special.none);
+        }
+
+    }
+
+    public void useItem()
+    {
+
+        if (_chosenRecipe.GetSpecial == Recipe.Special.none)
+        {
+           return;
+        }
+
+        if (_chosenRecipe.GetSpecial == Recipe.Special.miwon && _miwonCount > 0) {
+            _miwonCount--;
+        }
+
+        if (_chosenRecipe.GetSpecial == Recipe.Special.hot && _hotCount > 0)
+        {
+            _hotCount--;
+        }
+
+        if (_chosenRecipe.GetSpecial == Recipe.Special.olive && _oliveCount > 0)
+        {
+            _oliveCount--;
+        }
+        _chosenRecipe.SetSpecial(Recipe.Special.none);
+
     }
 
     private void Awake()
