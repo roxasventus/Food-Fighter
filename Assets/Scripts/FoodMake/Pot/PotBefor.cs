@@ -13,6 +13,7 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
 
     private BoxCollider2D SelfCollider;
 
+    [SerializeField]
     bool isOrder = false;
     bool isFail;
 
@@ -46,6 +47,7 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
 
     public void UpdateStatus() 
     {
+        // 값 조건 확인.
 
         isFail = cooKData.GetCurrentStatus() == CooKingDatac.Status.fail;
 
@@ -73,15 +75,15 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
     }
     public void Decidebroth()
     {
-        if (cooKData.broth == CooKingDatac.Broth.water && !isFail)
-            cooKData.AddTime(Time.deltaTime);
+        if (cooKData.broth != CooKingDatac.Broth.none && !isFail)
+            cooKData.AddTime(+Time.deltaTime);
     }
 
  
     public void OnPointerClick(PointerEventData eventData)
     {
         CooKingDatac.Status s = cooKData.status;
- 
+        
         if (mouseHand.Gethand() == null)
         {
             if (s == CooKingDatac.Status.incomplete || s == CooKingDatac.Status.complete) 

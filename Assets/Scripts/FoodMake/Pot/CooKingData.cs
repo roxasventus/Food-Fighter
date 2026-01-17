@@ -116,7 +116,7 @@ public class CooKingDatac : MonoBehaviour
 
     public void AddTime(float dt)
     {
-        if (broth == Broth.water && status != Status.fail)
+        if (broth != Broth.none && status != Status.fail)
             CookingTime += dt;
     }
     /*
