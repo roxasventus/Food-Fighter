@@ -104,5 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f251eac08325694fac7821d58b37dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IngerdentFood
-  FoodImage: {fileID: 0}
-  ingredientData: 1
+  ingredientData: 0

@@ -9,7 +9,7 @@ public class MouseHand : MonoBehaviour
 
     void LateUpdate()
     {
-        Debug.Log("MouseHand Update: " + handObject??"null");
+
         if (handObject != null)
         {
             Vector3 mouseScreen = Mouse.current.position.ReadValue();
