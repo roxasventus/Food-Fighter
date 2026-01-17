@@ -53,7 +53,10 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
 
         // 성공 실패여부만 
         if (isFail)
+        {
             recipe.SetStatus(Recipe.Status.fail);
+            gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
+        }
 
         //끓는 상태
         if (cooKData.CookingTime >= cooKData.BoilingTime) cooKData.broth = CooKingDatac.Broth.boiling;
@@ -114,7 +117,10 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
     private void InputIngerdentFood(Ingredient collEnum)
     {
         if (isFail)
+        {
+            gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
             return;
+        }
 
         switch (collEnum)
         {
@@ -149,6 +155,7 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
         if (cooKData.foodbase != CooKingDatac.FoodBase.none)
         {
             cooKData.status = CooKingDatac.Status.fail;
+            gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
         }
 
     }
@@ -166,6 +173,7 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
         if (cooKData.sauce != CooKingDatac.Sauce.none)
         {
             recipe.SetStatus(Recipe.Status.fail);
+            gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
         }
     }
 

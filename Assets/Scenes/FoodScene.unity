@@ -264,6 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pot
   cooKData: {fileID: 0}
+  isOrder: 0
   mouseHand: {fileID: 4371533036833207385}
   SpwanObject: {fileID: 1888469312}
 --- !u!61 &193462678
@@ -1274,10 +1275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1ede0af6c34436459f2ae6005a93fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pot
-  panel: {fileID: 0}
-  model: {fileID: 0}
-  OutPut: {fileID: 0}
-  View: {fileID: 0}
 --- !u!1 &917912170
 GameObject:
   m_ObjectHideFlags: 0
@@ -5089,6 +5086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pot
   cooKData: {fileID: 7248579943489254233}
+  isOrder: 0
   mouseHand: {fileID: 4371533036833207385}
   SpwanObject: {fileID: 492829226}
 --- !u!114 &5733042769179368716
@@ -5296,6 +5294,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa35d498d3e7004cb0660c6949eab0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PotVisuals
+  PotStatusSprites:
+  - {fileID: 3136279638417215388, guid: 99b0af4c188da55469981dc979307cc4, type: 3}
+  - {fileID: 3112589160528298819, guid: d0b4d7d675970c04fbc2a8644ee3194b, type: 3}
 --- !u!114 &7248579943489254233
 MonoBehaviour:
   m_ObjectHideFlags: 0

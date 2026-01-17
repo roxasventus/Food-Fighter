@@ -95,7 +95,8 @@ public class CooKingDatac : MonoBehaviour
 
     public Status GetCurrentStatus()
     {
-        if (CookingTime >= DeadTime) return Status.fail;
+        if (CookingTime >= DeadTime)
+            return Status.fail; 
 
         bool isBase = foodbase != FoodBase.none;
         bool isSauce = sauce != Sauce.none;
@@ -104,7 +105,6 @@ public class CooKingDatac : MonoBehaviour
 
         if (CookingTime >= ComplteTime) return Status.complete;
         if (CookingTime >= BoilingTime) return Status.incomplete;
-
 
         return Status.fail;
     }
