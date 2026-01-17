@@ -1,0 +1,151 @@
+using System.Collections;
+using UnityEngine;
+
+public class Enemy : MonoBehaviour
+{
+    [SerializeField] private EnemyConsts ec;
+    
+    private bool isStraight = false;
+    // 곡선 좀비
+    private Vector2 initPos;
+    private float offset;
+    private float elapsedTime = 0f;
+
+    private Coroutine xCor, yCor;
+
+    // 좀비 데이터 설정값
+    private float speedRate;
+    private float xRate;
+    private FavoriteFood favorite;
+
+    public void Init(Vector2 pos, EnemyData data)
+    {
+        speedRate = data.moveSpeedRate;
+        xRate = data.xMoveRate;
+        favorite = data.favorite;
+        isStraight = data.moveStraight;
+
+        initPos = pos;
+        elapsedTime = 0f;
+        offset = GetCubicWobblySlope(0, ec.moveAmplitude, ec.moveFrequency);
+        transform.position = pos;
+
+        xCor = StartCoroutine(XRandomize());
+        if (!isStraight)
+        {
+            yCor = StartCoroutine(YShake());
+        }
+    }
+
+    void Update()
+    {
+        if (isStraight)
+        {
+            transform.position += Vector3.down * ec.moveSpeed * Time.deltaTime * speedRate;
+        }
+    }
+
+    public bool isCrash() // 트럭에 돌진하는 좌표인가?
+    {
+        return transform.position.y <= ec.jumpY;
+    }
+
+    public IEnumerator Crash()
+    {
+        StopCoroutine(xCor);
+        StopCoroutine(yCor);
+
+        // -3.8 -4.4
+        float elapsed = 0f;
+        float duration = ec.crashDuration;
+        Vector2 firstPos = transform.position;
+        Vector2 targetPos = new Vector2(-3.8f, -4.4f);
+
+        while (elapsed <= duration)
+        {
+            transform.position = Vector2.Lerp(firstPos, targetPos, elapsed/duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        
+        // 데미지 처리
+        Debug.Log("Crash!!");
+        Release();
+    }
+
+    public void Release() // 돌진 후 사라지기
+    {
+        ObjPoolManager.instance.Release(gameObject, "Enemy");
+    }
+
+    // x축으로 랜덤성 구현
+    private IEnumerator XRandomize()
+    {
+        while (true)
+        {
+            float duration = ec.changeCool;
+            float firstX = transform.position.x;
+            float targetX = Random.Range(initPos.x - (ec.changeDist * xRate), initPos.x + (ec.changeDist * xRate));
+
+            float t = 0f;
+            while (t < duration)
+            {
+                float vX = Mathf.Lerp(firstX, targetX, t/duration);
+                transform.position = new Vector2(vX, transform.position.y);
+                t += Time.deltaTime;
+                yield return null;
+            }
+        }
+    }
+
+    private IEnumerator YShake()
+    {
+        while (true)
+        {
+            if (isStraight)
+            {
+                Vector2 delta = Vector2.down * ec.moveSpeed * Time.deltaTime;
+                transform.position += (Vector3)delta;
+            }
+            else
+            {
+                elapsedTime += Time.deltaTime;
+                Vector2 delta = Vector2.down * (GetCubicWobblySlope(elapsedTime, ec.moveAmplitude, ec.moveFrequency) - offset);
+
+                // Debug.Log(delta);
+                Vector2 target = new Vector2(transform.position.x, initPos.y) + delta;
+                target.x = Mathf.Clamp(target.x, ec.xRange[0], ec.xRange[1]);
+
+                transform.position = target;
+            }
+
+            yield return null;
+        }
+    }
+
+    // 삼차함수 파동 구현
+    private float Smoothstep(float t) 
+    {
+        return t * t * (3f - 2f * t);
+    }
+
+    float GetWobble(float x, float frequency) 
+    {
+        float t = (x * frequency) % 1f; // 0~1 반복 (톱니파)
+        float triangle = Mathf.Abs(t * 2f - 1f); // 1->0->1 삼각형 모양
+        return Smoothstep(1f - triangle); // 0->1->0 삼차곡선
+    }
+
+    public float GetCubicWobblySlope(float x, float amplitude, float frequency) 
+    {
+        float slope = ec.moveSpeed;
+        // 1. 우하향 기본 추세
+        float linearTrend = slope * x;
+
+        // 2. 삼차함수 기반 일렁임
+        float wobble = GetWobble(x, frequency) * amplitude;
+
+        // 3. 합성 (사인파처럼 중심을 맞추려면 amplitude의 절반을 빼주는 등 조정 가능)
+        return linearTrend + wobble;
+    }
+}
