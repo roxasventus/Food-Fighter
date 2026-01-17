@@ -83,7 +83,7 @@ public class EnemySpawner : MonoBehaviour
             return true;
         }
         else
-        {            
+        {
             if (e.favorite == f.type)
             {
                 return true;

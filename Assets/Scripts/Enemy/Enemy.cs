@@ -22,14 +22,18 @@ public class Enemy : MonoBehaviour
     private bool isInit = false;
 
     private Animator anim;
+    private SpriteRenderer sr;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void Init(Vector2 pos, EnemyData data)
     {
+        anim.runtimeAnimatorController = data.anim;
+
         speedRate = data.moveSpeedRate;
         xRate = data.xMoveRate;
         favorite = data.favorite;
@@ -49,7 +53,7 @@ public class Enemy : MonoBehaviour
         isInit = true;
 
         // 임시용
-        Color c;
+        /*Color c;
         switch (favorite)
         {
             case FavoriteFood.RM:
@@ -69,7 +73,7 @@ public class Enemy : MonoBehaviour
                 break;
         }
 
-        GetComponent<SpriteRenderer>().color = c;
+        GetComponent<SpriteRenderer>().color = c;*/
     }
 
     void Update()
@@ -100,6 +104,16 @@ public class Enemy : MonoBehaviour
         float elapsed = 0f;
         float duration = ec.crashDuration;
         Vector2 first = transform.localPosition;
+
+        Debug.Log(first.x);
+        if (first.x > 0)
+        {
+            sr.flipX = true;
+        }
+        else
+        {
+            sr.flipX = false;
+        }
 
         while (elapsed < duration)
         {
