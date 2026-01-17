@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a604b9832e51894fab6540cd70df2a4, type: 3}
   m_Name: GrandFatherZombie
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  id: 6
+  id: 5
   enemy_name: GrandFatherZombie
-  moveSpeedRate: 0.5
+  moveSpeedRate: 0.6
   moveStraight: 1
   xMoveRate: 0.1
   favorite: 4
