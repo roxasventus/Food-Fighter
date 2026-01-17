@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class IngerdentFood : MonoBehaviour
+public class IngerdentFood : MonoBehaviour, IEntity
 {
     [SerializeField]
     public Sprite FoodImage;
@@ -25,18 +25,14 @@ public class IngerdentFood : MonoBehaviour
         olive
     }
 
-    public void Start()
+    public void EntityReset()
     {
-        DataSet();
-
-    }
-    public void DataSet()
-    {
-        //this.GetComponent<SpriteRenderer>().sprite = FoodImage;
     }
     public void SelfRelease()
     {
         ObjPoolManager.instance.Release(this.gameObject, gameObject.name.ToString().Replace("(Clone)",""));
 
     }
+
+
 }

@@ -5,15 +5,15 @@ public class FoodStation : MonoBehaviour, IPointerClickHandler
 {
     public GameObject IngerdentPrefab;
     [SerializeField]
-    MouseHand mouseHand ; 
+    protected MouseHand mouseHand ; 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (mouseHand.handIngerdentFood != null)
-            mouseHand.handIngerdentFood.GetComponent<IngerdentFood>().SelfRelease();
+        if (mouseHand.Gethand() != null)
+            mouseHand.Gethand().GetComponent<IEntity>().SelfRelease();
 
         GameObject go = ObjPoolManager.instance.InstantiateFromPool(IngerdentPrefab.name.ToString());
         go.transform.position = transform.position;
-        mouseHand.handIngerdentFood = go;
+        mouseHand.Sethand(go);
     }
 }

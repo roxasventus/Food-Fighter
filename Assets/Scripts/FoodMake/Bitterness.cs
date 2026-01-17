@@ -3,8 +3,15 @@ using UnityEngine.EventSystems;
 
 public class Bitterness : MonoBehaviour, IPointerClickHandler
 {
+    [SerializeField]
+    MouseHand mouseHand;
     public void OnPointerClick(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        if (mouseHand.Gethand() != null) 
+        {
+            Debug.Log("dddwww");
+            mouseHand.Gethand().GetComponent<IEntity>().SelfRelease(); 
+        
+        }
     }
 }
