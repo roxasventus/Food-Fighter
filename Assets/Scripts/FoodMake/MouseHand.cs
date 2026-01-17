@@ -4,8 +4,9 @@ using UnityEngine.InputSystem;
 
 public class MouseHand : MonoBehaviour
 {
+    [SerializeField]
     // 마우스 정보.
-    private GameObject handObject = null;
+    private static GameObject handObject = null;
 
     void LateUpdate()
     {

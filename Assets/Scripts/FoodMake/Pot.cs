@@ -2,9 +2,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using static IngerdentFood;
 
-public class Pot : MonoBehaviour, IPointerClickHandler
+public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
 {
-    [SerializeField]
     private Recipe recipe;
 
     [SerializeField]
@@ -21,19 +20,21 @@ public class Pot : MonoBehaviour, IPointerClickHandler
     bool greenOnionsEggs = false;
 
     private SpriteRenderer SelfSprite;
-
     [SerializeField]
+    private BoxCollider2D SelfCollider;
+
     bool isOrder = false;
-
-    [SerializeField]
     bool isFail;
+
     [SerializeField]
     MouseHand mouseHand;
 
+    public GameObject SpwanObject;
 
     public void Start()
     {
         PotReSet();
+        SelfCollider= gameObject.GetComponent<BoxCollider2D>();
     }
 
     public void Update()
@@ -45,6 +46,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler
     }
     public void PotReSet()
     {
+        transform.position = SpwanObject.transform.position;
         recipe = ScriptableObject.CreateInstance<Recipe>();
         broth = false;
         recipe.SetBase(Recipe.Base.none);
@@ -54,6 +56,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         SelfSprite = GetComponent<SpriteRenderer>();
         SelfSprite.color = Color.white;
         CookingTime = 0f;
+        SelfCollider.enabled = true;
     }
 
     public void UpdateAnimation() 
@@ -124,6 +127,8 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         }
         
     }
+
+
     public void OnPointerClick(PointerEventData eventData)
     {
         var s = recipe.GetStatus;
@@ -141,10 +146,13 @@ public class Pot : MonoBehaviour, IPointerClickHandler
             } else if(s == Recipe.Status.fail)
             {
                 mouseHand.Sethand(gameObject);
+                SelfCollider.enabled = false;
+                
             }
             return;
         }
 
+        
         IngerdentFood ingerdentFood = mouseHand.Gethand().GetComponent<IngerdentFood>();
         InputIngerdentFood(ingerdentFood.ingredientData);
         ingerdentFood.SelfRelease();
@@ -223,4 +231,15 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         lookSpecial = recipe.GetSpecial;
     }
 
+    public void EntityReset()
+    {
+        
+        PotReSet();
+    }
+
+    public void SelfRelease()
+    {
+        Debug.Log("dddd");
+        PotReSet();
+    }
 }
