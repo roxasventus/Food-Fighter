@@ -129,6 +129,8 @@ public class Pot : MonoBehaviour, IPointerClickHandler
             {
                 // 여기서 데이터 값을 매니저에게 보내줘야함.
                 Debug.Log("요리 완성. 단계 : " + recipe.GetStatus);
+                GameManager.instance.toogleLoaded();
+                GameManager.instance.setRecipe(recipe);
                 //그리고 초기화.
                 PotReSet();
             } else if(s == Recipe.Status.fail)
