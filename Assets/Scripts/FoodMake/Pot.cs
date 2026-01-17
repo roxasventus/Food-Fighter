@@ -154,6 +154,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         
         IngerdentFood ingerdentFood = mouseHand.Gethand().GetComponent<IngerdentFood>();
         InputIngerdentFood(ingerdentFood.ingredientData);
+        mouseHand.Sethand(null);
         ingerdentFood.SelfRelease();
     }
 
