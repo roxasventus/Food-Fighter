@@ -3,12 +3,25 @@ using UnityEngine.EventSystems;
 
 public class BrothStation : FoodStation
 {
+    [SerializeField]
+    SpriteRenderer sr;
+    public bool isHide = false;
+    private void Start()
+    {
+        sr = gameObject.GetComponent<SpriteRenderer>();
+    }
+    private void OnValidate()
+    {
+        if (go != null)
+            isHide = true;
+        else
+            isHide = false;
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         base.OnPointerClick(eventData);
 
-        //주우면 투명하게 만들어야함.
-        //if (mouseHand.Gethand().Equal()) { }
     }
+    
 }

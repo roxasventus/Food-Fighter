@@ -1120,7 +1120,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.04350865, y: -0.021754026}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1130,7 +1130,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.8701651, y: 1.5656061}
   m_EdgeRadius: 0
 --- !u!1 &204300914323991224
 GameObject:
@@ -1143,7 +1143,7 @@ GameObject:
   - component: {fileID: 3599233485605033524}
   - component: {fileID: 6830729581830170249}
   - component: {fileID: 8048675235005933328}
-  - component: {fileID: 7728907769425117626}
+  - component: {fileID: 8048675235005933329}
   m_Layer: 0
   m_Name: BrothStation
   m_TagString: Untagged
@@ -1185,7 +1185,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0071873665, y: -0.007187605}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1195,7 +1195,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.4231305, y: 1.7618773}
   m_EdgeRadius: 0
 --- !u!114 &938566531799391707
 MonoBehaviour:
@@ -1211,6 +1211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 7199406876467584501, guid: 4f693d4c866ea714c9ed8a55b4802369, type: 3}
   mouseHand: {fileID: 4371533036833207385}
+  go: {fileID: 0}
 --- !u!212 &1011990069263380527
 SpriteRenderer:
   serializedVersion: 2
@@ -1554,7 +1555,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 3136279638417215388, guid: 99b0af4c188da55469981dc979307cc4, type: 3}
+  m_Sprite: {fileID: 3112589160528298819, guid: d0b4d7d675970c04fbc2a8644ee3194b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1999,7 +2000,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.03619343, y: 0.0072385073}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2009,7 +2010,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.3753557, y: 1.6514835}
   m_EdgeRadius: 0
 --- !u!114 &5444617621595305281
 MonoBehaviour:
@@ -2048,6 +2049,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 1416844810797730430, guid: 6642c27fef92d954e9e3ee6d9ecac948, type: 3}
   mouseHand: {fileID: 4371533036833207385}
+  go: {fileID: 0}
 --- !u!4 &5739687375832888447
 Transform:
   m_ObjectHideFlags: 0
@@ -2097,7 +2099,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.034099817, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2107,7 +2109,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.022986, y: 1.6819906}
   m_EdgeRadius: 0
 --- !u!61 &5913296630114499412
 BoxCollider2D:
@@ -2143,7 +2145,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.056833267, y: -0.01141876}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2153,7 +2155,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.932055, y: 1.6136869}
   m_EdgeRadius: 0
 --- !u!4 &6055233541355087593
 Transform:
@@ -2204,7 +2206,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.17975426, y: -0.19259498}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2214,7 +2216,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.4380417, y: 1.7447}
   m_EdgeRadius: 0
 --- !u!212 &6830729581830170249
 SpriteRenderer:
@@ -2324,7 +2326,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 3136279638417215388, guid: 99b0af4c188da55469981dc979307cc4, type: 3}
+  m_Sprite: {fileID: 3112589160528298819, guid: d0b4d7d675970c04fbc2a8644ee3194b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2367,6 +2369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 2284562593881376575, guid: 0479e3672066d824890bc308f327d917, type: 3}
   mouseHand: {fileID: 4371533036833207385}
+  go: {fileID: 0}
 --- !u!61 &7345931593713145714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2401,7 +2404,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0071229935, y: 0.00000011920929}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2411,7 +2414,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.3819056, y: 1.7978013}
   m_EdgeRadius: 0
 --- !u!61 &7406816628811436335
 BoxCollider2D:
@@ -2447,7 +2450,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.014374495, y: 0.014374912}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2457,7 +2460,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.4087205, y: 1.6612376}
   m_EdgeRadius: 0
 --- !u!212 &7509153587303926246
 SpriteRenderer:
@@ -2508,7 +2511,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 3136279638417215388, guid: 99b0af4c188da55469981dc979307cc4, type: 3}
+  m_Sprite: {fileID: 3112589160528298819, guid: d0b4d7d675970c04fbc2a8644ee3194b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2552,20 +2555,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7728907769425117626
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 204300914323991224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c05d668669435e04a9b035655017fdbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FoodStation
-  IngerdentPrefab: {fileID: 4048856788384767220, guid: 1608732dc8b914e49b60bfc33eead0a5, type: 3}
-  mouseHand: {fileID: 4371533036833207385}
 --- !u!61 &7750355862672761428
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2783,7 +2772,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0000014007092, y: 0.026001811}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2793,8 +2782,25 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.2600164, y: 3.4441578}
   m_EdgeRadius: 0
+--- !u!114 &8048675235005933329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204300914323991224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01ba6a02561c8f6479fef2d3100ca2ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BrothStation
+  IngerdentPrefab: {fileID: 4048856788384767220, guid: 1608732dc8b914e49b60bfc33eead0a5, type: 3}
+  mouseHand: {fileID: 4371533036833207385}
+  go: {fileID: 0}
+  sr: {fileID: 6830729581830170249}
+  isHide: 0
 --- !u!114 &9092534258238519460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2809,6 +2815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 3555180742798481944, guid: 790a7a7244b15d14899eab5276eb95ca, type: 3}
   mouseHand: {fileID: 4371533036833207385}
+  go: {fileID: 0}
 --- !u!1 &9118063407689716004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2840,6 +2847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 7935808794142186903, guid: 9a249c143cb7af442a566bffe8a0968a, type: 3}
   mouseHand: {fileID: 4371533036833207385}
+  go: {fileID: 0}
 --- !u!4 &9213607321687081539
 Transform:
   m_ObjectHideFlags: 0
