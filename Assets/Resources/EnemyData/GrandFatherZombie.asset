@@ -18,3 +18,4 @@ MonoBehaviour:
   moveStraight: 1
   xMoveRate: 0.1
   favorite: 4
+  anim: {fileID: 22100000, guid: a2a716b116bf9ec489eea3f1ab51b493, type: 2}

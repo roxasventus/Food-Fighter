@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SideJump
+  m_Name: GrandFather_J
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 3802649033011987544, guid: 8bdc212fd2cc9eb46b980ba699014c65, type: 3}
+      value: {fileID: 7282714885091959369, guid: 73b7622ace615294a9c44d5ac3403465, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,7 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 3802649033011987544, guid: 8bdc212fd2cc9eb46b980ba699014c65, type: 3}
+    - {fileID: 7282714885091959369, guid: 73b7622ace615294a9c44d5ac3403465, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
