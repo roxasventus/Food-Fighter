@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wave
   spawner: {fileID: 834683072}
-  ec: {fileID: 0}
+  ec: {fileID: 11400000, guid: 4aca1f4d33962764bb6a9c3406e3f5fa, type: 2}
 --- !u!4 &180013314
 Transform:
   m_ObjectHideFlags: 0
@@ -502,7 +502,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1592899698}
   - {fileID: 134423109}
   - {fileID: 829092139}
   m_Father: {fileID: 0}
@@ -1102,7 +1101,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 273039999}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1699188565
 GameObject:
@@ -1252,4 +1251,5 @@ SceneRoots:
   - {fileID: 834683073}
   - {fileID: 180013314}
   - {fileID: 273039999}
+  - {fileID: 1592899698}
   - {fileID: 157937933}
