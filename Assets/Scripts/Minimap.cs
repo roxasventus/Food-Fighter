@@ -62,6 +62,8 @@ public class Minimap : MonoBehaviour
             GameManager.instance.startNormalWave();
         }
         GameManager.instance.clearRound();
+
+        getRandomColor();
     }
     
 

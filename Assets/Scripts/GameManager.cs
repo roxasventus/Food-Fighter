@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
         int[] normal = { 100, 101, 102, 103, 104, 105, 106, 201, 202 };
         wave.StartWave(normal[Random.Range(0, normal.Length)], () => {
             Debug.Log("Start new normal wave!");
+            GameManager.instance.endWave();
         });
     }
 
@@ -124,6 +125,7 @@ public class GameManager : MonoBehaviour
         int[] hard = { 300, 301, 302};
         wave.StartWave(hard[Random.Range(0, hard.Length)], () => {
             Debug.Log("Start new hard wave!");
+            GameManager.instance.endWave();
         });
     }
 
