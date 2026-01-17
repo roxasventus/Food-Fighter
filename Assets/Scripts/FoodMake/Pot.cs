@@ -239,7 +239,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
 
     public void SelfRelease()
     {
-        Debug.Log("dddd");
+        mouseHand.Sethand(null);
         PotReSet();
     }
 }
