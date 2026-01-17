@@ -37,7 +37,8 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
         SelfCollider = gameObject.GetComponent<BoxCollider2D>();
         transform.position = SpwanObject.transform.position;
         cooKData.SetCookingData();
-
+        gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(1);
+        SelfCollider.enabled = true;
         recipe = ScriptableObject.CreateInstance<Recipe>();
         recipe.SetBase(Recipe.Base.none);
         recipe.SetSauce(Recipe.Sauce.none);
@@ -54,7 +55,6 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
         // 성공 실패여부만 
         if (isFail)
         {
-            Debug.Log("eee");
             recipe.SetStatus(Recipe.Status.fail);
             gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
         }
@@ -73,9 +73,6 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
             isOrder = false;
         else if (cooKData.CookingTime >= cooKData.BoilingTime && cooKData.eggfa == CooKingDatac.Eggfa.greenOnionsEggs)
             isOrder = true;
-
-        //        if (cooKData.CookingTime >= cooKData.DeadTime)
-        // cooKData.status = CooKingDatac.Status.fail;
     }
     public void Decidebroth()
     {
