@@ -34,7 +34,7 @@
     {
         "id": 4,
         "explain": "GirlZombie",
-        "spawn": [{ "enemy_id": 5, "quantity": 2 }],
+        "spawn": [{ "enemy_id": 4, "quantity": 2 }],
         "pre_delay": 2,
         "delay": 2
     },
@@ -42,7 +42,7 @@
     {
         "id": 5,
         "explain": "GrandFatherZombie",
-        "spawn": [{ "enemy_id": 6, "quantity": 1 }],
+        "spawn": [{ "enemy_id": 5, "quantity": 1 }],
         "pre_delay": 1,
         "delay": 1
     },

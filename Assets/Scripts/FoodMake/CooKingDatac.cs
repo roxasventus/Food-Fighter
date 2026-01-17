@@ -16,12 +16,14 @@ public class CooKingDatac : MonoBehaviour
     public MouseHand mouseHand;
 
     public Status status;
+    public Special special;
+
     public FoodBase foodbase;
     public Sauce sauce;
-    public Special special;
     public Broth broth;
     public Eggfa eggfa;
     public result resultfood;
+
     public Completion completion;
 
     public enum Status
@@ -95,7 +97,6 @@ public class CooKingDatac : MonoBehaviour
 
     public Status GetCurrentStatus()
     {
-       
 
         bool isBase = foodbase != FoodBase.none;
         bool isSauce = sauce != Sauce.none;
@@ -103,9 +104,9 @@ public class CooKingDatac : MonoBehaviour
         if (CookingTime >= DeadTime)
             return Status.fail;
         else
-        if (CookingTime >= BoilingTime) return Status.incomplete;
+        if (isBase && isSauce && CookingTime >= BoilingTime) return Status.incomplete;
         else
-        if (CookingTime >= ComplteTime) return Status.complete;
+        if (isBase && isSauce&& CookingTime >= ComplteTime) return Status.complete;
 
         return Status.none;
     }
