@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 public class IngerdentFood : MonoBehaviour, IEntity
 {
     [SerializeField]
-    public Sprite FoodImage;
     public Ingredient ingredientData;
 
     public enum Ingredient
@@ -27,10 +26,12 @@ public class IngerdentFood : MonoBehaviour, IEntity
 
     public void EntityReset()
     {
+
     }
     public void SelfRelease()
     {
         ObjPoolManager.instance.Release(gameObject, gameObject.name.ToString().Replace("(Clone)",""));
+
     }
 
 
