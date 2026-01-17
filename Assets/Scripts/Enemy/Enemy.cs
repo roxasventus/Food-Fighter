@@ -149,8 +149,9 @@ public class Enemy : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-        
+
         // 데미지 처리
+        GameManager.instance.loseLife();
         Debug.Log("Crash!!");
         Release();
     }
