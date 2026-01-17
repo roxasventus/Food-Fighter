@@ -56,7 +56,7 @@ public class Minimap : MonoBehaviour
             Debug.Log("아이템을 획득 가능합니다. Normal과 같은 스테이지 세팅.");
             GameManager.instance.getRandomItems(1);
         }
-
+        GameManager.instance.clearRound();
     }
     
 
