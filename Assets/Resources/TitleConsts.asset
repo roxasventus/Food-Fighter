@@ -17,3 +17,4 @@ MonoBehaviour:
   rattleDuration: 0.1
   rattleCnt: 3
   openDuration: 0.6
+  slidingSpeed: 10

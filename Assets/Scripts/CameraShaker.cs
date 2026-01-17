@@ -10,13 +10,15 @@ public class CameraShaker : MonoBehaviour
     [SerializeField] private Vector2 range = new Vector2(0.1f, 0.5f);
     public Vector2 Range { get { return range; } set { range = value; } }
     
-    Vector3 defaultPos = Vector3.zero;
+    Vector3 defaultPos;
+
+    public bool isActive = false;
 
     //public static CameraShaker Instance;
     void Awake()
     {
         //Instance = this;
-        defaultPos = transform.localPosition;
+        defaultPos = new Vector3(0f, 0f, -10f);
         m_timer = UnityEngine.Random.Range(range.x, range.y);
     }
 
@@ -24,6 +26,8 @@ public class CameraShaker : MonoBehaviour
     void LateUpdate()
     {
         if(!m_shake_on_Idle) return;
+
+        if (!isActive) return;
 
         m_timer -= Time.deltaTime;
         if(m_timer <= 0f)

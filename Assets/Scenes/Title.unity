@@ -185,7 +185,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7781667512018767519, guid: 5a8479a66a3c02d42818314a4127d973, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Lid
   tc: {fileID: 11400000, guid: 3932339b21053fc43bff42833b46e6f8, type: 2}
+  truck: {fileID: 1962447057}
 --- !u!58 &111315334
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -495,7 +496,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 28f0c895198045f49ad9d982985b5419, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
