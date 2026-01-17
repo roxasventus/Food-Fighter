@@ -114,7 +114,7 @@ public class Enemy : MonoBehaviour
         {
             sr.flipX = false;
         }
-
+    
         while (elapsed < duration)
         {
             transform.localPosition = Vector2.Lerp(first, Vector2.zero, elapsed/duration);
