@@ -29,8 +29,20 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
 
     public Animator SpriteAnimator;
 
-    public GameObject SpwanObject;
+    private SpriteRenderer Watersprite;
+    private SpriteRenderer Saucesprite;
+    private SpriteRenderer Basesprite;
+    private SpriteRenderer Reslutsprite;
+    private SpriteRenderer GreenOnionsEggs;
 
+    public GameObject SpwanObject;
+    //
+    [SerializeField]
+    private Sprite Water;
+    [SerializeField]
+    private Sprite Soupsprite, jjajangsprite;
+    [SerializeField]
+    private Sprite noodleSprite,tteokSprite;
     public void Start()
     {
         PotReSet();
@@ -57,27 +69,32 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         SpriteAnimator = GetComponentInChildren<Animator>();
         if (SpriteAnimator != null)
             SpriteAnimator.SetTrigger("Summon");
-
-         CookingTime = 0f;
+        CookingTime = 0f;
         SelfCollider.enabled = true;
+
+        SetChildSprite();
     }
-
-    public void UpdateAnimation() 
-    {
-        bool isBase = recipe.GetBase != Recipe.Base.none;
-        bool isSauce = recipe.GetSauce != Recipe.Sauce.none;
-        bool isBorring
-        bool incompleteConditions = CookingTime >= BoilingTime && CookingTime < ComplteTime && !isFail && isBase && isSauce;
-        bool completeConditions = CookingTime >= ComplteTime && CookingTime < DeadTime && !isFail && isOrder && isBase && isSauce;
-        var status = recipe.GetStatus;
-
-
+    public void SetChildSprite()
+    { 
+        Watersprite = transform.Find("Water").GetComponent<SpriteRenderer>();
+        Saucesprite = transform.Find("Sauce").GetComponent<SpriteRenderer>();
+        Basesprite = transform.Find("Base").GetComponent<SpriteRenderer>();
+        Reslutsprite = transform.Find("Reslut").GetComponent<SpriteRenderer>();
+        GreenOnionsEggs = transform.Find("GreenOnionsEggs").GetComponent<SpriteRenderer>();
+    }
+    public void UpdateAnimation()
+    { 
+        bool isBorring = CookingTime >= BoilingTime;
+        Recipe.Status status = recipe.GetStatus;
 
         if (broth == true && !isFail)
-            //거품 애니메이션 
-
-
-            //애니메이션 적용 부분.
+        //거품 스프라이트 .
+        {
+            
+        }
+        //애니메이션 적용 부분.
+        if (isBorring == true) { SpriteAnimator.SetBool("boiling",true); }
+            
         switch (status) 
         {
             case Recipe.Status.fail: break;
