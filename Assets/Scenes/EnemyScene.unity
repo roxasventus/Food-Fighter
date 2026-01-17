@@ -518,6 +518,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dbf6cef7baba2b4e84b53ff8ddc42f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Board
+  yOffset: 32.4
+  gc: {fileID: 11400000, guid: f878de7406ed3bb4887795d2dbe75558, type: 2}
+  group1: {fileID: 134423109}
+  group2: {fileID: 829092139}
+  truck: {fileID: 1592899698}
 --- !u!1 &609420266
 GameObject:
   m_ObjectHideFlags: 0
