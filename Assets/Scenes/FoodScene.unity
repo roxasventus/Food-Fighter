@@ -426,7 +426,6 @@ GameObject:
   - component: {fileID: 585355079}
   - component: {fileID: 585355082}
   - component: {fileID: 585355081}
-  - component: {fileID: 585355080}
   m_Layer: 0
   m_Name: Pot (2)
   m_TagString: Untagged
@@ -450,28 +449,6 @@ Transform:
   - {fileID: 2011283341}
   m_Father: {fileID: 2973333702300702868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &585355080
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 585355078}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 99c4fe1a904592148a8ab06a621cfbe3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &585355081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,7 +643,6 @@ GameObject:
   - component: {fileID: 731091371}
   - component: {fileID: 731091374}
   - component: {fileID: 731091373}
-  - component: {fileID: 731091372}
   m_Layer: 0
   m_Name: Pot (1)
   m_TagString: Untagged
@@ -690,28 +666,6 @@ Transform:
   - {fileID: 1087431391}
   m_Father: {fileID: 2973333702300702868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &731091372
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 731091370}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 99c4fe1a904592148a8ab06a621cfbe3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &731091373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2987,7 +2941,6 @@ GameObject:
   - component: {fileID: 6055233541355087593}
   - component: {fileID: 182876378604576529}
   - component: {fileID: 5444617621595305281}
-  - component: {fileID: 7248579943489254232}
   m_Layer: 0
   m_Name: Pot
   m_TagString: Untagged
@@ -2995,28 +2948,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &7248579943489254232
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7248579943489254231}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 99c4fe1a904592148a8ab06a621cfbe3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7274965663122219225
 MonoBehaviour:
   m_ObjectHideFlags: 0
