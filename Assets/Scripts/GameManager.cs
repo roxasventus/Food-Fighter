@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
         heartContainers.GetChild(_life-1).gameObject.SetActive(false);    
         _life -= 1;
         if (_life == 0)
-            SceneLoader.Instance.Load("MainScene");
+            SceneLoader.Instance.Load("GameOverScene");
     }
     public void getLife(int num) { 
 
