@@ -13,16 +13,26 @@ public class Enemy : MonoBehaviour
 
     private Coroutine xCor, yCor;
 
-    public void Init(Vector2 pos, bool isSt)
+    // 좀비 데이터 설정값
+    private float speedRate;
+    private float xRate;
+    private FavoriteFood favorite;
+
+    public void Init(Vector2 pos, EnemyData data)
     {
+        speedRate = data.moveSpeedRate;
+        xRate = data.xMoveRate;
+        favorite = data.favorite;
+        isStraight = data.moveStraight;
+
         initPos = pos;
+        elapsedTime = 0f;
         offset = GetCubicWobblySlope(0, ec.moveAmplitude, ec.moveFrequency);
         transform.position = pos;
-        isStraight = isSt;
 
+        xCor = StartCoroutine(XRandomize());
         if (!isStraight)
         {
-            xCor = StartCoroutine(XRandomize());
             yCor = StartCoroutine(YShake());
         }
     }
@@ -31,7 +41,7 @@ public class Enemy : MonoBehaviour
     {
         if (isStraight)
         {
-            transform.position += Vector3.down * ec.moveSpeed * Time.deltaTime;
+            transform.position += Vector3.down * ec.moveSpeed * Time.deltaTime * speedRate;
         }
     }
 
@@ -58,6 +68,8 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
         
+        // 데미지 처리
+        Debug.Log("Crash!!");
         Release();
     }
 
@@ -73,7 +85,7 @@ public class Enemy : MonoBehaviour
         {
             float duration = ec.changeCool;
             float firstX = transform.position.x;
-            float targetX = Random.Range(initPos.x - ec.changeDist, initPos.x + ec.changeDist);
+            float targetX = Random.Range(initPos.x - (ec.changeDist * xRate), initPos.x + (ec.changeDist * xRate));
 
             float t = 0f;
             while (t < duration)

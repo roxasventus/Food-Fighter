@@ -1,14 +1,165 @@
 {
-	"stage_1": {
-		"units": [
-			{
-				"template_id": 0,
-				"quantity": 5
-			},
-			{
-				"template_id": 1,
-				"quantity": 5
-			}
-		]
-	}
+    "stage_0": {
+        "id": 900,
+        "explain": "Tutorial1",
+        "units": [
+            { "template_id": 0, "quantity": 5 },
+            { "template_id": 1, "quantity": 5 }
+        ],
+        "zombieLimit" : 10
+    },
+
+    "stage_1": {
+        "id": 901,
+        "explain": "Tutorial2",
+        "units": [
+            { "template_id": 0, "quantity": 6 },
+            { "template_id": 1, "quantity": 8 },
+            { "template_id": 4, "quantity": 4 }
+        ],
+        "zombieLimit": 10
+    },
+
+    "stage_100": {
+        "id": 100,
+        "explain": "Stage0",
+        "units": [
+            { "template_id": 0, "quantity": 7 },
+            { "template_id": 1, "quantity": 5 },
+            { "template_id": 4, "quantity": 3 },
+            { "template_id": -1, "quantity": 3 },
+            { "template_id": 1006, "quantity": 1 }
+        ],
+        "zombieLimit": 10
+    },
+
+    "stage_101": {
+        "id": 101,
+        "explain": "Stage1",
+        "units": [
+            { "template_id": 0, "quantity": 4 },
+            { "template_id": 1, "quantity": 5 },
+            { "template_id": 2, "quantity": 2 },
+            { "template_id": -1, "quantity": 2 },
+            { "template_id": 1006, "quantity": 1 }
+        ],
+        "zombieLimit": 10
+    },
+
+    "stage_102": {
+        "id": 102,
+        "explain": "Stage2",
+        "units": [
+            { "template_id": 0, "quantity": 1 },
+            { "template_id": 1, "quantity": 4 },
+            { "template_id": 3, "quantity": 4 },
+            { "template_id": 5, "quantity": 3 },
+            { "template_id": 1006, "quantity": 1 }
+        ],
+        "zombieLimit": 10
+    },
+
+    "stage_103": {
+        "id": 103,
+        "explain": "Stage3",
+        "units": [
+            { "template_id": 1006, "quantity": 4 },
+            { "template_id": 1007, "quantity": 4 }
+        ],
+        "zombieLimit": 10
+    },
+
+    "stage_104": {
+        "id": 104,
+        "explain": "Stage4",
+        "units": [
+            { "template_id": 0, "quantity": 3 },
+            { "template_id": 2, "quantity": 3 },
+            { "template_id": 3, "quantity": 4 },
+            { "template_id": 5, "quantity": 5 },
+            { "template_id": 1001, "quantity": 3 },
+            { "template_id": 1005, "quantity": 1 }
+        ],
+        "zombieLimit": 10
+    },
+
+    "stage_105": {
+        "id": 105,
+        "explain": "Stage5",
+        "units": [
+            { "template_id": 1006, "quantity": 3 },
+            { "template_id": 1004, "quantity": 1 },
+            { "template_id": 1, "quantity": 3 }
+        ],
+        "zombieLimit": 10
+    },
+
+    "stage_106": {
+        "id": 106,
+        "explain": "Stage6",
+        "units": [
+            { "template_id": 2, "quantity": 3 },
+            { "template_id": 1007, "quantity": 1 },
+            { "template_id": 1, "quantity": 10 },
+            { "template_id": 4, "quantity": 3 }
+        ],
+        "zombieLimit": 10
+    },
+
+    "stage_201": {
+        "id": 201,
+        "explain": "BoyGirl 메인",
+        "units": [
+            { "template_id": 0, "quantity": 5 },
+            { "template_id": 1, "quantity": 2 },
+            { "template_id": 1004, "quantity": 2 },
+            { "template_id": 1005, "quantity": 2 }
+        ],
+        "zombieLimit": 10
+    },
+
+    "stage_202": {
+        "id": 202,
+        "explain": "어른좀비 메인",
+        "units": [
+            { "template_id": 0, "quantity": 2 },
+            { "template_id": 1, "quantity": 4 },
+            { "template_id": 1001, "quantity": 2 }
+        ],
+        "zombieLimit": 10
+    },
+
+    "stage_300": {
+        "id": 300,
+        "explain": "Hard1",
+        "units": [
+            { "template_id": 1007, "quantity": 2 },
+            { "template_id": 3, "quantity": 3 },
+            { "template_id": 4, "quantity": 3 },
+            { "template_id": 1005, "quantity": 2 },
+            { "template_id": 2, "quantity": 3 }
+        ],
+        "zombieLimit": 14
+    },
+
+    "stage_301": {
+        "id": 301,
+        "explain": "Hard2",
+        "units": [
+            { "template_id": 1007, "quantity": 4 },
+            { "template_id": 3, "quantity": 3 },
+            { "template_id": 2, "quantity": 5 }
+        ],
+        "zombieLimit": 14
+    },
+
+    "stage_302": {
+        "id": 302,
+        "explain": "Hard 가족 메인",
+        "units": [
+            { "template_id": 1003, "quantity": 2 },
+            { "template_id": 1000, "quantity": 5 }
+        ],
+        "zombieLimit": 14
+    }
 }
