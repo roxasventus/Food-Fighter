@@ -15,12 +15,10 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
     [SerializeField]
     private float BoilingTime = 2f;
 
- 
     bool broth = false;
     bool greenOnionsEggs = false;
 
     private SpriteRenderer SelfSprite;
-    [SerializeField]
     private BoxCollider2D SelfCollider;
 
     bool isOrder = false;
@@ -34,7 +32,6 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
     public void Start()
     {
         PotReSet();
-        SelfCollider= gameObject.GetComponent<BoxCollider2D>();
     }
 
     public void Update()
@@ -46,6 +43,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
     }
     public void PotReSet()
     {
+        SelfCollider = gameObject.GetComponent<BoxCollider2D>();
         transform.position = SpwanObject.transform.position;
         recipe = ScriptableObject.CreateInstance<Recipe>();
         broth = false;
