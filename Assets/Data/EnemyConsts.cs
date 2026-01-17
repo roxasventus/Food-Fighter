@@ -6,7 +6,7 @@ public class EnemyConsts : ScriptableObject
     [Header("General")]
     [Tooltip("좀비가 위치할 수 있는 좌표 범위")]
     public float[] xRange = {-6.9f, -0.8f};
-    public float crashDuration = 0.3f;
+    public float crashDuration = 0.3f; // 트럭돌진 / 음식 돌진
 
     [Header("Spawner")]
     [Tooltip("좀비가 스폰하는 좌표 범위")]
@@ -29,4 +29,7 @@ public class EnemyConsts : ScriptableObject
 
     [Tooltip("템플릿 생성할 때 같이 생성될 때 기다리는 시간 범위")]
     public float[] templateGapRange = {0.1f, 0.3f};
+
+    [Tooltip("음식 탐지 범위")]
+    public float foodRecDist = 1.25f;
 }

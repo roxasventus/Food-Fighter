@@ -23,18 +23,18 @@ public class Board : MonoBehaviour
 
     private void BoardScroll()
     {
-        Vector3 delta = Vector3.down * gc.boardSpeed * Time.deltaTime;
+        Vector3 delta = Vector3.up * gc.boardSpeed * Time.deltaTime;
         group1.position += delta;
         group2.position += delta;
 
-        if (group1.position.y < -yOffset * 0.9f)
+        if (group1.position.y > yOffset * 0.9f)
         {
-            group1.position += Vector3.up * yOffset * 2;
+            group1.position += Vector3.down * yOffset * 2;
         }
 
-        if (group2.position.y < -yOffset * 0.9f)
+        if (group2.position.y > yOffset * 0.9f)
         {
-            group2.position += Vector3.up * yOffset * 2;
+            group2.position += Vector3.down * yOffset * 2;
         }
     }
 

@@ -16,3 +16,10 @@ MonoBehaviour:
   truckShakeX: 0.4
   truckShakeY: 0.15
   truckShakeFreq: 0.5
+  focusSpeed: 5
+  focusXClamp:
+  - -6.65
+  - -1.2
+  focusYClamp:
+  - -4.65
+  - 4.65

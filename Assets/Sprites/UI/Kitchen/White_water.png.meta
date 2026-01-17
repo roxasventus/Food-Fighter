@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4c720510ee6111441be3af9238ee4598
+guid: 520ffed9f697ec34c8754c70d1ba0bb2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5704029796096964551
-    second: foodattacl1_0
+      213: -6149465471256186951
+    second: White_water_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: foodattacl1_0
+      name: White_water_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 5
-        width: 80
-        height: 72
+        y: 0
+        width: 176
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c77a98d0e8c82f40800000000000000
-      internalID: 5704029796096964551
+      spriteID: 9bfae333cb5b8aaa0800000000000000
+      internalID: -6149465471256186951
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      foodattacl1_0: 5704029796096964551
+      White_water_0: -6149465471256186951
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

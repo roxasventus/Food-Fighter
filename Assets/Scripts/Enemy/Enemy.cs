@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -16,7 +17,9 @@ public class Enemy : MonoBehaviour
     // 좀비 데이터 설정값
     private float speedRate;
     private float xRate;
-    private FavoriteFood favorite;
+    public FavoriteFood favorite;
+
+    private bool isInit = false;
 
     public void Init(Vector2 pos, EnemyData data)
     {
@@ -26,7 +29,7 @@ public class Enemy : MonoBehaviour
         isStraight = data.moveStraight;
 
         initPos = pos;
-        elapsedTime = Random.Range(-ec.moveFrequency, 0);
+        elapsedTime = Random.Range(0, ec.moveFrequency);
         offset = GetCubicWobblySlope(0, ec.moveAmplitude, ec.moveFrequency);
         transform.position = pos;
 
@@ -35,6 +38,31 @@ public class Enemy : MonoBehaviour
         {
             yCor = StartCoroutine(YShake());
         }
+
+        isInit = true;
+
+        // 임시용
+        Color c;
+        switch (favorite)
+        {
+            case FavoriteFood.RM:
+                c = Color.orange;
+                break;
+            case FavoriteFood.JRM:
+                c = Color.brown;
+                break;
+            case FavoriteFood.TB:
+                c = Color.red;
+                break;
+            case FavoriteFood.JTB:
+                c = Color.black;
+                break;
+            default:
+                c = Color.white;
+                break;
+        }
+
+        GetComponent<SpriteRenderer>().color = c;
     }
 
     void Update()
@@ -47,13 +75,43 @@ public class Enemy : MonoBehaviour
 
     public bool isCrash() // 트럭에 돌진하는 좌표인가?
     {
-        return transform.position.y <= ec.jumpY;
+        return transform.position.y <= ec.jumpY && isInit;
     }
 
+    public IEnumerator FoundFood(Transform food, Transform manager)
+    {
+        // 움직임 멈추기
+        StopCoroutine(xCor);
+        if (!isStraight)
+            StopCoroutine(yCor);
+
+        // 자식으로 만들기
+        transform.SetParent(food);
+        
+        float elapsed = 0f;
+        float duration = ec.crashDuration;
+        Vector2 first = transform.localPosition;
+
+        while (elapsed < duration)
+        {
+            transform.localPosition = Vector2.Lerp(first, Vector2.zero, elapsed/duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        while (transform.position.y < 10)
+        {
+            yield return null;
+        }
+        
+        transform.SetParent(manager);
+        Release();
+    }
     public IEnumerator Crash()
     {
         StopCoroutine(xCor);
-        StopCoroutine(yCor);
+        if (!isStraight)
+            StopCoroutine(yCor);
 
         // -3.8 -4.4
         float elapsed = 0f;
@@ -75,6 +133,7 @@ public class Enemy : MonoBehaviour
 
     public void Release() // 돌진 후 사라지기
     {
+        isInit = false;
         ObjPoolManager.instance.Release(gameObject, "Enemy");
     }
 

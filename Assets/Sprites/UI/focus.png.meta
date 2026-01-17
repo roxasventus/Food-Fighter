@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4c720510ee6111441be3af9238ee4598
+guid: 4a4b9100aeb04504cab6494fa0143c47
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5704029796096964551
-    second: foodattacl1_0
+      213: -5455951238037053875
+    second: focus_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: foodattacl1_0
+      name: focus_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 5
-        width: 80
-        height: 72
+        y: 0
+        width: 136
+        height: 139
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c77a98d0e8c82f40800000000000000
-      internalID: 5704029796096964551
+      spriteID: d4ed2f081419844b0800000000000000
+      internalID: -5455951238037053875
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      foodattacl1_0: 5704029796096964551
+      focus_0: -5455951238037053875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
