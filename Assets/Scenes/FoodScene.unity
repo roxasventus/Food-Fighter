@@ -170,6 +170,7 @@ MonoBehaviour:
   ComplteTime: 7
   BoilingTime: 2
   mouseHand: {fileID: 4371533036833207385}
+  SpriteAnimator: {fileID: 0}
   SpwanObject: {fileID: 1888469312}
   lookBase: 0
   lookSauce: 0
@@ -682,6 +683,7 @@ MonoBehaviour:
   ComplteTime: 7
   BoilingTime: 2
   mouseHand: {fileID: 4371533036833207385}
+  SpriteAnimator: {fileID: 0}
   SpwanObject: {fileID: 1963970776}
   lookBase: 0
   lookSauce: 0
@@ -2795,6 +2797,7 @@ MonoBehaviour:
   ComplteTime: 7
   BoilingTime: 2
   mouseHand: {fileID: 4371533036833207385}
+  SpriteAnimator: {fileID: 0}
   SpwanObject: {fileID: 492829226}
   lookBase: 0
   lookSauce: 0

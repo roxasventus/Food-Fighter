@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static IngerdentFood;
+using static Recipe;
 
 public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
 {
@@ -18,7 +19,6 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
     bool broth = false;
     bool greenOnionsEggs = false;
 
-    private SpriteRenderer SelfSprite;
     private BoxCollider2D SelfCollider;
 
     bool isOrder = false;
@@ -27,11 +27,14 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
     [SerializeField]
     MouseHand mouseHand;
 
+    public Animator SpriteAnimator;
+
     public GameObject SpwanObject;
 
     public void Start()
     {
         PotReSet();
+
     }
 
     public void Update()
@@ -51,15 +54,24 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         recipe.SetSauce(Recipe.Sauce.none);
         recipe.SetSpecial(Recipe.Special.none);
         recipe.SetStatus(Recipe.Status.Cooking);
-        SelfSprite = GetComponent<SpriteRenderer>();
-        SelfSprite.color = Color.white;
-        CookingTime = 0f;
+        SpriteAnimator = GetComponentInChildren<Animator>();
+        if (SpriteAnimator != null)
+            SpriteAnimator.SetTrigger("Summon");
+
+         CookingTime = 0f;
         SelfCollider.enabled = true;
     }
 
     public void UpdateAnimation() 
     {
+        bool isBase = recipe.GetBase != Recipe.Base.none;
+        bool isSauce = recipe.GetSauce != Recipe.Sauce.none;
+        bool isBorring
+        bool incompleteConditions = CookingTime >= BoilingTime && CookingTime < ComplteTime && !isFail && isBase && isSauce;
+        bool completeConditions = CookingTime >= ComplteTime && CookingTime < DeadTime && !isFail && isOrder && isBase && isSauce;
         var status = recipe.GetStatus;
+
+
 
         if (broth == true && !isFail)
             //거품 애니메이션 
@@ -68,9 +80,9 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
             //애니메이션 적용 부분.
         switch (status) 
         {
-            case Recipe.Status.fail: SelfSprite.color = Color.black; break;
-            case Recipe.Status.incomplete: SelfSprite.color = Color.yellow; break;
-            case Recipe.Status.complete: SelfSprite.color = Color.red; break;
+            case Recipe.Status.fail: break;
+            case Recipe.Status.incomplete: break;
+            case Recipe.Status.complete:  break;
         }
     }
     public void UpdateStatus() 
@@ -99,11 +111,9 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
 
     public Recipe.Status DecideStatus() 
     {
-        //여기서 조건 검사 
         bool isBase = recipe.GetBase != Recipe.Base.none;
         bool isSauce = recipe.GetSauce != Recipe.Sauce.none;
 
-        // 여기서는 레시피에 다른 것들이 들어있냐? 해당 시간에.
         bool incompleteConditions = CookingTime >= BoilingTime && CookingTime < ComplteTime && !isFail && isBase && isSauce ;
         bool completeConditions = CookingTime >= ComplteTime && CookingTime < DeadTime && !isFail && isOrder && isBase && isSauce;
 
