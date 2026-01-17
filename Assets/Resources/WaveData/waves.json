@@ -1,0 +1,14 @@
+{
+	"stage_1": {
+		"units": [
+			{
+				"template_id": 0,
+				"quantity": 5
+			},
+			{
+				"template_id": 1,
+				"quantity": 5
+			}
+		]
+	}
+}

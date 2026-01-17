@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     private float offset;
     private float elapsedTime = 0f;
 
+    private Coroutine xCor, yCor;
+
     public void Init(Vector2 pos, bool isSt)
     {
         initPos = pos;
@@ -20,19 +22,48 @@ public class Enemy : MonoBehaviour
 
         if (!isStraight)
         {
-            StartCoroutine(XRandomize());
-            StartCoroutine(YShake());
+            xCor = StartCoroutine(XRandomize());
+            yCor = StartCoroutine(YShake());
         }
-    }
-
-    void Start()
-    {
-        Init(new Vector2(-4f, 5.3f), false);
     }
 
     void Update()
     {
+        if (isStraight)
+        {
+            transform.position += Vector3.down * ec.moveSpeed * Time.deltaTime;
+        }
+    }
+
+    public bool isCrash() // 트럭에 돌진하는 좌표인가?
+    {
+        return transform.position.y <= ec.jumpY;
+    }
+
+    public IEnumerator Crash()
+    {
+        StopCoroutine(xCor);
+        StopCoroutine(yCor);
+
+        // -3.8 -4.4
+        float elapsed = 0f;
+        float duration = ec.crashDuration;
+        Vector2 firstPos = transform.position;
+        Vector2 targetPos = new Vector2(-3.8f, -4.4f);
+
+        while (elapsed <= duration)
+        {
+            transform.position = Vector2.Lerp(firstPos, targetPos, elapsed/duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
         
+        Release();
+    }
+
+    public void Release() // 돌진 후 사라지기
+    {
+        ObjPoolManager.instance.Release(gameObject, "Enemy");
     }
 
     // x축으로 랜덤성 구현
@@ -44,7 +75,6 @@ public class Enemy : MonoBehaviour
             float firstX = transform.position.x;
             float targetX = Random.Range(initPos.x - ec.changeDist, initPos.x + ec.changeDist);
 
-            Debug.Log(targetX);
             float t = 0f;
             while (t < duration)
             {

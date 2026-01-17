@@ -4,7 +4,16 @@ using UnityEngine;
 public class EnemyConsts : ScriptableObject
 {
     [Header("General")]
+    [Tooltip("좀비가 위치할 수 있는 좌표 범위")]
     public float[] xRange = {-6.9f, -0.8f};
+    public float crashDuration = 0.3f;
+
+    [Header("Spawner")]
+    [Tooltip("좀비가 스폰하는 좌표 범위")]
+    public float[] spawnRange = {-6.3f, -1.3f}; // changeDist 참고하기!
+    public float spawnY = 6.5f;
+    public float jumpY = -1.7f; // 트럭 돌진 판정 y
+    
     [Header("직선으로 다가오는 좀비")]
     public float moveSpeed = 5f;
 

@@ -1,0 +1,18 @@
+[
+	{
+		"id": 0,
+		"explain": "Zombie",
+		"spawn": [
+			{"enemy_id": 0, "quantity": 1}
+		],
+		"delay": 1
+	},
+	{
+		"id": 1,
+		"explain": "TwoZombie",
+		"spawn": [
+			{"enemy_id": 0, "quantity": 2}
+		],
+		"delay": 1
+	}
+]
