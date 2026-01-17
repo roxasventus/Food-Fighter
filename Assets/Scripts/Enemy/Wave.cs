@@ -15,6 +15,7 @@ public class Wave : MonoBehaviour
     private Action _end;
 
     [SerializeField] private EnemySpawner spawner;
+    [SerializeField] private EnemyConsts ec;
 
     void Start()
     {
@@ -114,6 +115,7 @@ public class Wave : MonoBehaviour
             for (int i=0; i<sp["quantity"]; i++)
             {
                 spawner.Spawn(sp["enemy_id"]);
+                yield return new WaitForSeconds(UnityEngine.Random.Range(ec.templateGapRange[0], ec.templateGapRange[1]));
             }
         }
 
