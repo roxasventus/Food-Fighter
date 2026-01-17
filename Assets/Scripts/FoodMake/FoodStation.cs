@@ -7,14 +7,12 @@ public class FoodStation : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     protected MouseHand mouseHand ;
 
-    [SerializeField]
-    protected GameObject go;
-    public void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
         if (mouseHand.Gethand() != null)
             mouseHand.Gethand().GetComponent<IEntity>().SelfRelease();
 
-        go = ObjPoolManager.instance.InstantiateFromPool(IngerdentPrefab.name.ToString());
+        GameObject go = ObjPoolManager.instance.InstantiateFromPool(IngerdentPrefab.name.ToString());
         go.transform.position = transform.position;
         mouseHand.Sethand(go);
     }
