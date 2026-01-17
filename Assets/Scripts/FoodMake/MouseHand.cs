@@ -4,13 +4,12 @@ using UnityEngine.InputSystem;
 
 public class MouseHand : MonoBehaviour
 {
-
-    // ¸¶¿ì½º Á¤º¸.
-    [SerializeField]
+    // ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½.
     private static GameObject handObject = null;
 
     void LateUpdate()
     {
+        Debug.Log("MouseHand Update: " + handObject??"null");
         if (handObject != null)
         {
             Vector3 mouseScreen = Mouse.current.position.ReadValue();
@@ -21,6 +20,7 @@ public class MouseHand : MonoBehaviour
         }
 
     }
+
     public void Sethand(GameObject ingerdent) 
     {
         handObject = ingerdent;

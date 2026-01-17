@@ -18,7 +18,7 @@ public class Wave : MonoBehaviour
 
     void Start()
     {
-        templates = new Dictionary<int, TemplateData>();
+        templates = new Dictionary<int, TemplateData>(); 
         waves = new Dictionary<int, WaveData>();
 
         TextAsset templateJson = Resources.Load<TextAsset>("WaveData/templates");
@@ -36,7 +36,7 @@ public class Wave : MonoBehaviour
         }
 
         // 테스트
-        StartWave(900, ()=>{Debug.Log("end!");});
+        StartWave(100, ()=>{Debug.Log("end!");});
     }
 
     public void StartWave(int waveId, Action end, bool isHard=false)
@@ -49,7 +49,7 @@ public class Wave : MonoBehaviour
     private IEnumerator WaveCoroutine(int waveId, bool notEnd)
     {
         WaveData waveData = waves[waveId];
-
+        
         // 주머니 생성
         int id, cnt;
         List<int> pouch = new List<int>();
@@ -68,7 +68,7 @@ public class Wave : MonoBehaviour
         while (pouch.Count > 0)
         {
             // 최대 개수보다 적을 때까지 대기
-            while (spawner.GetCnt() > waveData.zombieLimit)
+            while (spawner.GetCnt() > waveData.zombie_limit)
             {
                 yield return null;
             }
@@ -100,7 +100,7 @@ public class Wave : MonoBehaviour
 
         if (id == -1)
         {
-            data = templates[UnityEngine.Random.Range(0, 6)];
+            data = templates[UnityEngine.Random.Range(0, 5)];
         }
         else
         {
@@ -138,5 +138,5 @@ public class WaveData
     public int id;
     public string explain;
     public List<Dictionary<string, int>> units;
-    public int zombieLimit;
+    public int zombie_limit;
 }

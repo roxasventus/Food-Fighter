@@ -15,12 +15,10 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
     [SerializeField]
     private float BoilingTime = 2f;
 
- 
     bool broth = false;
     bool greenOnionsEggs = false;
 
     private SpriteRenderer SelfSprite;
-    [SerializeField]
     private BoxCollider2D SelfCollider;
 
     bool isOrder = false;
@@ -34,7 +32,6 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
     public void Start()
     {
         PotReSet();
-        SelfCollider= gameObject.GetComponent<BoxCollider2D>();
     }
 
     public void Update()
@@ -46,6 +43,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
     }
     public void PotReSet()
     {
+        SelfCollider = gameObject.GetComponent<BoxCollider2D>();
         transform.position = SpwanObject.transform.position;
         recipe = ScriptableObject.CreateInstance<Recipe>();
         broth = false;
@@ -64,10 +62,10 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         var status = recipe.GetStatus;
 
         if (broth == true && !isFail)
-            //°ÅÇ° ¾Ö´Ï¸ÞÀÌ¼Ç 
+            //ï¿½ï¿½Ç° ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ 
 
 
-            //¾Ö´Ï¸ÞÀÌ¼Ç Àû¿ë ºÎºÐ.
+            //ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½.
         switch (status) 
         {
             case Recipe.Status.fail: SelfSprite.color = Color.black; break;
@@ -101,11 +99,11 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
 
     public Recipe.Status DecideStatus() 
     {
-        //¿©±â¼­ Á¶°Ç °Ë»ç 
+        //ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ 
         bool isBase = recipe.GetBase != Recipe.Base.none;
         bool isSauce = recipe.GetSauce != Recipe.Sauce.none;
 
-        // ¿©±â¼­´Â ·¹½ÃÇÇ¿¡ ´Ù¸¥ °ÍµéÀÌ µé¾îÀÖ³Ä? ÇØ´ç ½Ã°£¿¡.
+        // ï¿½ï¿½ï¿½â¼­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½Ù¸ï¿½ ï¿½Íµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö³ï¿½? ï¿½Ø´ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½.
         bool incompleteConditions = CookingTime >= BoilingTime && CookingTime < ComplteTime && !isFail && isBase && isSauce ;
         bool completeConditions = CookingTime >= ComplteTime && CookingTime < DeadTime && !isFail && isOrder && isBase && isSauce;
 
@@ -137,12 +135,12 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         {
             if (s == Recipe.Status.incomplete || s == Recipe.Status.complete) 
             {
-                // ¿©±â¼­ µ¥ÀÌÅÍ °ªÀ» ¸Å´ÏÀú¿¡°Ô º¸³»Áà¾ßÇÔ.
-                Debug.Log("¿ä¸® ¿Ï¼º. ´Ü°è : " + recipe.GetStatus);
+                // ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+                Debug.Log("ï¿½ä¸® ï¿½Ï¼ï¿½. ï¿½Ü°ï¿½ : " + recipe.GetStatus);
                 GameManager.instance.toogleLoaded();
                 GameManager.instance.setRecipe(recipe);
                 GameManager.instance.useItem();
-                //±×¸®°í ÃÊ±âÈ­.
+                //ï¿½×¸ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­.
                 PotReSet();
             } else if(s == Recipe.Status.fail)
             {
@@ -156,6 +154,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         
         IngerdentFood ingerdentFood = mouseHand.Gethand().GetComponent<IngerdentFood>();
         InputIngerdentFood(ingerdentFood.ingredientData);
+        mouseHand.Sethand(null);
         ingerdentFood.SelfRelease();
     }
 
@@ -181,7 +180,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
             case Ingredient.hot: recipe.SetSpecial(Recipe.Special.hot); break;
             case Ingredient.olive: recipe.SetSpecial(Recipe.Special.olive); break;
 
-            default: Debug.Log("»õ·Î¿î À½½ÄÀº Ã³¸®¸¦ ¸øÇØ¿ä."); break;
+            default: Debug.Log("ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¿ï¿½."); break;
         }
     }
     private void OverlapBase(Ingredient collEnum)
@@ -218,7 +217,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         }
     }
 
-    //Debug¿ë ¹®Á¦ ¾øÀ¸¸é ÇÁ·ÎÅäÅ¸ÀÔ±îÁö ¿Ï·á½Ã Áö¿ï°Í.
+    //Debugï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¸ï¿½Ô±ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
     public Recipe.Base lookBase;
     public Recipe.Sauce lookSauce;
     public Recipe.Status lookStatus;
