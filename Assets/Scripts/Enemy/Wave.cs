@@ -18,7 +18,7 @@ public class Wave : MonoBehaviour
 
     void Start()
     {
-        templates = new Dictionary<int, TemplateData>();
+        templates = new Dictionary<int, TemplateData>(); 
         waves = new Dictionary<int, WaveData>();
 
         TextAsset templateJson = Resources.Load<TextAsset>("WaveData/templates");
@@ -36,7 +36,7 @@ public class Wave : MonoBehaviour
         }
 
         // 테스트
-        StartWave(900, ()=>{Debug.Log("end!");});
+        StartWave(100, ()=>{Debug.Log("end!");});
     }
 
     public void StartWave(int waveId, Action end, bool isHard=false)
@@ -100,7 +100,7 @@ public class Wave : MonoBehaviour
 
         if (id == -1)
         {
-            data = templates[UnityEngine.Random.Range(0, 6)];
+            data = templates[UnityEngine.Random.Range(0, 5)];
         }
         else
         {
