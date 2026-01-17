@@ -151,7 +151,7 @@ public class Enemy : MonoBehaviour
         }
 
         // 데미지 처리
-        //GameManager.instance.loseLife();
+        GameManager.instance.loseLife();
         Debug.Log("Crash!!");
         Release();
     }
