@@ -420,27 +420,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1210315867}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18493a0e03f8c5a40875fa7220c75308, type: 3}
+  m_Script: {fileID: 11500000, guid: 461f7f6515c46f94d94be749f4302022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjPoolManager
   obj_info:
-  - ObjName: tteokIngredent
-    prefab: {fileID: 1416844810797730430, guid: 6642c27fef92d954e9e3ee6d9ecac948, type: 3}
-    init_capacity: 2
-  - ObjName: noodleIngredent
-    prefab: {fileID: 2284562593881376575, guid: 0479e3672066d824890bc308f327d917, type: 3}
-    init_capacity: 2
-  - ObjName: JjajangIngredent
-    prefab: {fileID: 7199406876467584501, guid: 4f693d4c866ea714c9ed8a55b4802369, type: 3}
-    init_capacity: 2
-  - ObjName: SoupIngredent
-    prefab: {fileID: 3555180742798481944, guid: 790a7a7244b15d14899eab5276eb95ca, type: 3}
+  - ObjName: BrothIngredent
+    prefab: {fileID: 4048856788384767220, guid: 1608732dc8b914e49b60bfc33eead0a5, type: 3}
     init_capacity: 2
   - ObjName: greenOnionsEggsIngredent
     prefab: {fileID: 7935808794142186903, guid: 9a249c143cb7af442a566bffe8a0968a, type: 3}
     init_capacity: 2
-  - ObjName: BrothIngredent
-    prefab: {fileID: 4048856788384767220, guid: 1608732dc8b914e49b60bfc33eead0a5, type: 3}
+  - ObjName: JjajangIngredent
+    prefab: {fileID: 7199406876467584501, guid: 4f693d4c866ea714c9ed8a55b4802369, type: 3}
+    init_capacity: 2
+  - ObjName: noodleIngredent
+    prefab: {fileID: 2284562593881376575, guid: 0479e3672066d824890bc308f327d917, type: 3}
+    init_capacity: 2
+  - ObjName: SoupIngredent
+    prefab: {fileID: 3555180742798481944, guid: 790a7a7244b15d14899eab5276eb95ca, type: 3}
+    init_capacity: 2
+  - ObjName: tteokIngredent
+    prefab: {fileID: 1416844810797730430, guid: 6642c27fef92d954e9e3ee6d9ecac948, type: 3}
     init_capacity: 2
 --- !u!114 &1210315869
 MonoBehaviour:
@@ -1211,6 +1211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 7199406876467584501, guid: 4f693d4c866ea714c9ed8a55b4802369, type: 3}
   mouseHand: {fileID: 4371533036833207385}
+  go: {fileID: 0}
 --- !u!212 &1011990069263380527
 SpriteRenderer:
   serializedVersion: 2
@@ -1704,7 +1705,6 @@ MonoBehaviour:
   DeadTime: 9
   ComplteTime: 7
   BoilingTime: 2
-  SelfCollider: {fileID: 5745710893265808728}
   mouseHand: {fileID: 4371533036833207385}
   SpwanObject: {fileID: 1888469312}
   lookBase: 0
@@ -1884,7 +1884,6 @@ MonoBehaviour:
   DeadTime: 9
   ComplteTime: 7
   BoilingTime: 2
-  SelfCollider: {fileID: 5913296630114499412}
   mouseHand: {fileID: 4371533036833207385}
   SpwanObject: {fileID: 1963970776}
   lookBase: 0
@@ -2027,7 +2026,6 @@ MonoBehaviour:
   DeadTime: 9
   ComplteTime: 7
   BoilingTime: 2
-  SelfCollider: {fileID: 182876378604576529}
   mouseHand: {fileID: 4371533036833207385}
   SpwanObject: {fileID: 492829226}
   lookBase: 0
@@ -2048,6 +2046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 1416844810797730430, guid: 6642c27fef92d954e9e3ee6d9ecac948, type: 3}
   mouseHand: {fileID: 4371533036833207385}
+  go: {fileID: 0}
 --- !u!4 &5739687375832888447
 Transform:
   m_ObjectHideFlags: 0
@@ -2367,6 +2366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 2284562593881376575, guid: 0479e3672066d824890bc308f327d917, type: 3}
   mouseHand: {fileID: 4371533036833207385}
+  go: {fileID: 0}
 --- !u!61 &7345931593713145714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2795,6 +2795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 4048856788384767220, guid: 1608732dc8b914e49b60bfc33eead0a5, type: 3}
   mouseHand: {fileID: 4371533036833207385}
+  go: {fileID: 0}
 --- !u!114 &9092534258238519460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2809,6 +2810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 3555180742798481944, guid: 790a7a7244b15d14899eab5276eb95ca, type: 3}
   mouseHand: {fileID: 4371533036833207385}
+  go: {fileID: 0}
 --- !u!1 &9118063407689716004
 GameObject:
   m_ObjectHideFlags: 0
@@ -2840,6 +2842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 7935808794142186903, guid: 9a249c143cb7af442a566bffe8a0968a, type: 3}
   mouseHand: {fileID: 4371533036833207385}
+  go: {fileID: 0}
 --- !u!4 &9213607321687081539
 Transform:
   m_ObjectHideFlags: 0
