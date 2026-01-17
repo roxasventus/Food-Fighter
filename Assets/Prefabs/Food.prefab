@@ -199,3 +199,7 @@ MonoBehaviour:
   fc: {fileID: 11400000, guid: b36d86dd18253614f80296eddaf17868, type: 2}
   gc: {fileID: 11400000, guid: f878de7406ed3bb4887795d2dbe75558, type: 2}
   eff: {fileID: 2999584363576302495}
+  isInit: 0
+  countdown: 0
+  type: 0
+  rotateSpeed: 180

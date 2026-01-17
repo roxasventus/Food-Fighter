@@ -201,7 +201,6 @@ public class GameManager : MonoBehaviour
         {
             _oliveCount--;
         }
-        _chosenRecipe.SetSpecial(Recipe.Special.none);
 
     }
 
