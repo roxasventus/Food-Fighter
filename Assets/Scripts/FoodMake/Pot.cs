@@ -7,6 +7,7 @@ using static Recipe;
 
 public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
 {
+    // Animator ani => transform.GetChild(0).GetComponent<Animator>();
     private Recipe recipe;
 
     public CooKingDatac cooKData;
@@ -31,18 +32,28 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
     {
         Decidebroth();
         UpdateStatus();
+
+        //| Animation
+        // FIXME: ani.SetBool("Boiling", cooKData.broth == CooKingDatac.Broth.boiling);
     }
     public void PotReSet()
     {
         SelfCollider = gameObject.GetComponent<BoxCollider2D>();
         transform.position = SpwanObject.transform.position;
         cooKData.SetCookingData();
-
+        gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(1);
+        SelfCollider.enabled = true;
         recipe = ScriptableObject.CreateInstance<Recipe>();
         recipe.SetBase(Recipe.Base.none);
         recipe.SetSauce(Recipe.Sauce.none);
         recipe.SetSpecial(Recipe.Special.none);
         recipe.SetStatus(Recipe.Status.Cooking);
+
+        //| ANI
+        // FIXME: ani.SetTrigger("Summon");
+        //| SOUND
+        SoundManager.instance.PlaySound("WaterSplash", 1f); // 물버림
+        SoundManager.instance.AfterSound(0.1f, "PotPlace"); // 재생성 철 소리
     }
 
     public void UpdateStatus()
@@ -54,7 +65,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
         // 성공 실패여부만 
         if (isFail)
         {
-            Debug.Log("eee");
+            if(recipe.GetStatus != Recipe.Status.fail) { OnFailedCooked(); } // 일회성 발동 함수입니다.
             recipe.SetStatus(Recipe.Status.fail);
             gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
         }
@@ -64,18 +75,21 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
 
         // 
         if (cooKData.GetCurrentStatus() == CooKingDatac.Status.incomplete)
+        {
+            if (cooKData.status != CooKingDatac.Status.fail) { OnIncompleteCooked(); } // 일회성 발동 함수입니다.
             cooKData.status = CooKingDatac.Status.incomplete;
+        }
 
         if (cooKData.GetCurrentStatus() == CooKingDatac.Status.complete)
+        {
+            if(cooKData.status != CooKingDatac.Status.complete) { OnCompleteCooked (); } // 일회성 발동 함수입니다.
             cooKData.status = CooKingDatac.Status.complete;
+        }
 
         if (cooKData.CookingTime < cooKData.BoilingTime && cooKData.eggfa == CooKingDatac.Eggfa.greenOnionsEggs)
             isOrder = false;
         else if (cooKData.CookingTime >= cooKData.BoilingTime && cooKData.eggfa == CooKingDatac.Eggfa.greenOnionsEggs)
             isOrder = true;
-
-        //        if (cooKData.CookingTime >= cooKData.DeadTime)
-        // cooKData.status = CooKingDatac.Status.fail;
     }
     public void Decidebroth()
     {
@@ -87,6 +101,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
     public void OnPointerClick(PointerEventData eventData)
     {
         CooKingDatac.Status s = cooKData.status;
+        SoundManager.instance.PlaySound("PotHit", 0.3f, Random.Range(0.8f,1.2f)); //| SOUND
 
         if (mouseHand.Gethand() == null)
         {
@@ -100,7 +115,10 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
 
                 if (cooKData.status == CooKingDatac.Status.incomplete) { recipe.SetStatus(Recipe.Status.incomplete); }
                 else
-                    if (cooKData.status == CooKingDatac.Status.complete) { recipe.SetStatus(Recipe.Status.complete); }
+                    if (cooKData.status == CooKingDatac.Status.complete) //
+                    { 
+                        recipe.SetStatus(Recipe.Status.complete);
+                    }
 
                 if (cooKData.sauce == CooKingDatac.Sauce.soup) { recipe.SetSauce(Recipe.Sauce.soup); }
                 else
@@ -119,6 +137,8 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
                 //그리고 초기화.
 
                 PotReSet();
+
+
             }
             else if (s == CooKingDatac.Status.fail)
             {
@@ -146,7 +166,14 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
 
         switch (collEnum)
         {
-            case Ingredient.Broth: cooKData.broth = CooKingDatac.Broth.water; break;
+            case Ingredient.Broth:
+                cooKData.broth = CooKingDatac.Broth.water;
+                //| SOUND
+                SoundManager.instance.AfterSound(0.1f, "WaterPouring", 1f);
+                SoundManager.instance.PlaySound("BoilingWater", 1f);
+                SoundManager.instance.PlaySound("GasStoveBurner", 1f);
+                // TODO: 가스불 키는 효과 필요합니다.
+                break;
 
             case Ingredient.tteok:
             case Ingredient.noodle: OverlapBase(collEnum); break;
@@ -154,7 +181,11 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
             case Ingredient.soup:
             case Ingredient.jjajang: OverSauce(collEnum); break;
 
-            case Ingredient.greenOnionsEggs: cooKData.eggfa = CooKingDatac.Eggfa.greenOnionsEggs; break;
+            case Ingredient.greenOnionsEggs:
+                cooKData.eggfa = CooKingDatac.Eggfa.greenOnionsEggs;
+                //| SOUND
+                SoundManager.instance.PlaySound("EggCrack", 1f);
+                break;
 
             case Ingredient.miwon: cooKData.special = CooKingDatac.Special.miwon; break;
             case Ingredient.hot: cooKData.special = CooKingDatac.Special.hot; break;
@@ -176,7 +207,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
         else
             if (cooKData.foodbase != CooKingDatac.FoodBase.none)
             {
-                
+
                 cooKData.status = CooKingDatac.Status.fail;
                 gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
             }
@@ -195,12 +226,12 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
             //recipe.SetSauce(Recipe.Sauce.jjajang);
         }
         else
-        if (cooKData.sauce != CooKingDatac.Sauce.none)
-        {
-          cooKData.status = CooKingDatac.Status.fail;
+            if (cooKData.sauce != CooKingDatac.Sauce.none)
+            {
+                cooKData.status = CooKingDatac.Status.fail;
                 //recipe.SetStatus(Recipe.Status.fail);
-          gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
-        }
+                gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
+            }
     }
 
     public void EntityReset()
@@ -212,6 +243,38 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
     {
         mouseHand.Sethand(null);
         PotReSet();
+    }
+
+
+
+    // ==================================
+    /// <summary>
+    /// Fail을 달성했을 때 호출됩니다.
+    /// </summary>
+    void OnFailedCooked()
+    {
+        Vector3 yOffset = new Vector2(0,0.5f);
+        //| SOUND
+        // FIXME: SoundManager.instance.PlaySound("", 0.5f, 0.4f); 없음.. 필요!
+        //| VFX
+        VFX_Manager.i.PlayVFX("Burned", transform.position + yOffset, Quaternion.identity);
+    }
+    /// <summary>
+    /// Incomplete를 달성했을 때 호출됩니다.
+    /// </summary>
+    void OnIncompleteCooked()
+    {
+    }
+
+    /// <summary>
+    /// Complete를 달성했을 때 호출됩니다.
+    /// </summary>
+    void OnCompleteCooked()
+    {
+        //| SOUND
+        // FIXME: SoundManager.instance.PlaySound("", 0.5f, 0.4f); 없음.. 필요!
+        //| VFX
+        VFX_Manager.i.PlayVFX("Cooked", transform.position, Quaternion.identity);
     }
 
 }

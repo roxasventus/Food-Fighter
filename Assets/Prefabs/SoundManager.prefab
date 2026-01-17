@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3360110699251700170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 355844899413762676}
+  - component: {fileID: 6531636732726226655}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &355844899413762676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3360110699251700170}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6531636732726226655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3360110699251700170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f289c89a94b41b64aa1dfa119f14cfa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
+  clip_information:
+  - name: BasicBGMLoop
+    clip: {fileID: 8300000, guid: 6d59f687e911a464988ac94b0187fa97, type: 3}
+  - name: IdleWindBlowing
+    clip: {fileID: 8300000, guid: ff55474043b94e24f91b0788e24f4183, type: 3}
+  - name: BoilingWater
+    clip: {fileID: 8300000, guid: 83e5769cf70c0864ba36981c7ae5ab86, type: 3}
+  - name: EggCrack
+    clip: {fileID: 8300000, guid: 6715cdfe0aee5294d86a44f081929d3e, type: 3}
+  - name: GasStoveBurner
+    clip: {fileID: 8300000, guid: 875c5d12c5e4bca40833e9db95ba82a2, type: 3}
+  - name: GrabFoodSupplies
+    clip: {fileID: 8300000, guid: 0e7fd5332a3d4fd449fe8cce5a98b49e, type: 3}
+  - name: PotHit
+    clip: {fileID: 8300000, guid: 1c2e8f8762c882c45b0385bf8208839a, type: 3}
+  - name: PotTouch
+    clip: {fileID: 8300000, guid: f007672e3f976044481d38a082efb3f7, type: 3}
+  - name: PotPlace
+    clip: {fileID: 8300000, guid: addcc413e5cfcf24999e597f556c9385, type: 3}
+  - name: WaterPouring
+    clip: {fileID: 8300000, guid: 58a3e2cc9e6601349b3473eb579cf2a9, type: 3}
+  - name: PotPlace
+    clip: {fileID: 8300000, guid: addcc413e5cfcf24999e597f556c9385, type: 3}
+  - name: PotPlace
+    clip: {fileID: 8300000, guid: addcc413e5cfcf24999e597f556c9385, type: 3}
+  - name: ThrowSwingWhoosh
+    clip: {fileID: 8300000, guid: fbd4c219fad579744bd77ed434e4338a, type: 3}
+  - name: IdleTruckEngine
+    clip: {fileID: 8300000, guid: b5aa56854827897488419bfbf40b31f8, type: 3}
+  - name: TruckStarting
+    clip: {fileID: 8300000, guid: ba3539df1b557f14380b88b9945ba8b8, type: 3}
+  - name: TruckDrift
+    clip: {fileID: 8300000, guid: 56c57570f586cb648898598429718262, type: 3}
+  - name: TruckDrift
+    clip: {fileID: 8300000, guid: 56c57570f586cb648898598429718262, type: 3}
+  - name: BasicClick
+    clip: {fileID: 8300000, guid: bdc12d8128678e54d9db3a48790126ea, type: 3}
+  - name: WindWhooch
+    clip: {fileID: 8300000, guid: a2ebd56adea01d543a24e4f1626fcf1d, type: 3}
+  - name: Running
+    clip: {fileID: 8300000, guid: 97c6f0f9b9bb83a4f8a6a196690ee177, type: 3}
+  - name: ZombieBreathing1
+    clip: {fileID: 8300000, guid: beb65a9a2ccdd8b479071a35d097f2c3, type: 3}
+  - name: ZombieBreathing2
+    clip: {fileID: 8300000, guid: 98ce0b1f5df31bb48ac948e91c270df7, type: 3}
+  - name: ZombieBreathing3
+    clip: {fileID: 8300000, guid: a839262eaf02a5945b5f88df07c20abe, type: 3}
+  - name: ZombieDeath
+    clip: {fileID: 8300000, guid: d4027a69e00e7fa48810fdd72a4d41e4, type: 3}
+  - name: ZombieEating1
+    clip: {fileID: 8300000, guid: fd43fae98d2ec4f49b07f5d20513a4b1, type: 3}
+  - name: ZombieEating2
+    clip: {fileID: 8300000, guid: 20e4d589ec6150943ba51e701181d8d6, type: 3}
+  - name: ZombieEating3
+    clip: {fileID: 8300000, guid: fdc599ec06e46e743b4e7f4d7bb48d0f, type: 3}
+  - name: ZombieHighSound1
+    clip: {fileID: 8300000, guid: 987ff644155fbba43a24cbb9e3d4b816, type: 3}
+  - name: ZombieHighSound2
+    clip: {fileID: 8300000, guid: ddabd1faf6f66774a8650e196b083784, type: 3}
+  - name: ZombieHighSound3
+    clip: {fileID: 8300000, guid: 462f40bd9d86ea3468f742bbe7cc77d4, type: 3}
+  - name: ZombieLowSound1
+    clip: {fileID: 8300000, guid: 27fc670c50093414882892ddba3508ca, type: 3}
+  - name: ZombieLowSound2
+    clip: {fileID: 8300000, guid: ddabd1faf6f66774a8650e196b083784, type: 3}
+  - name: ZombieLowSound3
+    clip: {fileID: 8300000, guid: f9cebcb9b54383d44888dc759d22eb5a, type: 3}
+  - name: ZombieMiddleSound1
+    clip: {fileID: 8300000, guid: 39e09bbcfa3c44649b498fcfe0fd06e7, type: 3}
+  - name: ZombieMiddleSound2
+    clip: {fileID: 8300000, guid: 91e68e85767954a4182dec03289e7146, type: 3}
+  - name: ZombieMiddleSound3
+    clip: {fileID: 8300000, guid: 62d9d3abb4aaad047891611398836940, type: 3}
+  - name: WaterSplash
+    clip: {fileID: 8300000, guid: 61d58f1f9ac9fbf4d88a4e9bbf8458a2, type: 3}
+  - name: WaterSplash
+    clip: {fileID: 8300000, guid: 61d58f1f9ac9fbf4d88a4e9bbf8458a2, type: 3}

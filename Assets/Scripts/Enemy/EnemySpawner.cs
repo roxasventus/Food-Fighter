@@ -35,6 +35,10 @@ public class EnemySpawner : MonoBehaviour
                 e.StartCoroutine(e.Crash(truck.position));
                 enemyList.RemoveAt(i);
             }
+            if (e.isBreathSound())
+            {
+                SoundManager.instance.PlaySound("ZombieBreathing"+Random.Range(1, 4).ToString()); //| PlaySound
+            }
         }
 
         // 음식 리스트 갱신
@@ -64,6 +68,16 @@ public class EnemySpawner : MonoBehaviour
                     f.countdown--;
                     e.StartCoroutine(e.FoundFood(f.transform, manager));
                     enemyList.RemoveAt(i);
+                    SoundManager.instance.AfterSound(1f, "ZombieEating" + Random.Range(1, 4).ToString()); //| SOUND
+                    break;
+                }
+                // 아이템 사용시
+                if (touched && can_eat && GameManager.instance.chosenRecipe.GetSpecial == Recipe.Special.hot && f.isInit)
+                {
+                    f.countdown--;
+                    e.StartCoroutine(e.FoundFood(f.transform, manager));
+                    enemyList.RemoveAt(i);
+                    SoundManager.instance.AfterSound(1f, "ZombieEating" + Random.Range(1, 4).ToString()); //| SOUND
                     break;
                 }
             }

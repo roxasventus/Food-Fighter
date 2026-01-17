@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -14,6 +15,8 @@ public class Food : MonoBehaviour
     public int countdown;
     public FavoriteFood type;
 
+    [SerializeField] float rotateSpeed = 180f;
+
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -24,7 +27,9 @@ public class Food : MonoBehaviour
         if (isInit)
         {
             transform.position += Vector3.up * gc.boardSpeed * Time.deltaTime;
+            transform.Rotate(0,0, rotateSpeed * Time.deltaTime);
         }
+        
     }
 
     public bool CheckY() // true: 벗어남
@@ -68,10 +73,22 @@ public class Food : MonoBehaviour
             yield return null;
         }
 
+        // 착탄
         transform.position = end;
+        ArrivedGround();
+    }
+
+    void ArrivedGround()
+    {
+        // 착탄 효과음
         isInit = true;
         eff.SetActive(true);
+        //| SOUND
+        SoundManager.instance.PlaySound("PotPlace", 0.5f, 0.4f);
+        //| VFX
+        VFX_Manager.i.PlayVFX("SourceSplash", transform.position, Quaternion.identity);
     }
+
 
     public void Release()
     {

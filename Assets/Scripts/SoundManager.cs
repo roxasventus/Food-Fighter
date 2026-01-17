@@ -114,7 +114,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(string clipName)
+    public void PlaySound(string clipName, float volume = 1f, float pitch = 1f)
     {
         if (clip_map.ContainsKey(clipName))
         {
@@ -123,6 +123,8 @@ public class SoundManager : MonoBehaviour
 
             source.clip = clip_map[clipName];
             source.loop = false;
+            source.volume = volume;
+            source.pitch = pitch;
             source.Play();
 
             // Add to active list specifically for checking isPlaying in Update
@@ -132,6 +134,16 @@ public class SoundManager : MonoBehaviour
         {
             Debug.LogError($"No Clip : {clipName}");
         }
+    }
+    public void AfterSound(float delay, string clipName, float volume = 1f, float pitch = 1f)
+    {
+        StartCoroutine(AfterSoundCoroutine(delay, clipName, volume, pitch));
+    }
+
+    private IEnumerator AfterSoundCoroutine(float delay, string clipName, float volume, float pitch)
+    {
+        yield return new WaitForSeconds(delay);
+        PlaySound(clipName, volume, pitch);
     }
 }
 

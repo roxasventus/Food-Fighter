@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
     public int roundCount { get => _roundCount; }
     public void clearRound() { 
         _roundCount--;
-
+        if(_roundCount < 0)
+            _roundCount = 0;
         BroadcastMessage("progressBarUpdate");
 
 
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviour
     public int score { get => _score; }
     public void loseScore(int num) { _score -= num; }
     public void getScore(int num) { _score += num; }
+
+    [SerializeField] private Wave wave;
 
 
     [Header("Bullet")]
@@ -60,6 +63,10 @@ public class GameManager : MonoBehaviour
     public Recipe chosenRecipe { get => _chosenRecipe; }
 
     [Header("Items")]
+    [SerializeField] private Item _miwon;
+    [SerializeField] private Item _hot;
+    [SerializeField] private Item _olive;
+
     [SerializeField] private int _miwonCount;
     public int getMiwon { get => _miwonCount; }
     [SerializeField] private int _hotCount;
@@ -102,14 +109,48 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void allButtonScaleInit() {
+        _miwon.buttonScaleInit();
+        _hot.buttonScaleInit();
+        _olive.buttonScaleInit();
+    }
+
     [Header("UI")]
+    [SerializeField] private RectTransform crossPathCanvas;
     [SerializeField] private Slider progressBar;
     [SerializeField] private Image progressBarFill;
     [SerializeField] private RectTransform heartContainers;
+
+    public void startNormalWave()
+    {
+        int[] normal = { 100, 101, 102, 103, 104, 105, 106, 201, 202 };
+        wave.StartWave(normal[Random.Range(0, normal.Length)], () => {
+            Debug.Log("Start new normal wave!");
+            GameManager.instance.endWave();
+        });
+    }
+
+    public void startHardWave()
+    {
+        int[] hard = { 300, 301, 302};
+        wave.StartWave(hard[Random.Range(0, hard.Length)], () => {
+            Debug.Log("Start new hard wave!");
+            GameManager.instance.endWave();
+        });
+    }
+
+    public void endWave() { 
+        crossPathCanvas.gameObject.SetActive(true);
+    }
+
     public void progressBarUpdate() { 
         progressBar.value = 1-_roundCount/15f;
         if (progressBar.value > 0.5) { 
             progressBarFill.color = Color.yellow;
+        }
+        if (progressBar.value == 1.0f)
+        {
+            SceneLoader.Instance.Load("GameOverScene");
         }
     }
 
@@ -159,18 +200,20 @@ public class GameManager : MonoBehaviour
 
         if (_chosenRecipe.GetSpecial == Recipe.Special.miwon && _miwonCount > 0) {
             _miwonCount--;
+            _miwon.buttonScaleInit();
         }
 
         if (_chosenRecipe.GetSpecial == Recipe.Special.hot && _hotCount > 0)
         {
             _hotCount--;
+            _hot.buttonScaleInit();
         }
 
         if (_chosenRecipe.GetSpecial == Recipe.Special.olive && _oliveCount > 0)
         {
             _oliveCount--;
+            _olive.buttonScaleInit();
         }
-        _chosenRecipe.SetSpecial(Recipe.Special.none);
 
     }
 
@@ -181,8 +224,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void GameStart()
     {
         sceneLoader.StartGame();
     }
