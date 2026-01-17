@@ -9,7 +9,6 @@ public class Bitterness : MonoBehaviour, IPointerClickHandler
     {
         if (mouseHand.Gethand() != null) 
         {
-            Debug.Log("dddwww");
             mouseHand.Gethand().GetComponent<IEntity>().SelfRelease(); 
         
         }

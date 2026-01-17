@@ -5,9 +5,9 @@ public class FoodStation : MonoBehaviour, IPointerClickHandler
 {
     public GameObject IngerdentPrefab;
     [SerializeField]
-    protected MouseHand mouseHand ; 
+    protected MouseHand mouseHand ;
 
-    public void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
         if (mouseHand.Gethand() != null)
             mouseHand.Gethand().GetComponent<IEntity>().SelfRelease();

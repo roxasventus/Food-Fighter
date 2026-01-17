@@ -3,12 +3,46 @@ using UnityEngine.EventSystems;
 
 public class BrothStation : FoodStation
 {
+    [SerializeField]
+    SpriteRenderer sr;
+    public bool isHide = false;
 
-    public void OnPointerClick(PointerEventData eventData)
+    private void Start()
     {
-        base.OnPointerClick(eventData);
-
-        //주우면 투명하게 만들어야함.
-        //if (mouseHand.Gethand().Equal()) { }
+        sr = gameObject.GetComponent<SpriteRenderer>();
     }
+    public void Update()
+    {
+        if (mouseHand.Gethand() != null) 
+        {
+            bool SameName = mouseHand.Gethand().name.ToString().Replace("(Clone)", "") == IngerdentPrefab.name;
+            if (SameName)
+            {
+                isHide = true;
+            }
+            else if (!SameName)
+            {
+                isHide = false;
+            }
+           
+        } if (mouseHand.Gethand() == null) 
+        { isHide = false; }
+
+        HoidAtion();
+    }
+    public void HoidAtion() 
+    {
+      
+        if (isHide)
+        {
+            Debug.Log("숨음");
+            sr.color = new Color(1f, 1f, 1f, 0f);
+        }
+        else
+        {
+            Debug.Log("나타남");
+            sr.color = new Color(1f, 1f, 1f, 1f);
+        }
+    }
+    
 }

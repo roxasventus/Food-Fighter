@@ -30,8 +30,7 @@ public class IngerdentFood : MonoBehaviour, IEntity
     }
     public void SelfRelease()
     {
-        ObjPoolManager.instance.Release(this.gameObject, gameObject.name.ToString().Replace("(Clone)",""));
-
+        ObjPoolManager.instance.Release(gameObject, gameObject.name.ToString().Replace("(Clone)",""));
     }
 
 
