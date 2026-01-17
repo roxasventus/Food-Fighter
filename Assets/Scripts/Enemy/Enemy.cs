@@ -104,8 +104,7 @@ public class Enemy : MonoBehaviour
         float elapsed = 0f;
         float duration = ec.crashDuration;
         Vector2 first = transform.localPosition;
-
-        Debug.Log(first.x);
+        
         if (first.x > 0)
         {
             sr.flipX = true;
