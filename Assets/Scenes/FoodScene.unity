@@ -418,7 +418,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210315867}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f289c89a94b41b64aa1dfa119f14cfa2, type: 3}
   m_Name: 
@@ -454,22 +454,22 @@ MonoBehaviour:
   obj_info:
   - ObjName: BrothIngredent
     prefab: {fileID: 4048856788384767220, guid: 1608732dc8b914e49b60bfc33eead0a5, type: 3}
-    init_capacity: 2
+    init_capacity: 10
   - ObjName: greenOnionsEggsIngredent
     prefab: {fileID: 7935808794142186903, guid: 9a249c143cb7af442a566bffe8a0968a, type: 3}
-    init_capacity: 2
+    init_capacity: 10
   - ObjName: JjajangIngredent
     prefab: {fileID: 7199406876467584501, guid: 4f693d4c866ea714c9ed8a55b4802369, type: 3}
-    init_capacity: 2
+    init_capacity: 10
   - ObjName: noodleIngredent
     prefab: {fileID: 2284562593881376575, guid: 0479e3672066d824890bc308f327d917, type: 3}
-    init_capacity: 2
+    init_capacity: 10
   - ObjName: SoupIngredent
     prefab: {fileID: 3555180742798481944, guid: 790a7a7244b15d14899eab5276eb95ca, type: 3}
-    init_capacity: 2
+    init_capacity: 10
   - ObjName: tteokIngredent
     prefab: {fileID: 1416844810797730430, guid: 6642c27fef92d954e9e3ee6d9ecac948, type: 3}
-    init_capacity: 2
+    init_capacity: 10
 --- !u!1 &1349398826
 GameObject:
   m_ObjectHideFlags: 0
