@@ -24,6 +24,7 @@ public class IngerdentFood : MonoBehaviour, IEntity
         olive
     }
 
+
     public void EntityReset()
     {
 

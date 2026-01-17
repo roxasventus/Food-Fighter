@@ -4,9 +4,11 @@ using UnityEngine.EventSystems;
 using static IngerdentFood;
 using static Recipe;
 
-public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
+public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
 {
     private Recipe recipe;
+
+    public CooKingDatac cooKData;
 
     [SerializeField]
     private float CookingTime;
@@ -29,18 +31,8 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
     [SerializeField]
     MouseHand mouseHand;
 
-    public Animator SpriteAnimator;
-
     public GameObject SpwanObject;
-    //
-    [SerializeField]
-    private GameObject WaterSprite,boilingSprite;
-    [SerializeField]
-    private GameObject Soupsprite, jjajangsprite;
-    [SerializeField]
-    private GameObject noodleSprite,tteokSprite;
-    [SerializeField]
-    private GameObject greenOnionsEggsSprite;
+
     public void Start()
     {
         PotReSet();
@@ -51,7 +43,6 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         TestDebug(); 
         Decidebroth();
         UpdateStatus();
-        UpdateAnimation();
     }
     public void PotReSet()
     {
@@ -59,105 +50,31 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         transform.position = SpwanObject.transform.position;
         recipe = ScriptableObject.CreateInstance<Recipe>();
         broth = false;
+
         recipe.SetBase(Recipe.Base.none);
         recipe.SetSauce(Recipe.Sauce.none);
         recipe.SetSpecial(Recipe.Special.none);
         recipe.SetStatus(Recipe.Status.Cooking);
-        SpriteAnimator = GetComponentInChildren<Animator>();
-        if (SpriteAnimator != null)
-            SpriteAnimator.SetTrigger("Summon");
-        CookingTime = 0f;
-        SelfCollider.enabled = true;
-
-        SetChildSprite();
     }
-    public void SetChildSprite()
-    {
-        WaterSprite.SetActive(false);
-        boilingSprite.SetActive(false);
-        Soupsprite.SetActive(false);
-        jjajangsprite.SetActive(false);
-        noodleSprite.SetActive(false);
-        tteokSprite.SetActive(false);
-        greenOnionsEggsSprite.SetActive(false);
-        /*
-          WaterSprite = transform.Find("Water").gameObject;
-         boilingSprite = transform.Find("boiling").gameObject;
-         Soupsprite = transform.Find("Soup").gameObject;
-         jjajangsprite = transform.Find("jjajang").gameObject;
-         noodleSprite = transform.Find("noodle").gameObject;
-         tteokSprite = transform.Find("tteok").gameObject;
-         greenOnionsEggsSprite = transform.Find("greenOnionsEggs").gameObject;
-         */
 
-    }
-    public void UpdateAnimation()
-    { 
-        bool isBorring = (CookingTime >= BoilingTime);
-        Recipe.Status status = recipe.GetStatus;
-
-        if (broth == true && isBorring !=true)
-        {
-            WaterSprite.SetActive(true);
-        }
-        else if (broth != true )
-        {
-            WaterSprite.SetActive(false);
-        }
-        //애니메이션 적용 부분.//거품 스프라이트 .
-        if (isBorring == true)
-        {
-            SpriteAnimator.SetBool("boiling", true);
-            boilingSprite.SetActive(true);
-            WaterSprite.SetActive(false);
-
-        }
-        else if (isBorring == false) 
-        {
-            SpriteAnimator.SetBool("boiling", false);
-        }
- 
-        switch (recipe.GetBase)
-        {
-            case Base.none: noodleSprite.SetActive(false); tteokSprite.SetActive(false); break;
-            case Base.tteok: tteokSprite.SetActive(true); noodleSprite.SetActive(false); break;
-            case Base.noodle: noodleSprite.SetActive(true); tteokSprite.SetActive(false); break;
-        }
-        switch (recipe.GetSauce)
-        {
-            case Sauce.none: noodleSprite.SetActive(false); tteokSprite.SetActive(false); break;
-            case Sauce.soup: tteokSprite.SetActive(true); noodleSprite.SetActive(false); break;
-            case Sauce.jjajang: noodleSprite.SetActive(true); tteokSprite.SetActive(false); break;
-
-        }
-        if (greenOnionsEggs == true)
-            greenOnionsEggsSprite.SetActive(false);
-        else greenOnionsEggsSprite.SetActive(false);
-
-        switch (status) 
-        {
-            case Recipe.Status.fail: break;
-            case Recipe.Status.incomplete: break;
-            case Recipe.Status.complete:  break;
-        }
-    }
     public void UpdateStatus() 
     {
        isFail = recipe.GetStatus == Recipe.Status.fail;
-        if (CookingTime >= DeadTime && !isFail)
+
+        if (cooKData.GetCurrentStatus() == CooKingDatac.Status.fail )
             recipe.SetStatus(Recipe.Status.fail);
 
-        if (DecideStatus() == Recipe.Status.incomplete)
+        if (cooKData.GetCurrentStatus() == CooKingDatac.Status.incomplete)
             recipe.SetStatus(Recipe.Status.incomplete);
 
-        if (DecideStatus() == Recipe.Status.complete)
+        if (cooKData.GetCurrentStatus() == CooKingDatac.Status.complete)
             recipe.SetStatus(Recipe.Status.complete);
-
 
         if (CookingTime < BoilingTime && greenOnionsEggs == true)
             isOrder = false;
         else if (CookingTime >= BoilingTime && greenOnionsEggs == true)
             isOrder = true;
+
     }
     public void Decidebroth()
     {
@@ -165,34 +82,35 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
             CookingTime += Time.deltaTime;
     }
 
-    public Recipe.Status DecideStatus() 
-    {
-        bool isBase = recipe.GetBase != Recipe.Base.none;
-        bool isSauce = recipe.GetSauce != Recipe.Sauce.none;
+    /*
+       public Recipe.Status DecideStatus() 
+      {
+          bool isBase = recipe.GetBase != Recipe.Base.none;
+          bool isSauce = recipe.GetSauce != Recipe.Sauce.none;
 
-        bool incompleteConditions = CookingTime >= BoilingTime && CookingTime < ComplteTime && !isFail && isBase && isSauce ;
-        bool completeConditions = CookingTime >= ComplteTime && CookingTime < DeadTime && !isFail && isOrder && isBase && isSauce;
+          bool incompleteConditions = CookingTime >= BoilingTime && CookingTime < ComplteTime && !isFail && isBase && isSauce ;
+          bool completeConditions = CookingTime >= ComplteTime && CookingTime < DeadTime && !isFail && isOrder && isBase && isSauce;
 
-        if (incompleteConditions)
-        {
-            recipe.SetStatus(Recipe.Status.incomplete);
-            return Recipe.Status.incomplete;
-        }
-        else
-        if (completeConditions)
-        {
-            //isCompletionTime = true;
-            recipe.SetStatus(Recipe.Status.complete);
-            return Recipe.Status.complete;
-        }
-        else 
-        {
-            return Recipe.Status.Cooking;
-        }
-        
-    }
+          if (incompleteConditions)
+          {
+              recipe.SetStatus(Recipe.Status.incomplete);
+              return Recipe.Status.incomplete;
+          }
+          else
+          if (completeConditions)
+          {
+              //isCompletionTime = true;
+              recipe.SetStatus(Recipe.Status.complete);
+              return Recipe.Status.complete;
+          }
+          else 
+          {
+              return Recipe.Status.Cooking;
+          }
 
-
+      }
+     */
+    
     public void OnPointerClick(PointerEventData eventData)
     {
         var s = recipe.GetStatus;
@@ -223,7 +141,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         ingerdentFood.SelfRelease();
     }
 
-
+    
     private void InputIngerdentFood(Ingredient collEnum)
     {
         if (isFail)
@@ -298,6 +216,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
 
     public void EntityReset()
     {
+
     }
 
     public void SelfRelease()
@@ -305,4 +224,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         mouseHand.Sethand(null);
         PotReSet();
     }
+    /*
+     입력 받는 값 분류 저장해서 CooKData에 저장
+     */
 }
