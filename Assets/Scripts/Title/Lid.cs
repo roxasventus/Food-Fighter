@@ -1,19 +1,23 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Lid : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] TitleConsts tc;
-    [SerializeField] Transform another;
+    [SerializeField] Transform truck;
 
     private Coroutine rattleCoroutine;
+    private AsyncOperation op;
     void Start()
     {
         rattleCoroutine = StartCoroutine(Rattle());
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        op = SceneManager.LoadSceneAsync("GameScene");
+        op.allowSceneActivation = false;
         StartCoroutine(Open());
     }
 
@@ -38,6 +42,26 @@ public class Lid : MonoBehaviour, IPointerDownHandler
             elapsed += Time.deltaTime;
             yield return null;
         }
+
+        // 트럭 나오기
+        while (truck.position.x > 11.75f)
+        {
+            truck.position += Vector3.left * tc.slidingSpeed * Time.deltaTime;
+            yield return null;
+        }
+
+        // 씬 전환하기
+        yield return StartCoroutine(ChangeScene());
+    }
+
+    private IEnumerator ChangeScene()
+    {
+        while (op.progress < 0.9f)
+        {
+            yield return null;
+        }
+
+        op.allowSceneActivation = true;
     }
 
     private IEnumerator Rattle()
