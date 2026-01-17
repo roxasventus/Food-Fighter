@@ -1,26 +1,19 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static CooKingDatac;
 using static IngerdentFood;
+using static Recipe;
 
-public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
+public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
 {
     private Recipe recipe;
 
-    [SerializeField]
-    private float CookingTime;
-    [SerializeField]
-    private float DeadTime = 9f;
-    [SerializeField]
-    private float ComplteTime = 7f;
-    [SerializeField]
-    private float BoilingTime = 2f;
+    public CooKingDatac cooKData;
 
-    bool broth = false;
-    bool greenOnionsEggs = false;
-
-    private SpriteRenderer SelfSprite;
     private BoxCollider2D SelfCollider;
 
+    [SerializeField]
     bool isOrder = false;
     bool isFail;
 
@@ -36,122 +29,105 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
 
     public void Update()
     {
-        TestDebug(); 
         Decidebroth();
         UpdateStatus();
-        UpdateAnimation();
     }
     public void PotReSet()
     {
         SelfCollider = gameObject.GetComponent<BoxCollider2D>();
         transform.position = SpwanObject.transform.position;
+        cooKData.SetCookingData();
+
         recipe = ScriptableObject.CreateInstance<Recipe>();
-        broth = false;
         recipe.SetBase(Recipe.Base.none);
         recipe.SetSauce(Recipe.Sauce.none);
         recipe.SetSpecial(Recipe.Special.none);
         recipe.SetStatus(Recipe.Status.Cooking);
-        SelfSprite = GetComponent<SpriteRenderer>();
-        SelfSprite.color = Color.white;
-        CookingTime = 0f;
-        SelfCollider.enabled = true;
     }
 
-    public void UpdateAnimation() 
+    public void UpdateStatus()
     {
-        var status = recipe.GetStatus;
+        // 값 조건 확인.
 
-        if (broth == true && !isFail)
-            //��ǰ �ִϸ��̼� 
+        isFail = cooKData.GetCurrentStatus() == CooKingDatac.Status.fail;
 
-
-            //�ִϸ��̼� ���� �κ�.
-        switch (status) 
+        // 성공 실패여부만 
+        if (isFail)
         {
-            case Recipe.Status.fail: SelfSprite.color = Color.black; break;
-            case Recipe.Status.incomplete: SelfSprite.color = Color.yellow; break;
-            case Recipe.Status.complete: SelfSprite.color = Color.red; break;
-        }
-    }
-    public void UpdateStatus() 
-    {
-       isFail = recipe.GetStatus == Recipe.Status.fail;
-        if (CookingTime >= DeadTime && !isFail)
+            Debug.Log("eee");
             recipe.SetStatus(Recipe.Status.fail);
+            gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
+        }
 
-        if (DecideStatus() == Recipe.Status.incomplete)
-            recipe.SetStatus(Recipe.Status.incomplete);
+        //끓는 상태
+        if (cooKData.CookingTime >= cooKData.BoilingTime) cooKData.broth = CooKingDatac.Broth.boiling;
 
-        if (DecideStatus() == Recipe.Status.complete)
-            recipe.SetStatus(Recipe.Status.complete);
+        // 
+        if (cooKData.GetCurrentStatus() == CooKingDatac.Status.incomplete)
+            cooKData.status = CooKingDatac.Status.incomplete;
 
+        if (cooKData.GetCurrentStatus() == CooKingDatac.Status.complete)
+            cooKData.status = CooKingDatac.Status.complete;
 
-        if (CookingTime < BoilingTime && greenOnionsEggs == true)
+        if (cooKData.CookingTime < cooKData.BoilingTime && cooKData.eggfa == CooKingDatac.Eggfa.greenOnionsEggs)
             isOrder = false;
-        else if (CookingTime >= BoilingTime && greenOnionsEggs == true)
+        else if (cooKData.CookingTime >= cooKData.BoilingTime && cooKData.eggfa == CooKingDatac.Eggfa.greenOnionsEggs)
             isOrder = true;
+
+        //        if (cooKData.CookingTime >= cooKData.DeadTime)
+        // cooKData.status = CooKingDatac.Status.fail;
     }
     public void Decidebroth()
     {
-        if (broth == true && !isFail)
-            CookingTime += Time.deltaTime;
-    }
-
-    public Recipe.Status DecideStatus() 
-    {
-        //���⼭ ���� �˻� 
-        bool isBase = recipe.GetBase != Recipe.Base.none;
-        bool isSauce = recipe.GetSauce != Recipe.Sauce.none;
-
-        // ���⼭�� �����ǿ� �ٸ� �͵��� ����ֳ�? �ش� �ð���.
-        bool incompleteConditions = CookingTime >= BoilingTime && CookingTime < ComplteTime && !isFail && isBase && isSauce ;
-        bool completeConditions = CookingTime >= ComplteTime && CookingTime < DeadTime && !isFail && isOrder && isBase && isSauce;
-
-        if (incompleteConditions)
-        {
-            recipe.SetStatus(Recipe.Status.incomplete);
-            return Recipe.Status.incomplete;
-        }
-        else
-        if (completeConditions)
-        {
-            //isCompletionTime = true;
-            recipe.SetStatus(Recipe.Status.complete);
-            return Recipe.Status.complete;
-        }
-        else 
-        {
-            return Recipe.Status.Cooking;
-        }
-        
+        if (cooKData.broth != CooKingDatac.Broth.none && !isFail)
+            cooKData.AddTime(+Time.deltaTime);
     }
 
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        var s = recipe.GetStatus;
- 
+        CooKingDatac.Status s = cooKData.status;
+
         if (mouseHand.Gethand() == null)
         {
-            if (s == Recipe.Status.incomplete || s == Recipe.Status.complete) 
+            if (s == CooKingDatac.Status.incomplete || s == CooKingDatac.Status.complete)
             {
-                // ���⼭ ������ ���� �Ŵ������� ���������.
-                Debug.Log("�丮 �ϼ�. �ܰ� : " + recipe.GetStatus);
+                Debug.Log("요리 완성. 단계 : " + recipe.GetStatus);
+
+                if (cooKData.foodbase == FoodBase.noodle) { recipe.SetBase(Recipe.Base.noodle); }
+                else
+                    if (cooKData.foodbase == FoodBase.tteok) { recipe.SetBase(Recipe.Base.tteok); }
+
+                if (cooKData.status == CooKingDatac.Status.incomplete) { recipe.SetStatus(Recipe.Status.incomplete); }
+                else
+                    if (cooKData.status == CooKingDatac.Status.complete) { recipe.SetStatus(Recipe.Status.complete); }
+
+                if (cooKData.sauce == CooKingDatac.Sauce.soup) { recipe.SetSauce(Recipe.Sauce.soup); }
+                else
+                    if (cooKData.sauce == CooKingDatac.Sauce.jjajang) { recipe.SetSauce(Recipe.Sauce.jjajang); }
+
+                if (cooKData.special == CooKingDatac.Special.miwon) { recipe.SetSpecial(Recipe.Special.miwon); }
+                else
+                    if (cooKData.special == CooKingDatac.Special.olive) { recipe.SetSpecial(Recipe.Special.olive); }
+                    else
+                        if (cooKData.special == CooKingDatac.Special.hot) { recipe.SetSpecial(Recipe.Special.hot); }
+
                 GameManager.instance.toogleLoaded();
                 GameManager.instance.setRecipe(recipe);
                 GameManager.instance.useItem();
-                //�׸��� �ʱ�ȭ.
+
+                //그리고 초기화.
+
                 PotReSet();
-            } else if(s == Recipe.Status.fail)
+            }
+            else if (s == CooKingDatac.Status.fail)
             {
                 mouseHand.Sethand(gameObject);
                 SelfCollider.enabled = false;
-                
             }
             return;
         }
 
-        
         IngerdentFood ingerdentFood = mouseHand.Gethand().GetComponent<IngerdentFood>();
         InputIngerdentFood(ingerdentFood.ingredientData);
         mouseHand.Sethand(null);
@@ -162,79 +138,74 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
     private void InputIngerdentFood(Ingredient collEnum)
     {
         if (isFail)
+        {
+            Debug.Log("ddww");
+            gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
             return;
+        }
 
         switch (collEnum)
         {
-            case Ingredient.Broth: broth = true; break;
+            case Ingredient.Broth: cooKData.broth = CooKingDatac.Broth.water; break;
 
             case Ingredient.tteok:
             case Ingredient.noodle: OverlapBase(collEnum); break;
 
-            case Ingredient.soup: break;
+            case Ingredient.soup:
             case Ingredient.jjajang: OverSauce(collEnum); break;
 
-            case Ingredient.greenOnionsEggs: greenOnionsEggs = true; break;
+            case Ingredient.greenOnionsEggs: cooKData.eggfa = CooKingDatac.Eggfa.greenOnionsEggs; break;
 
-            case Ingredient.miwon: recipe.SetSpecial(Recipe.Special.miwon); break;
-            case Ingredient.hot: recipe.SetSpecial(Recipe.Special.hot); break;
-            case Ingredient.olive: recipe.SetSpecial(Recipe.Special.olive); break;
+            case Ingredient.miwon: cooKData.special = CooKingDatac.Special.miwon; break;
+            case Ingredient.hot: cooKData.special = CooKingDatac.Special.hot; break;
+            case Ingredient.olive: cooKData.special = CooKingDatac.Special.olive; break;
 
-            default: Debug.Log("���ο� ������ ó���� ���ؿ�."); break;
+            default: Debug.Log("새로운 음식은 처리를 못해요."); break;
         }
     }
     private void OverlapBase(Ingredient collEnum)
     {
-        if (recipe.GetBase == Recipe.Base.none && collEnum == Ingredient.tteok)
+        if (cooKData.foodbase == CooKingDatac.FoodBase.none && collEnum == Ingredient.tteok)
         {
-            recipe.SetBase(Recipe.Base.tteok);
+            cooKData.foodbase = CooKingDatac.FoodBase.tteok;
         }
-        else if (recipe.GetBase == Recipe.Base.none && collEnum == Ingredient.noodle)
+        else if (cooKData.foodbase == CooKingDatac.FoodBase.none && collEnum == Ingredient.noodle)
         {
-            recipe.SetBase(Recipe.Base.noodle);
+            cooKData.foodbase = CooKingDatac.FoodBase.noodle;
         }
         else
-        if (recipe.GetBase != Recipe.Base.none)
-        {
-            recipe.SetStatus(Recipe.Status.fail);
-        }
+            if (cooKData.foodbase != CooKingDatac.FoodBase.none)
+            {
+                
+                cooKData.status = CooKingDatac.Status.fail;
+                gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
+            }
 
     }
     private void OverSauce(Ingredient collEnum)
     {
-        if (recipe.GetSauce == Recipe.Sauce.none && collEnum == Ingredient.soup)
+        if (cooKData.sauce == CooKingDatac.Sauce.none && collEnum == Ingredient.soup)
         {
-            recipe.SetSauce(Recipe.Sauce.soup);
+            cooKData.sauce = CooKingDatac.Sauce.soup;
+            //recipe.SetSauce(Recipe.Sauce.soup);
         }
-        else if (recipe.GetSauce == Recipe.Sauce.none && collEnum == Ingredient.jjajang)
+        else if (cooKData.sauce == CooKingDatac.Sauce.none && collEnum == Ingredient.jjajang)
         {
-            recipe.SetSauce(Recipe.Sauce.jjajang);
+            cooKData.sauce = CooKingDatac.Sauce.jjajang;
+            //recipe.SetSauce(Recipe.Sauce.jjajang);
         }
         else
-        if (recipe.GetSauce != Recipe.Sauce.none)
+        if (cooKData.sauce != CooKingDatac.Sauce.none)
         {
-            recipe.SetStatus(Recipe.Status.fail);
+          cooKData.status = CooKingDatac.Status.fail;
+                //recipe.SetStatus(Recipe.Status.fail);
+          gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
         }
-    }
-
-    //Debug�� ���� ������ ������Ÿ�Ա��� �Ϸ�� �����.
-    public Recipe.Base lookBase;
-    public Recipe.Sauce lookSauce;
-    public Recipe.Status lookStatus;
-    public Recipe.Special lookSpecial;
-
-    public void TestDebug()
-    {
-        lookBase = recipe.GetBase;
-        lookSauce = recipe.GetSauce;
-        lookStatus = recipe.GetStatus;
-        lookSpecial = recipe.GetSpecial;
     }
 
     public void EntityReset()
     {
-        
-        PotReSet();
+
     }
 
     public void SelfRelease()
@@ -242,4 +213,5 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         mouseHand.Sethand(null);
         PotReSet();
     }
+
 }
