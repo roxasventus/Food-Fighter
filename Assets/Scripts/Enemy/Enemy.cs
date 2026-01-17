@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
         transform.SetParent(manager);
         Release();
     }
-    public IEnumerator Crash()
+    public IEnumerator Crash(Vector2 truck)
     {
         StopCoroutine(xCor);
         if (!isStraight)
@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
         float elapsed = 0f;
         float duration = ec.crashDuration;
         Vector2 firstPos = transform.position;
-        Vector2 targetPos = new Vector2(-3.8f, -4.4f);
+        Vector2 targetPos = truck;
 
         while (elapsed <= duration)
         {

@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private EnemyConsts ec;
     [SerializeField] private Transform manager;
+    [SerializeField] private Transform truck;
 
     // 현재 살아있는 enemy 리스트
     private List<Enemy> enemyList = new List<Enemy>();
@@ -31,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
 
             if (e.isCrash())
             {
-                e.StartCoroutine(e.Crash());
+                e.StartCoroutine(e.Crash(truck.position));
                 enemyList.RemoveAt(i);
             }
         }
