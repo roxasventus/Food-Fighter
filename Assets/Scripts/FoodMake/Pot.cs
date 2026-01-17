@@ -53,8 +53,9 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         recipe.SetStatus(Recipe.Status.Cooking);
         SelfSprite = GetComponent<SpriteRenderer>();
         SelfSprite.color = Color.white;
+        CookingTime = 0f;
     }
-   
+
     public void UpdateSprite() 
     {
         var status = recipe.GetStatus;
@@ -104,7 +105,6 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         if (incompleteConditions)
         {
             recipe.SetStatus(Recipe.Status.incomplete);
-            SelfSprite.color = Color.yellow;
             return Recipe.Status.incomplete;
         }
         else
@@ -112,7 +112,6 @@ public class Pot : MonoBehaviour, IPointerClickHandler
         {
             //isCompletionTime = true;
             recipe.SetStatus(Recipe.Status.complete);
-            SelfSprite.color = Color.red;
             return Recipe.Status.complete;
         }
         else 
@@ -195,7 +194,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler
             recipe.SetSauce(Recipe.Sauce.jjajang);
         }
         else
-        if (recipe.GetSauce == Recipe.Sauce.none)
+        if (recipe.GetSauce != Recipe.Sauce.none)
         {
             recipe.SetStatus(Recipe.Status.fail);
         }

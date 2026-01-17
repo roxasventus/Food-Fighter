@@ -5,14 +5,8 @@ using UnityEngine.InputSystem;
 public class MouseHand : MonoBehaviour
 {
     // 마우스 정보.
-    public GameObject handIngerdentFood = null;
+    public  GameObject  handIngerdentFood = null;
 
-
-    void Start()
-    {
-        
-    }
-    // Update is called once per frame
     void LateUpdate()
     {
         if (handIngerdentFood != null)
