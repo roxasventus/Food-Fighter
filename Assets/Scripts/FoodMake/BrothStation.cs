@@ -40,7 +40,7 @@ public class BrothStation : FoodStation
                 spriteRenderer.color = new UnityEngine.Color(1f, 1f, 1f, 1f);
             }
             else spriteRenderer.color = new UnityEngine.Color(1f, 1f, 1f, 0f);
-        } else { spriteRenderer.color = new UnityEngine.Color(1f, 1f, 1f, 1f); }
+        }
             
        
 

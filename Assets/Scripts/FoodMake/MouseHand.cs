@@ -4,13 +4,12 @@ using UnityEngine.InputSystem;
 
 public class MouseHand : MonoBehaviour
 {
-    // ¸¶¿ì½º Á¤º¸.
+    // ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ï¿½ï¿½.
     private static GameObject handObject = null;
 
-    public GameObject DebugHand;
     void LateUpdate()
     {
-        DebugHand = handObject;
+        Debug.Log("MouseHand Update: " + handObject??"null");
         if (handObject != null)
         {
             Vector3 mouseScreen = Mouse.current.position.ReadValue();
