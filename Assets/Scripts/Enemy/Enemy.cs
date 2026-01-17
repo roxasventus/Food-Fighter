@@ -21,6 +21,13 @@ public class Enemy : MonoBehaviour
 
     private bool isInit = false;
 
+    private Animator anim;
+
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     public void Init(Vector2 pos, EnemyData data)
     {
         speedRate = data.moveSpeedRate;
@@ -85,6 +92,8 @@ public class Enemy : MonoBehaviour
         if (!isStraight)
             StopCoroutine(yCor);
 
+        anim.SetTrigger("SideJump");
+        
         // 자식으로 만들기
         transform.SetParent(food);
         
@@ -112,6 +121,8 @@ public class Enemy : MonoBehaviour
         StopCoroutine(xCor);
         if (!isStraight)
             StopCoroutine(yCor);
+
+        anim.SetTrigger("Jump");
 
         // -3.8 -4.4
         float elapsed = 0f;

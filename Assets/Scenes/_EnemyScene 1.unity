@@ -883,6 +883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   ec: {fileID: 11400000, guid: 4aca1f4d33962764bb6a9c3406e3f5fa, type: 2}
   manager: {fileID: 1699188567}
+  truck: {fileID: 1592899698}
 --- !u!4 &834683073
 Transform:
   m_ObjectHideFlags: 0
@@ -1445,10 +1446,10 @@ MonoBehaviour:
   obj_info:
   - ObjName: Enemy
     prefab: {fileID: 8765443457489899110, guid: 4c14e32eeb5a2b742a6a0c2c37674d7c, type: 3}
-    init_capacity: 20
+    init_capacity: 3
   - ObjName: Food
     prefab: {fileID: 4240505206265039025, guid: 1eba37f25424ce1438df19e4cc607165, type: 3}
-    init_capacity: 20
+    init_capacity: 3
 --- !u!4 &1699188567
 Transform:
   m_ObjectHideFlags: 0
