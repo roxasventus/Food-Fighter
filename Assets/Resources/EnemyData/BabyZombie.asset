@@ -16,5 +16,5 @@ MonoBehaviour:
   enemy_name: BabyZombie
   moveSpeedRate: 1.2
   moveStraight: 1
-  xMoveRate: 0
+  xMoveRate: 1
   favorite: 2

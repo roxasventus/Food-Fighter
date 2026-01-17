@@ -101,6 +101,8 @@ public class Enemy : MonoBehaviour
         float duration = ec.crashDuration;
         Vector2 first = transform.localPosition;
 
+        if(duration >= 0) duration = 0.02f; // 최솟값 지정으로 While 문제 안일어나도록 수정
+
         while (elapsed < duration)
         {
             transform.localPosition = Vector2.Lerp(first, Vector2.zero, elapsed/duration);
