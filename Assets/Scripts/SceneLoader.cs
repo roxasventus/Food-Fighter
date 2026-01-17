@@ -15,6 +15,14 @@ public class SceneLoader : MonoBehaviour
         Instance = this;
     }
 
+    public void GameExit()
+    {
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                        Application.Quit();
+        #endif
+    }
 
     public void Load(string name)
     {
