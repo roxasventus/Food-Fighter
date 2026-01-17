@@ -9,15 +9,39 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int _life = 5;
     public float life { get => _life; }
-    public void loseLife() { _life -= 1; }
-    public void getLife(int num) { _life += num; }
+    public void loseLife() { 
+        heartContainers.GetChild(_life-1).gameObject.SetActive(false);    
+        _life -= 1;
+        if (_life == 0)
+            SceneLoader.Instance.Load("GameOverScene");
+    }
+    public void getLife(int num) { 
+
+        for (int i = 0; i < num; i++)
+        {
+            if (_life >= 5)
+            {
+                break;
+            }
+
+            heartContainers.GetChild(_life).gameObject.SetActive(true);
+            _life++;
+        }
+
+    }
 
     [SerializeField] private bool _isPlay;
     public bool isPlay { get => _isPlay; }
 
     [SerializeField] private int _roundCount = 15;
     public int roundCount { get => _roundCount; }
-    public void clearRound() { _roundCount--; }
+    public void clearRound() { 
+        _roundCount--;
+
+        BroadcastMessage("progressBarUpdate");
+
+
+    }
 
     [SerializeField] private int _score = 0;
     public int score { get => _score; }
@@ -78,6 +102,16 @@ public class GameManager : MonoBehaviour
 
     }
 
+    [Header("UI")]
+    [SerializeField] private Slider progressBar;
+    [SerializeField] private Image progressBarFill;
+    [SerializeField] private RectTransform heartContainers;
+    public void progressBarUpdate() { 
+        progressBar.value = 1-_roundCount/15f;
+        if (progressBar.value > 0.5) { 
+            progressBarFill.color = Color.yellow;
+        }
+    }
 
 
     public void initRecipe()
