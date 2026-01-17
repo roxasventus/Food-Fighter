@@ -33,7 +33,7 @@ public class CooKingDatac : MonoBehaviour
     }
     public enum Completion
     {
-       Cooking,End
+        NotStart,Cooking, End
     }
     public enum FoodBase
     {
