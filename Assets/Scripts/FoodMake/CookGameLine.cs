@@ -16,4 +16,9 @@ public class CookGameLine : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         if (mouseHand.Gethand() != null)
             mouseHand.Gethand().GetComponent<IEntity>().SelfRelease();
     }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        collision.GetComponent<IEntity>().SelfRelease();
+    }
 }
