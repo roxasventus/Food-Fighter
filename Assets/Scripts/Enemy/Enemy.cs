@@ -99,7 +99,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        while (transform.position.y < 10)
+        while (transform.position.y < 9)
         {
             yield return null;
         }
