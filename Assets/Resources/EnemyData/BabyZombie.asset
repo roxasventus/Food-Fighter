@@ -16,5 +16,6 @@ MonoBehaviour:
   enemy_name: BabyZombie
   moveSpeedRate: 1.2
   moveStraight: 1
-  xMoveRate: 0
+  xMoveRate: 1
   favorite: 2
+  anim: {fileID: 22100000, guid: 9037969bf8c01f04f9e507d20758cbae, type: 2}

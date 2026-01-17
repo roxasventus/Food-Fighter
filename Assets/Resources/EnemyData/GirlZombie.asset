@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a604b9832e51894fab6540cd70df2a4, type: 3}
   m_Name: GirlZombie
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  id: 5
+  id: 4
   enemy_name: GirlZombie
-  moveSpeedRate: 1
+  moveSpeedRate: 4
   moveStraight: 0
-  xMoveRate: 0.2
+  xMoveRate: 0.6
   favorite: 3
+  anim: {fileID: 22100000, guid: 9c944824619831a4e81bfb326d3cbb0d, type: 2}

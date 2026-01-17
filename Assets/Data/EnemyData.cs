@@ -12,6 +12,8 @@ public class EnemyData : ScriptableObject
     public bool moveStraight;
     public float xMoveRate;
     public FavoriteFood favorite;
+
+    public AnimatorOverrideController anim;
 }
 
 public enum FavoriteFood
