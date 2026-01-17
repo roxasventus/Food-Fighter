@@ -5,6 +5,9 @@ public class TitleBoard : MonoBehaviour
 {
     [SerializeField] TitleConsts tc;
 
+    [SerializeField] GameObject canvas;
+    [SerializeField] GameObject hp;
+
     void Start()
     {
         StartCoroutine(Slide());
@@ -29,6 +32,9 @@ public class TitleBoard : MonoBehaviour
 
         Camera.main.GetComponent<CameraShaker>().isActive = true;
 
+        canvas.SetActive(true);
+        hp.SetActive(true);
+        
         // 게임 시작 >> 엔트리포인트
         GameManager.instance.GameStart();
     }
