@@ -263,25 +263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2641c03157fe7142883ee07705a8b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pot
-  CookingTime: 0
-  DeadTime: 9
-  ComplteTime: 7
-  BoilingTime: 2
-  broth: 0
+  cooKData: {fileID: 0}
   mouseHand: {fileID: 4371533036833207385}
-  SpriteAnimator: {fileID: 0}
   SpwanObject: {fileID: 1888469312}
-  WaterSprite: {fileID: 0}
-  boilingSprite: {fileID: 0}
-  Soupsprite: {fileID: 0}
-  jjajangsprite: {fileID: 0}
-  noodleSprite: {fileID: 0}
-  tteokSprite: {fileID: 0}
-  greenOnionsEggsSprite: {fileID: 0}
-  lookBase: 0
-  lookSauce: 0
-  lookStatus: 0
-  lookSpecial: 0
 --- !u!61 &193462678
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -617,7 +601,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &537144135
 Transform:
   m_ObjectHideFlags: 0
@@ -799,7 +783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &766891352
 Transform:
   m_ObjectHideFlags: 0
@@ -1203,7 +1187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 868553192}
   - component: {fileID: 868553194}
-  - component: {fileID: 868553193}
+  - component: {fileID: 868553195}
   m_Layer: 0
   m_Name: Pot (1)
   m_TagString: Untagged
@@ -1232,37 +1216,6 @@ Transform:
   - {fileID: 1157323203}
   m_Father: {fileID: 2973333702300702868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &868553193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868553191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2641c03157fe7142883ee07705a8b39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pot
-  CookingTime: 0
-  DeadTime: 9
-  ComplteTime: 7
-  BoilingTime: 2
-  broth: 0
-  mouseHand: {fileID: 4371533036833207385}
-  SpriteAnimator: {fileID: 0}
-  SpwanObject: {fileID: 1963970776}
-  WaterSprite: {fileID: 0}
-  boilingSprite: {fileID: 0}
-  Soupsprite: {fileID: 0}
-  jjajangsprite: {fileID: 0}
-  noodleSprite: {fileID: 0}
-  tteokSprite: {fileID: 0}
-  greenOnionsEggsSprite: {fileID: 0}
-  lookBase: 0
-  lookSauce: 0
-  lookStatus: 0
-  lookSpecial: 0
 --- !u!61 &868553194
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1309,6 +1262,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.8701651, y: 1.5656061}
   m_EdgeRadius: 0
+--- !u!114 &868553195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868553191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ede0af6c34436459f2ae6005a93fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pot
+  panel: {fileID: 0}
+  model: {fileID: 0}
+  OutPut: {fileID: 0}
+  View: {fileID: 0}
 --- !u!1 &917912170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,7 +1867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1154280428
 Transform:
   m_ObjectHideFlags: 0
@@ -2521,7 +2490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1355395292
 Transform:
   m_ObjectHideFlags: 0
@@ -3603,7 +3572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1818433210
 Transform:
   m_ObjectHideFlags: 0
@@ -4630,7 +4599,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2334822305790841161
 Transform:
   m_ObjectHideFlags: 0
@@ -4712,7 +4681,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6149465471256186951, guid: 758d283d96fd28c4d8e0b76add96888a, type: 3}
   m_Color: {r: 0.4113207, g: 0.14745456, b: 0.0023281965, a: 1}
@@ -5119,25 +5088,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2641c03157fe7142883ee07705a8b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pot
-  CookingTime: 0
-  DeadTime: 9
-  ComplteTime: 7
-  BoilingTime: 2
-  broth: 0
+  cooKData: {fileID: 7248579943489254233}
   mouseHand: {fileID: 4371533036833207385}
-  SpriteAnimator: {fileID: 0}
   SpwanObject: {fileID: 492829226}
-  WaterSprite: {fileID: 1154280427}
-  boilingSprite: {fileID: 766891351}
-  Soupsprite: {fileID: 2224952406678283422}
-  jjajangsprite: {fileID: 5917094047300803233}
-  noodleSprite: {fileID: 1355395291}
-  tteokSprite: {fileID: 537144134}
-  greenOnionsEggsSprite: {fileID: 1818433209}
-  lookBase: 0
-  lookSauce: 0
-  lookStatus: 0
-  lookSpecial: 0
 --- !u!114 &5733042769179368716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5184,7 +5137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6055233541355087593
 Transform:
   m_ObjectHideFlags: 0
@@ -5322,6 +5275,8 @@ GameObject:
   - component: {fileID: 6055233541355087593}
   - component: {fileID: 182876378604576529}
   - component: {fileID: 5444617621595305281}
+  - component: {fileID: 7248579943489254233}
+  - component: {fileID: 7248579943489254232}
   m_Layer: 0
   m_Name: Pot
   m_TagString: Untagged
@@ -5329,6 +5284,43 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7248579943489254232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7248579943489254231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa35d498d3e7004cb0660c6949eab0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PotVisuals
+--- !u!114 &7248579943489254233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7248579943489254231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb45c1377ed44654e93af782126493ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CooKData
+  CookingTime: 0
+  DeadTime: 9
+  ComplteTime: 7
+  BoilingTime: 2
+  mouseHand: {fileID: 4371533036833207385}
+  status: 0
+  foodbase: 0
+  sauce: 0
+  special: 0
+  broth: 0
+  eggfa: 0
+  resultfood: 0
+  completion: 0
 --- !u!114 &7274965663122219225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5763,7 +5755,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6149465471256186951, guid: 758d283d96fd28c4d8e0b76add96888a, type: 3}
   m_Color: {r: 1, g: 0.3830188, b: 0.3830188, a: 1}

@@ -5,30 +5,36 @@ using UnityEngine;
 public class CooKingDatac : MonoBehaviour
 {
     [SerializeField]
-    private float CookingTime;
+    public float CookingTime;
     [SerializeField]
-    private float DeadTime = 9f;
+    public float DeadTime = 9f;
     [SerializeField]
-    private float ComplteTime = 7f;
+    public float ComplteTime = 7f;
     [SerializeField]
-    private float BoilingTime = 2f;
+    public float BoilingTime = 2f;
 
     public MouseHand mouseHand;
+
     public Status status;
     public FoodBase foodbase;
     public Sauce sauce;
     public Special special;
     public Broth broth;
+    public Eggfa eggfa;
     public result resultfood;
+    public Completion completion;
 
     public enum Status
     {
-        Cooking,
+        None,
         fail,
         incomplete,
         complete,
     }
-
+    public enum Completion
+    {
+       Cooking,End
+    }
     public enum FoodBase
     {
         none,
@@ -43,6 +49,19 @@ public class CooKingDatac : MonoBehaviour
         jjajang
     }
 
+    public enum Broth
+    {
+        none,
+        water,
+        boiling,
+    }
+
+    public enum Eggfa
+    {
+        none,
+        greenOnionsEggs
+    }
+
     public enum Special
     {
         none,
@@ -51,19 +70,27 @@ public class CooKingDatac : MonoBehaviour
         olive
     }
 
-    public enum Broth
-    { 
-        none,
-        water,
-        boiling,
-    }
-
     public enum result
     {
+        none,
         ramen,
         redtteok,
         blackjjajang,
         blacktteok
+    }
+
+    public void SetCookingData()
+    {
+        CookingTime = 0f;
+        resultfood = result.none;
+        eggfa = Eggfa.none;
+        broth = Broth.none;
+        special = Special.none;
+        sauce = Sauce.none;
+        foodbase = FoodBase.none;
+        status = Status.None;
+        completion = Completion.NotStart;
+
     }
 
     public Status GetCurrentStatus()
@@ -73,13 +100,20 @@ public class CooKingDatac : MonoBehaviour
         bool isBase = foodbase != FoodBase.none;
         bool isSauce = sauce != Sauce.none;
 
-        if (!isBase || !isSauce) return Status.Cooking;
+        if (!isBase || !isSauce) return Status.None;
 
         if (CookingTime >= ComplteTime) return Status.complete;
         if (CookingTime >= BoilingTime) return Status.incomplete;
 
-        return Status.Cooking;
+
+        return Status.fail;
     }
+
+    public result GetResult() 
+    {
+       return result.none;
+    }
+
     public void AddTime(float dt)
     {
         if (broth == Broth.water && status != Status.fail)

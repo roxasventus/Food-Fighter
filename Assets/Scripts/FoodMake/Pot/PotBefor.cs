@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static CooKingDatac;
 using static IngerdentFood;
 using static Recipe;
 
@@ -9,19 +10,6 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
     private Recipe recipe;
 
     public CooKingDatac cooKData;
-
-    [SerializeField]
-    private float CookingTime;
-    [SerializeField]
-    private float DeadTime = 9f;
-    [SerializeField]
-    private float ComplteTime = 7f;
-    [SerializeField]
-    private float BoilingTime = 2f;
-
-    [SerializeField]
-    bool broth = false;
-    bool greenOnionsEggs = false;
 
     private BoxCollider2D SelfCollider;
 
@@ -40,7 +28,6 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
 
     public void Update()
     {
-        TestDebug(); 
         Decidebroth();
         UpdateStatus();
     }
@@ -48,9 +35,9 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
     {
         SelfCollider = gameObject.GetComponent<BoxCollider2D>();
         transform.position = SpwanObject.transform.position;
-        recipe = ScriptableObject.CreateInstance<Recipe>();
-        broth = false;
+        cooKData.SetCookingData();
 
+        recipe = ScriptableObject.CreateInstance<Recipe>();
         recipe.SetBase(Recipe.Base.none);
         recipe.SetSauce(Recipe.Sauce.none);
         recipe.SetSpecial(Recipe.Special.none);
@@ -59,74 +46,55 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
 
     public void UpdateStatus() 
     {
-       isFail = recipe.GetStatus == Recipe.Status.fail;
 
-        if (cooKData.GetCurrentStatus() == CooKingDatac.Status.fail )
+        isFail = cooKData.GetCurrentStatus() == CooKingDatac.Status.fail;
+
+        // 성공 실패여부만 
+        if (isFail)
             recipe.SetStatus(Recipe.Status.fail);
 
+        //끓는 상태
+        if (cooKData.CookingTime >= cooKData.BoilingTime) cooKData.broth = CooKingDatac.Broth.boiling;
+
+        // 
         if (cooKData.GetCurrentStatus() == CooKingDatac.Status.incomplete)
-            recipe.SetStatus(Recipe.Status.incomplete);
+            cooKData.status = CooKingDatac.Status.incomplete;
 
         if (cooKData.GetCurrentStatus() == CooKingDatac.Status.complete)
-            recipe.SetStatus(Recipe.Status.complete);
+            cooKData.status = CooKingDatac.Status.complete;
 
-        if (CookingTime < BoilingTime && greenOnionsEggs == true)
+        if (cooKData.CookingTime < cooKData.BoilingTime && cooKData.eggfa == CooKingDatac.Eggfa.greenOnionsEggs)
             isOrder = false;
-        else if (CookingTime >= BoilingTime && greenOnionsEggs == true)
+        else if (cooKData.CookingTime >= cooKData.BoilingTime && cooKData.eggfa == CooKingDatac.Eggfa.greenOnionsEggs)
             isOrder = true;
 
+        if (cooKData.CookingTime >= cooKData.DeadTime)
+            cooKData.status = CooKingDatac.Status.fail;
     }
     public void Decidebroth()
     {
-        if (broth == true && !isFail)
-            CookingTime += Time.deltaTime;
+        if (cooKData.broth == CooKingDatac.Broth.water && !isFail)
+            cooKData.AddTime(Time.deltaTime);
     }
 
-    /*
-       public Recipe.Status DecideStatus() 
-      {
-          bool isBase = recipe.GetBase != Recipe.Base.none;
-          bool isSauce = recipe.GetSauce != Recipe.Sauce.none;
-
-          bool incompleteConditions = CookingTime >= BoilingTime && CookingTime < ComplteTime && !isFail && isBase && isSauce ;
-          bool completeConditions = CookingTime >= ComplteTime && CookingTime < DeadTime && !isFail && isOrder && isBase && isSauce;
-
-          if (incompleteConditions)
-          {
-              recipe.SetStatus(Recipe.Status.incomplete);
-              return Recipe.Status.incomplete;
-          }
-          else
-          if (completeConditions)
-          {
-              //isCompletionTime = true;
-              recipe.SetStatus(Recipe.Status.complete);
-              return Recipe.Status.complete;
-          }
-          else 
-          {
-              return Recipe.Status.Cooking;
-          }
-
-      }
-     */
-    
+ 
     public void OnPointerClick(PointerEventData eventData)
     {
-        var s = recipe.GetStatus;
+        CooKingDatac.Status s = cooKData.status;
  
         if (mouseHand.Gethand() == null)
         {
-            if (s == Recipe.Status.incomplete || s == Recipe.Status.complete) 
+            if (s == CooKingDatac.Status.incomplete || s == CooKingDatac.Status.complete) 
             {
                 Debug.Log("요리 완성. 단계 : " + recipe.GetStatus);
                 GameManager.instance.toogleLoaded();
                 GameManager.instance.setRecipe(recipe);
                 GameManager.instance.useItem();
+
                 //그리고 초기화.
                 
                 PotReSet();
-            } else if(s == Recipe.Status.fail)
+            } else if(s == CooKingDatac.Status.fail)
             {
                 mouseHand.Sethand(gameObject);
                 SelfCollider.enabled = false;
@@ -134,7 +102,6 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
             return;
         }
 
-        
         IngerdentFood ingerdentFood = mouseHand.Gethand().GetComponent<IngerdentFood>();
         InputIngerdentFood(ingerdentFood.ingredientData);
         mouseHand.Sethand(null);
@@ -149,7 +116,7 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
 
         switch (collEnum)
         {
-            case Ingredient.Broth: broth = true; break;
+            case Ingredient.Broth: cooKData.broth = CooKingDatac.Broth.water; break;
 
             case Ingredient.tteok:
             case Ingredient.noodle: OverlapBase(collEnum); break;
@@ -157,61 +124,47 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
             case Ingredient.soup: break;
             case Ingredient.jjajang: OverSauce(collEnum); break;
 
-            case Ingredient.greenOnionsEggs: greenOnionsEggs = true; break;
+            case Ingredient.greenOnionsEggs: cooKData.eggfa = CooKingDatac.Eggfa.greenOnionsEggs; break;
 
-            case Ingredient.miwon: recipe.SetSpecial(Recipe.Special.miwon); break;
-            case Ingredient.hot: recipe.SetSpecial(Recipe.Special.hot); break;
-            case Ingredient.olive: recipe.SetSpecial(Recipe.Special.olive); break;
+            case Ingredient.miwon: cooKData.special = CooKingDatac.Special.miwon; break;
+            case Ingredient.hot: cooKData.special = CooKingDatac.Special.hot; break;
+            case Ingredient.olive: cooKData.special = CooKingDatac.Special.olive; break;
 
             default: Debug.Log("새로운 음식은 처리를 못해요."); break;
         }
     }
     private void OverlapBase(Ingredient collEnum)
     {
-        if (recipe.GetBase == Recipe.Base.none && collEnum == Ingredient.tteok)
+        if (cooKData.foodbase == CooKingDatac.FoodBase.none && collEnum == Ingredient.tteok)
         {
-            recipe.SetBase(Recipe.Base.tteok);
+            cooKData.foodbase = CooKingDatac.FoodBase.tteok;
         }
-        else if (recipe.GetBase == Recipe.Base.none && collEnum == Ingredient.noodle)
+        else if (cooKData.foodbase == CooKingDatac.FoodBase.none && collEnum == Ingredient.noodle)
         {
-            recipe.SetBase(Recipe.Base.noodle);
+            cooKData.foodbase = CooKingDatac.FoodBase.noodle;
         }
         else
-        if (recipe.GetBase != Recipe.Base.none)
+        if (cooKData.foodbase != CooKingDatac.FoodBase.none)
         {
-            recipe.SetStatus(Recipe.Status.fail);
+            cooKData.status = CooKingDatac.Status.fail;
         }
 
     }
     private void OverSauce(Ingredient collEnum)
     {
-        if (recipe.GetSauce == Recipe.Sauce.none && collEnum == Ingredient.soup)
+        if (cooKData.sauce == CooKingDatac.Sauce.none && collEnum == Ingredient.soup)
         {
             recipe.SetSauce(Recipe.Sauce.soup);
         }
-        else if (recipe.GetSauce == Recipe.Sauce.none && collEnum == Ingredient.jjajang)
+        else if (cooKData.sauce == CooKingDatac.Sauce.none && collEnum == Ingredient.jjajang)
         {
             recipe.SetSauce(Recipe.Sauce.jjajang);
         }
         else
-        if (recipe.GetSauce != Recipe.Sauce.none)
+        if (cooKData.sauce != CooKingDatac.Sauce.none)
         {
             recipe.SetStatus(Recipe.Status.fail);
         }
-    }
-
-    //Debug용 문제 없으면 프로토타입까지 완료시 지울것.
-    public Recipe.Base lookBase;
-    public Recipe.Sauce lookSauce;
-    public Recipe.Status lookStatus;
-    public Recipe.Special lookSpecial;
-
-    public void TestDebug()
-    {
-        lookBase = recipe.GetBase;
-        lookSauce = recipe.GetSauce;
-        lookStatus = recipe.GetStatus;
-        lookSpecial = recipe.GetSpecial;
     }
 
     public void EntityReset()
@@ -224,7 +177,5 @@ public class PotBefor : MonoBehaviour, IPointerClickHandler,IEntity
         mouseHand.Sethand(null);
         PotReSet();
     }
-    /*
-     입력 받는 값 분류 저장해서 CooKData에 저장
-     */
+
 }
