@@ -31,30 +31,35 @@ public class Minimap : MonoBehaviour
 
         if (image.color == Color.white) {
             Debug.Log("일반적인 스테이지입니다.");
+            GameManager.instance.startNormalWave();
         }
 
         else if (image.color == Color.green)
         {
             Debug.Log("남은 생존 시간을 1 줄입니다. Normal과 같은 스테이지 세팅. ");
             GameManager.instance.clearRound();
+            GameManager.instance.startNormalWave();
         }
 
         else if (image.color == Color.red)
         {
             Debug.Log("어려우며 아이템을 2개 획득 가능합니다.");
             GameManager.instance.getRandomItems(2);
+            GameManager.instance.startHardWave();
         }
 
         else if (image.color == Color.magenta)
         {
             Debug.Log("체력을 2 회복합니다. Normal과 같은 스테이지 세팅.");
             GameManager.instance.getLife(2);
+            GameManager.instance.startNormalWave();
         }
 
         else if (image.color == Color.blue)
         {
             Debug.Log("아이템을 획득 가능합니다. Normal과 같은 스테이지 세팅.");
             GameManager.instance.getRandomItems(1);
+            GameManager.instance.startNormalWave();
         }
         GameManager.instance.clearRound();
     }

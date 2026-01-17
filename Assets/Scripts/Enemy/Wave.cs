@@ -37,7 +37,9 @@ public class Wave : MonoBehaviour
         }
 
         // 테스트
-        StartWave(201, ()=>{Debug.Log("end!");});
+        StartWave(201, ()=>{Debug.Log("end!");
+            GameManager.instance.endWave();
+        });
     }
 
     public void StartWave(int waveId, Action end, bool isHard=false)
