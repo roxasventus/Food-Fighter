@@ -1,23 +1,33 @@
 {
-    "stage_0": {
+    "stage_900": {
         "id": 900,
         "explain": "Tutorial1",
         "units": [
             { "template_id": 0, "quantity": 5 },
             { "template_id": 1, "quantity": 5 }
         ],
-        "zombieLimit" : 10
+        "zombie_limit": 2
     },
 
-    "stage_1": {
+    "stage_901": {
         "id": 901,
         "explain": "Tutorial2",
         "units": [
             { "template_id": 0, "quantity": 6 },
-            { "template_id": 1, "quantity": 8 },
-            { "template_id": 4, "quantity": 4 }
+            { "template_id": 2, "quantity": 8 }
         ],
-        "zombieLimit": 10
+        "zombie_limit": 3
+    },
+
+    "stage_902": {
+        "id": 902,
+        "explain": "Tutorial3",
+        "units": [
+            { "template_id": 0, "quantity": 6 },
+            { "template_id": 1, "quantity": 6 },
+            { "template_id": 2, "quantity": 3 }
+        ],
+        "zombie_limit": 7
     },
 
     "stage_100": {
@@ -26,11 +36,11 @@
         "units": [
             { "template_id": 0, "quantity": 7 },
             { "template_id": 1, "quantity": 5 },
-            { "template_id": 4, "quantity": 3 },
+            { "template_id": 5, "quantity": 3 },
             { "template_id": -1, "quantity": 3 },
             { "template_id": 1006, "quantity": 1 }
         ],
-        "zombieLimit": 10
+        "zombie_limit": 10
     },
 
     "stage_101": {
@@ -43,7 +53,7 @@
             { "template_id": -1, "quantity": 2 },
             { "template_id": 1006, "quantity": 1 }
         ],
-        "zombieLimit": 10
+        "zombie_limit": 10
     },
 
     "stage_102": {
@@ -56,7 +66,7 @@
             { "template_id": 5, "quantity": 3 },
             { "template_id": 1006, "quantity": 1 }
         ],
-        "zombieLimit": 10
+        "zombie_limit": 10
     },
 
     "stage_103": {
@@ -66,7 +76,7 @@
             { "template_id": 1006, "quantity": 4 },
             { "template_id": 1007, "quantity": 4 }
         ],
-        "zombieLimit": 10
+        "zombie_limit": 10
     },
 
     "stage_104": {
@@ -80,7 +90,7 @@
             { "template_id": 1001, "quantity": 3 },
             { "template_id": 1005, "quantity": 1 }
         ],
-        "zombieLimit": 10
+        "zombie_limit": 10
     },
 
     "stage_105": {
@@ -91,7 +101,7 @@
             { "template_id": 1004, "quantity": 1 },
             { "template_id": 1, "quantity": 3 }
         ],
-        "zombieLimit": 10
+        "zombie_limit": 10
     },
 
     "stage_106": {
@@ -101,9 +111,9 @@
             { "template_id": 2, "quantity": 3 },
             { "template_id": 1007, "quantity": 1 },
             { "template_id": 1, "quantity": 10 },
-            { "template_id": 4, "quantity": 3 }
+            { "template_id": 5, "quantity": 3 }
         ],
-        "zombieLimit": 10
+        "zombie_limit": 10
     },
 
     "stage_201": {
@@ -115,7 +125,7 @@
             { "template_id": 1004, "quantity": 2 },
             { "template_id": 1005, "quantity": 2 }
         ],
-        "zombieLimit": 10
+        "zombie_limit": 10
     },
 
     "stage_202": {
@@ -126,7 +136,7 @@
             { "template_id": 1, "quantity": 4 },
             { "template_id": 1001, "quantity": 2 }
         ],
-        "zombieLimit": 10
+        "zombie_limit": 10
     },
 
     "stage_300": {
@@ -135,11 +145,11 @@
         "units": [
             { "template_id": 1007, "quantity": 2 },
             { "template_id": 3, "quantity": 3 },
-            { "template_id": 4, "quantity": 3 },
+            { "template_id": 5, "quantity": 3 },
             { "template_id": 1005, "quantity": 2 },
             { "template_id": 2, "quantity": 3 }
         ],
-        "zombieLimit": 14
+        "zombie_limit": 14
     },
 
     "stage_301": {
@@ -150,16 +160,16 @@
             { "template_id": 3, "quantity": 3 },
             { "template_id": 2, "quantity": 5 }
         ],
-        "zombieLimit": 14
+        "zombie_limit": 14
     },
 
     "stage_302": {
         "id": 302,
-        "explain": "Hard 가족 메인",
+        "explain": "가족 메인",
         "units": [
             { "template_id": 1003, "quantity": 2 },
             { "template_id": 1000, "quantity": 5 }
         ],
-        "zombieLimit": 14
+        "zombie_limit": 14
     }
 }

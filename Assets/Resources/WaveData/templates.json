@@ -33,22 +33,14 @@
 
     {
         "id": 4,
-        "explain": "BoyZombie",
-        "spawn": [{ "enemy_id": 4, "quantity": 1 }],
-        "pre_delay": 1,
-        "delay": 1
+        "explain": "GirlZombie",
+        "spawn": [{ "enemy_id": 5, "quantity": 2 }],
+        "pre_delay": 2,
+        "delay": 2
     },
 
     {
         "id": 5,
-        "explain": "GirlZombie",
-        "spawn": [{ "enemy_id": 5, "quantity": 1 }],
-        "pre_delay": 1,
-        "delay": 1
-    },
-
-    {
-        "id": 6,
         "explain": "GrandFatherZombie",
         "spawn": [{ "enemy_id": 6, "quantity": 1 }],
         "pre_delay": 1,
@@ -89,6 +81,7 @@
         "id": 1003,
         "explain": "Family",
         "spawn": [
+            { "enemy_id": 0, "quantity": 1 },
             { "enemy_id": 1, "quantity": 1 },
             { "enemy_id": 2, "quantity": 1 },
             { "enemy_id": 3, "quantity": 1 },
@@ -102,7 +95,7 @@
     {
         "id": 1004,
         "explain": "Boys",
-        "spawn": [{ "enemy_id": 4, "quantity": 2 }],
+        "spawn": [{ "enemy_id": 0, "quantity": 2 }],
         "pre_delay": 4,
         "delay": 4
     },
@@ -110,23 +103,23 @@
     {
         "id": 1005,
         "explain": "Girls",
-        "spawn": [{ "enemy_id": 5, "quantity": 4 }],
+        "spawn": [{ "enemy_id": 4, "quantity": 4 }],
         "pre_delay": 4,
         "delay": 7
     },
 
     {
         "id": 1006,
-        "explain": "Zombiessss",
-        "spawn": [{ "enemy_id": 0, "quantity": 7 }],
-        "pre_delay": 4,
+        "explain": "Boyss",
+        "spawn": [{ "enemy_id": 0, "quantity": 3 }],
+        "pre_delay": 3,
         "delay": 5
     },
 
     {
         "id": 1007,
-        "explain": "Zombiessss",
-        "spawn": [{ "enemy_id": 1, "quantity": 7 }],
+        "explain": "Boysssssss",
+        "spawn": [{ "enemy_id": 0, "quantity": 6 }],
         "pre_delay": 4,
         "delay": 5
     },
@@ -134,8 +127,8 @@
     {
         "id": 1008,
         "explain": "Babies",
-        "spawn": [{ "enemy_id": 2, "quantity": 3 }],
-        "pre_delay": 3,
+        "spawn": [{ "enemy_id": 1, "quantity": 5 }],
+        "pre_delay": 4,
         "delay": 5
     }
 ]
