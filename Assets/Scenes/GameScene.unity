@@ -167,6 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 2284562593881376575, guid: 0479e3672066d824890bc308f327d917, type: 3}
   mouseHand: {fileID: 86981226}
+  go: {fileID: 0}
 --- !u!61 &1607488
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -270,7 +271,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7320048
 GameObject:
@@ -817,7 +818,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!4 &221098188
 Transform:
@@ -1048,6 +1049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50230505b1679c4fb7f4ab75135b7ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  ec: {fileID: 0}
 --- !u!4 &496943718
 Transform:
   m_ObjectHideFlags: 0
@@ -1572,7 +1574,6 @@ MonoBehaviour:
   DeadTime: 9
   ComplteTime: 7
   BoilingTime: 2
-  SelfCollider: {fileID: 695956257}
   mouseHand: {fileID: 86981226}
   SpwanObject: {fileID: 995428718}
   lookBase: 0
@@ -2080,7 +2081,6 @@ MonoBehaviour:
   DeadTime: 9
   ComplteTime: 7
   BoilingTime: 2
-  SelfCollider: {fileID: 770942621}
   mouseHand: {fileID: 86981226}
   SpwanObject: {fileID: 1608696760}
   lookBase: 0
@@ -2360,6 +2360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 7935808794142186903, guid: 9a249c143cb7af442a566bffe8a0968a, type: 3}
   mouseHand: {fileID: 86981226}
+  go: {fileID: 0}
 --- !u!61 &829093523
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2904,10 +2905,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1078340399}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e23eb4a1a67c345abb58f111529fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1755676556bdfcd4085c36cfbf2a35a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
-  transitionPanel: {fileID: 718412524}
+  transitionPanel: {fileID: 0}
   slideDuration: 4
 --- !u!1 &1147209873
 GameObject:
@@ -3172,7 +3173,6 @@ MonoBehaviour:
   DeadTime: 9
   ComplteTime: 7
   BoilingTime: 2
-  SelfCollider: {fileID: 1290780502}
   mouseHand: {fileID: 86981226}
   SpwanObject: {fileID: 812591317}
   lookBase: 0
@@ -3332,6 +3332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 3555180742798481944, guid: 790a7a7244b15d14899eab5276eb95ca, type: 3}
   mouseHand: {fileID: 86981226}
+  go: {fileID: 0}
 --- !u!61 &1338442123
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3435,7 +3436,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1439939471
 GameObject:
@@ -3688,7 +3689,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1573690201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e23eb4a1a67c345abb58f111529fd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 1755676556bdfcd4085c36cfbf2a35a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
   transitionPanel: {fileID: 718412524}
@@ -3708,7 +3709,7 @@ MonoBehaviour:
   sceneLoader: {fileID: 1573690202}
   _life: 5
   _isPlay: 0
-  _roundCount: 0
+  _roundCount: 15
   _score: 0
   _isLoaded: 0
   _chosenRecipe: {fileID: 11400000, guid: 2d924817a490c7940960c4d3dbbc05bc, type: 2}
@@ -3724,28 +3725,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1573690201}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18493a0e03f8c5a40875fa7220c75308, type: 3}
+  m_Script: {fileID: 11500000, guid: 461f7f6515c46f94d94be749f4302022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjPoolManager
   obj_info:
-  - ObjName: tteokIngredent
-    prefab: {fileID: 1416844810797730430, guid: 6642c27fef92d954e9e3ee6d9ecac948, type: 3}
-    init_capacity: 1
-  - ObjName: noodleIngredent
-    prefab: {fileID: 2284562593881376575, guid: 0479e3672066d824890bc308f327d917, type: 3}
-    init_capacity: 1
-  - ObjName: JjajangIngredent
-    prefab: {fileID: 7199406876467584501, guid: 4f693d4c866ea714c9ed8a55b4802369, type: 3}
-    init_capacity: 1
-  - ObjName: SoupIngredent
-    prefab: {fileID: 3555180742798481944, guid: 790a7a7244b15d14899eab5276eb95ca, type: 3}
-    init_capacity: 1
-  - ObjName: greenOnionsEggsIngredent
-    prefab: {fileID: 7935808794142186903, guid: 9a249c143cb7af442a566bffe8a0968a, type: 3}
-    init_capacity: 1
   - ObjName: BrothIngredent
     prefab: {fileID: 4048856788384767220, guid: 1608732dc8b914e49b60bfc33eead0a5, type: 3}
-    init_capacity: 1
+    init_capacity: 2
+  - ObjName: greenOnionsEggsIngredent
+    prefab: {fileID: 7935808794142186903, guid: 9a249c143cb7af442a566bffe8a0968a, type: 3}
+    init_capacity: 2
+  - ObjName: JjajangIngredent
+    prefab: {fileID: 7199406876467584501, guid: 4f693d4c866ea714c9ed8a55b4802369, type: 3}
+    init_capacity: 2
+  - ObjName: noodleIngredent
+    prefab: {fileID: 2284562593881376575, guid: 0479e3672066d824890bc308f327d917, type: 3}
+    init_capacity: 2
+  - ObjName: SoupIngredent
+    prefab: {fileID: 3555180742798481944, guid: 790a7a7244b15d14899eab5276eb95ca, type: 3}
+    init_capacity: 2
+  - ObjName: tteokIngredent
+    prefab: {fileID: 1416844810797730430, guid: 6642c27fef92d954e9e3ee6d9ecac948, type: 3}
+    init_capacity: 2
 --- !u!114 &1573690205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4008,6 +4009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 1416844810797730430, guid: 6642c27fef92d954e9e3ee6d9ecac948, type: 3}
   mouseHand: {fileID: 86981226}
+  go: {fileID: 0}
 --- !u!61 &1709302871
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4111,7 +4113,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1734002305
 GameObject:
@@ -4396,6 +4398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 7199406876467584501, guid: 4f693d4c866ea714c9ed8a55b4802369, type: 3}
   mouseHand: {fileID: 86981226}
+  go: {fileID: 0}
 --- !u!61 &1972350706
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4499,7 +4502,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2022330580
 GameObject:
@@ -4549,6 +4552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodStation
   IngerdentPrefab: {fileID: 4048856788384767220, guid: 1608732dc8b914e49b60bfc33eead0a5, type: 3}
   mouseHand: {fileID: 86981226}
+  go: {fileID: 0}
 --- !u!61 &2022330583
 BoxCollider2D:
   m_ObjectHideFlags: 0
