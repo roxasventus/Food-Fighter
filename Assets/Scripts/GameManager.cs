@@ -14,8 +14,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool _isPlay;
     public bool isPlay { get => _isPlay; }
 
-    [SerializeField] private float _time;
-    public float time { get => _time; }
+    [SerializeField] private int _roundCount = 15;
+    public int roundCount { get => _roundCount; }
+
+    [SerializeField] private int _score = 0;
+    public int score { get => _score; }
+    public void loseScore(int num) { _score -= num; }
+    public void getScore(int num) { _score += num; }
+
 
     [Header("Bullet")]
     // 장전이 되어 있는가?
@@ -59,7 +65,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlay)
-            _time -= Time.deltaTime;
+
     }
 }
