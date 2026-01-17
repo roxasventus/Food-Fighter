@@ -1,5 +1,5 @@
-using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int _roundCount = 15;
     public int roundCount { get => _roundCount; }
+    public void clearRound() { _roundCount--; }
 
     [SerializeField] private int _score = 0;
     public int score { get => _score; }
@@ -41,6 +42,42 @@ public class GameManager : MonoBehaviour
     public int getHot { get => _hotCount; }
     [SerializeField] private int _oliveCount;
     public int getOlive { get => _oliveCount; }
+
+    public void getItem(int index) {
+        if (index == 0)
+        {
+            _miwonCount++;
+        }
+
+        if (index == 1)
+        {
+            _hotCount++;
+        }
+
+        if (index == 2)
+        {
+            _oliveCount++;
+        }
+    }
+
+    public void getRandomItems(int num)
+    {
+        if (num > 2) {
+            Debug.LogWarning(num+"개의 아이템은 가져올 수 없음");
+            return;
+        }
+
+        int[] copy = { 0, 1, 2 };
+
+        for (int i = 0; i < num; i++)
+        {
+            int rand = Random.Range(0, copy.Length);
+            getItem(copy[rand]);
+        }
+
+
+    }
+
 
 
     public void initRecipe()
