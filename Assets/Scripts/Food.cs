@@ -9,7 +9,7 @@ public class Food : MonoBehaviour
 
     [SerializeField] GameObject eff;
 
-    private bool isInit = false;
+    public bool isInit = false;
 
     public int countdown;
     public FavoriteFood type;

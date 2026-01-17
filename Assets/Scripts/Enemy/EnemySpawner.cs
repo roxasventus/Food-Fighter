@@ -59,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
                 bool can_eat = f.countdown > 0;
                 bool matching = IsMatch(f, e);
 
-                if (touched && can_eat && matching)
+                if (touched && can_eat && matching && f.isInit)
                 {
                     f.countdown--;
                     e.StartCoroutine(e.FoundFood(f.transform, manager));
