@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
         isStraight = data.moveStraight;
 
         initPos = pos;
-        elapsedTime = 0f;
+        elapsedTime = Random.Range(-ec.moveFrequency, 0);
         offset = GetCubicWobblySlope(0, ec.moveAmplitude, ec.moveFrequency);
         transform.position = pos;
 

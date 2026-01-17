@@ -26,4 +26,7 @@ public class EnemyConsts : ScriptableObject
     [Tooltip("x축 방향으로 랜덤성")]
     public float changeCool = 0.2f;
     public float changeDist = 0.5f;
+
+    [Tooltip("템플릿 생성할 때 같이 생성될 때 기다리는 시간 범위")]
+    public float[] templateGapRange = {0.1f, 0.3f};
 }
