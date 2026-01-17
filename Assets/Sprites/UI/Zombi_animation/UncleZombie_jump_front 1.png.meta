@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1331bbf843dea074b90887b07d30f3c6
+guid: a51b533bf6347ed4ca246209599beb96
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7708687414668197740
-    second: Kitchen1_0
+      213: -3435004639631075750
+    second: UncleZombie_jump_front 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kitchen1_0
+      name: UncleZombie_jump_front 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1018
-        height: 1080
+        width: 103
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4908d2483ad350590800000000000000
-      internalID: -7708687414668197740
+      spriteID: a5698fcca796450d0800000000000000
+      internalID: -3435004639631075750
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kitchen1_0: -7708687414668197740
+      UncleZombie_jump_front 1_0: -3435004639631075750
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

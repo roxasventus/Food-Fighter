@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 1331bbf843dea074b90887b07d30f3c6
+guid: 10f583400e276494989e13ca56d7dd8d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7708687414668197740
-    second: Kitchen1_0
+      213: 1838461172123110642
+    second: GrandFatherZombie_run_0
+  - first:
+      213: 7021415647340873585
+    second: GrandFatherZombie_run_1
+  - first:
+      213: 3792695229237139159
+    second: GrandFatherZombie_run_2
+  - first:
+      213: 3450642814425851552
+    second: GrandFatherZombie_run_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kitchen1_0
+      name: GrandFatherZombie_run_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1018
-        height: 1080
+        x: 2
+        y: 13
+        width: 95
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4908d2483ad350590800000000000000
-      internalID: -7708687414668197740
+      spriteID: 2fc0fb902b6838910800000000000000
+      internalID: 1838461172123110642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandFatherZombie_run_1
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 4
+        width: 95
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1774f188454117160800000000000000
+      internalID: 7021415647340873585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandFatherZombie_run_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 13
+        width: 98
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d69ff7673c52a430800000000000000
+      internalID: 3792695229237139159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GrandFatherZombie_run_3
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 13
+        width: 95
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a66b908b5523ef20800000000000000
+      internalID: 3450642814425851552
       vertices: []
       indices: 
       edges: []
@@ -135,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kitchen1_0: -7708687414668197740
+      GrandFatherZombie_run_0: 1838461172123110642
+      GrandFatherZombie_run_1: 7021415647340873585
+      GrandFatherZombie_run_2: 3792695229237139159
+      GrandFatherZombie_run_3: 3450642814425851552
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

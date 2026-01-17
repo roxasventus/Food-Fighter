@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 1331bbf843dea074b90887b07d30f3c6
+guid: b3033db8985115445a825b119f484b69
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7708687414668197740
-    second: Kitchen1_0
+      213: -6133099721331450299
+    second: GirlZombie_run_0
+  - first:
+      213: -6125666903902582263
+    second: GirlZombie_run_1
+  - first:
+      213: 8698068191989218272
+    second: GirlZombie_run_2
+  - first:
+      213: -6639247255934991931
+    second: GirlZombie_run_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kitchen1_0
+      name: GirlZombie_run_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1018
-        height: 1080
+        x: 3
+        y: 6
+        width: 109
+        height: 118
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4908d2483ad350590800000000000000
-      internalID: -7708687414668197740
+      spriteID: 54eddf94c4ad2eaa0800000000000000
+      internalID: -6133099721331450299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GirlZombie_run_1
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 6
+        width: 110
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90a0584f7624dfaa0800000000000000
+      internalID: -6125666903902582263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GirlZombie_run_2
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 6
+        width: 109
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0eb34afafeeb5b870800000000000000
+      internalID: 8698068191989218272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GirlZombie_run_3
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 6
+        width: 110
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c102060cc7acd3a0800000000000000
+      internalID: -6639247255934991931
       vertices: []
       indices: 
       edges: []
@@ -135,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kitchen1_0: -7708687414668197740
+      GirlZombie_run_0: -6133099721331450299
+      GirlZombie_run_1: -6125666903902582263
+      GirlZombie_run_2: 8698068191989218272
+      GirlZombie_run_3: -6639247255934991931
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

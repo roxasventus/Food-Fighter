@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 1331bbf843dea074b90887b07d30f3c6
+guid: 800ac4f9484f1624d88a3fb5842e0ea0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7708687414668197740
-    second: Kitchen1_0
+      213: 8722654830574349816
+    second: BabyZombie_run_0
+  - first:
+      213: -8833488031080217850
+    second: BabyZombie_run_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kitchen1_0
+      name: BabyZombie_run_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1018
-        height: 1080
+        width: 70
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4908d2483ad350590800000000000000
-      internalID: -7708687414668197740
+      spriteID: 8fdaab29a581d0970800000000000000
+      internalID: 8722654830574349816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BabyZombie_run_1
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 3
+        width: 69
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6038cc30075296580800000000000000
+      internalID: -8833488031080217850
       vertices: []
       indices: 
       edges: []
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kitchen1_0: -7708687414668197740
+      BabyZombie_run_0: 8722654830574349816
+      BabyZombie_run_1: -8833488031080217850
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

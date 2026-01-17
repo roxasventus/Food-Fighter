@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1331bbf843dea074b90887b07d30f3c6
+guid: adf9fe5c2cb85b346a4f571d24d9467d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7708687414668197740
-    second: Kitchen1_0
+      213: 5733505450649212761
+    second: GirlZombie_sidejump_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kitchen1_0
+      name: GirlZombie_sidejump_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1018
-        height: 1080
+        width: 101
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4908d2483ad350590800000000000000
-      internalID: -7708687414668197740
+      spriteID: 95756b774d0819f40800000000000000
+      internalID: 5733505450649212761
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kitchen1_0: -7708687414668197740
+      GirlZombie_sidejump_0: 5733505450649212761
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
