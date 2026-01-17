@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    [SerializeField] Animator chefAnim;
     private InputActions inputActions;
     private Vector2 moveInput;
 
@@ -32,6 +33,13 @@ public class Controller : MonoBehaviour
         f2s[FavoriteFood.TB] = tb;
         f2s[FavoriteFood.JTB] = jtb;
     }
+    void Start()
+    {
+        if(chefAnim == null)
+        {
+            truck.transform.GetChild(0).TryGetComponent<Animator>(out chefAnim); //! 위험한 임시 코드입니다 반드시 chefAnim SerializeField에 할당해주세요.
+        }
+    }
 
     void Update()
     {
@@ -60,6 +68,7 @@ public class Controller : MonoBehaviour
             
             // 음식 저장
             loadedFood = Recipe2food(GameManager.instance.chosenRecipe);
+
         }
 
         // 장전되었는가?
@@ -81,11 +90,15 @@ public class Controller : MonoBehaviour
         
         Food f = ObjPoolManager.instance.InstantiateFromPool("Food").GetComponent<Food>();
         f.Init(
-            f2s[(FavoriteFood) loadedFood], 
-            truck.position, 
+            f2s[(FavoriteFood) loadedFood],
+            chefAnim.transform.position, 
             transform.position
         );
         f.type = (FavoriteFood) loadedFood;
+        //| Ani
+        chefAnim.SetTrigger("Throw");
+        //| SOUND
+        SoundManager.instance.PlaySound("ThrowSwingWhoosh", 1f);
 
         spawner.AddFood(f);
 

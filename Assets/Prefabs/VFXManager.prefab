@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2201108208087351704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8343343753043369755}
+  - component: {fileID: 9122033693790061979}
+  m_Layer: 0
+  m_Name: VFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8343343753043369755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201108208087351704}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9122033693790061979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2201108208087351704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31c11b9d047924a4c8ba21b01396372b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VFX_Manager
+  vfxList:
+  - name: Burned
+    prefab: {fileID: 8782009059513614302, guid: 0973e7032f5de764f9ec8542f24dca5c, type: 3}
+  - name: CarSmoke
+    prefab: {fileID: 6403252182692130976, guid: 089ed0f329b52ba4c914170e159806b2, type: 3}
+  - name: Cooked
+    prefab: {fileID: 4035903591278710484, guid: 2c0bc68caa9977e4eb6efed080f95c2d, type: 3}
+  - name: Cooked2
+    prefab: {fileID: 8680598818964007281, guid: 6d4df02d0c9d92b45b95543a100cc8f5, type: 3}
+  - name: FoodSmell
+    prefab: {fileID: 6403252182692130976, guid: e9f014e409645394f9506fff99b35c01, type: 3}
+  - name: FoodSplash
+    prefab: {fileID: 3223031359271505891, guid: 13da9eb08e2425f4185e59f8280f693d, type: 3}
+  - name: ItemSelect
+    prefab: {fileID: 271054424957760564, guid: bc153dc1856d7fd44835754e42077c0f, type: 3}
+  - name: SourceSplash
+    prefab: {fileID: 2054803858064431036, guid: 001ce7e08851b4b43a5578806b3a48f3, type: 3}
+  - name: TireSpark
+    prefab: {fileID: 85941164691198867, guid: 452a67e79fd947b4cbfb87c66eb470e9, type: 3}
+  - name: ZombieKill
+    prefab: {fileID: 1226031520979461127, guid: a59bb0bb86b2ae748b66f19c802b87af, type: 3}
