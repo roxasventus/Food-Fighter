@@ -7,9 +7,10 @@ public class MouseHand : MonoBehaviour
     // 마우스 정보.
     private static GameObject handObject = null;
 
+    public GameObject DebugHand;
     void LateUpdate()
     {
-
+        DebugHand = handObject;
         if (handObject != null)
         {
             Vector3 mouseScreen = Mouse.current.position.ReadValue();

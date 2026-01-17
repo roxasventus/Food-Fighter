@@ -135,18 +135,17 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         {
             if (s == Recipe.Status.incomplete || s == Recipe.Status.complete) 
             {
-                // 여기서 데이터 값을 매니저에게 보내줘야함.
                 Debug.Log("요리 완성. 단계 : " + recipe.GetStatus);
                 GameManager.instance.toogleLoaded();
                 GameManager.instance.setRecipe(recipe);
                 GameManager.instance.useItem();
                 //그리고 초기화.
+                
                 PotReSet();
             } else if(s == Recipe.Status.fail)
             {
                 mouseHand.Sethand(gameObject);
                 SelfCollider.enabled = false;
-                
             }
             return;
         }
@@ -154,6 +153,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
         
         IngerdentFood ingerdentFood = mouseHand.Gethand().GetComponent<IngerdentFood>();
         InputIngerdentFood(ingerdentFood.ingredientData);
+        mouseHand.Sethand(null);
         ingerdentFood.SelfRelease();
     }
 
@@ -232,8 +232,6 @@ public class Pot : MonoBehaviour, IPointerClickHandler,IEntity
 
     public void EntityReset()
     {
-        
-        PotReSet();
     }
 
     public void SelfRelease()
