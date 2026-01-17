@@ -1,16 +1,14 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CookGameLine : MonoBehaviour
+public class CookGameLine : MonoBehaviour, IPointerEnterHandler
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    MouseHand mouseHand;
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Hi");
+        if (mouseHand.Gethand() != null)
+            mouseHand.Gethand().GetComponent<IEntity>().SelfRelease();
     }
 }
