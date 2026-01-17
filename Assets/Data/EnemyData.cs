@@ -12,6 +12,8 @@ public class EnemyData : ScriptableObject
     public bool moveStraight;
     public float xMoveRate;
     public FavoriteFood favorite;
+    [SerializeField] string voice;
+    public string Voice => voice;
 
     public AnimatorOverrideController anim;
 }

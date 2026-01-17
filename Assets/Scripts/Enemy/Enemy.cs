@@ -24,6 +24,9 @@ public class Enemy : MonoBehaviour
     private Animator anim;
     private SpriteRenderer sr;
 
+    //| SOUND
+    private string voiceClipName;
+
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -38,11 +41,13 @@ public class Enemy : MonoBehaviour
         xRate = data.xMoveRate;
         favorite = data.favorite;
         isStraight = data.moveStraight;
+        voiceClipName = data.Voice;
 
         initPos = pos;
         elapsedTime = Random.Range(0, ec.moveFrequency);
         offset = GetCubicWobblySlope(0, ec.moveAmplitude, ec.moveFrequency);
         transform.position = pos;
+        transform.rotation = Quaternion.identity;
 
         xCor = StartCoroutine(XRandomize());
         if (!isStraight)
@@ -51,6 +56,8 @@ public class Enemy : MonoBehaviour
         }
 
         isInit = true;
+
+        StartCoroutine(Co_PlayVoiceOnWhile()); //| SOUND
 
         // 임시용
         /*Color c;
@@ -89,8 +96,18 @@ public class Enemy : MonoBehaviour
         return transform.position.y <= ec.jumpY && isInit;
     }
 
+    int BreathYOffset = 3;
+    public bool isBreathSound() // 숨소리가 들리는 좌표인가?
+    {
+        return transform.position.y <= (ec.jumpY  + BreathYOffset) && isInit;
+    }
+
     public IEnumerator FoundFood(Transform food, Transform manager)
     {
+        //| VFX
+        VFX_Manager.i.PlayVFX("ZombieKill", transform.position, Quaternion.identity);
+        //| SOUND
+        SoundManager.instance.PlaySound("ZombieHighSound" + Random.Range(1,4).ToString(), 1f);
         // 움직임 멈추기
         StopCoroutine(xCor);
         if (!isStraight)
@@ -232,4 +249,20 @@ public class Enemy : MonoBehaviour
         // 3. 합성 (사인파처럼 중심을 맞추려면 amplitude의 절반을 빼주는 등 조정 가능)
         return linearTrend + wobble;
     }
+
+
+
+
+     // ========================================
+     //| SOUND
+     // ========================================
+     IEnumerator Co_PlayVoiceOnWhile()
+     {
+        while (isInit)
+        {
+            yield return new WaitForSeconds(Random.Range(0f, 2f));
+            SoundManager.instance.PlaySound(voiceClipName + Random.Range(1, 4).ToString());
+        }
+     }
+
 }

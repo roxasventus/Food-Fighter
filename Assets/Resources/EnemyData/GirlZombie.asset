@@ -18,4 +18,5 @@ MonoBehaviour:
   moveStraight: 0
   xMoveRate: 0.6
   favorite: 3
+  voice: ZombieLowSound
   anim: {fileID: 22100000, guid: 9c944824619831a4e81bfb326d3cbb0d, type: 2}

@@ -16,5 +16,7 @@ public class FoodStation : MonoBehaviour, IPointerClickHandler
         go = ObjPoolManager.instance.InstantiateFromPool(IngerdentPrefab.name.ToString());
         go.transform.position = transform.position;
         mouseHand.Sethand(go);
+        //| SOUND
+        SoundManager.instance.PlaySound("GrabFoodSupplies", 1f);
     }
 }
