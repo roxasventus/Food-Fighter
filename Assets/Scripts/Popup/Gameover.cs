@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using System.Collections.Generic;
 public class Gameover : MonoBehaviour
 {
     [SerializeField] PopupConsts pc;
@@ -15,6 +16,16 @@ public class Gameover : MonoBehaviour
 
     [SerializeField] GameObject canvas;
 
+    [SerializeField] Controller cont;
+
+    private Dictionary<FavoriteFood, string> ff2s = new Dictionary<FavoriteFood, string>
+    {
+        {FavoriteFood.RM, "라면"},
+        {FavoriteFood.JRM, "짜장면"},
+        {FavoriteFood.TB, "떡볶이"},
+        {FavoriteFood.JTB, "짜장 떡볶이"}
+    };
+
     void Awake()
     {
         rt = GetComponent<RectTransform>();
@@ -27,7 +38,10 @@ public class Gameover : MonoBehaviour
         // text 값 설정하기
         stage.text = $"{15 - GameManager.instance.roundCount}";
         burn.text = "미구현...";
-        made.text = $"";
+        made.text = $"{ff2s[cont.GetMostFood()]}";
+        
+        dist.text = $"{sec2km(GameManager.instance.totalTime):F2}km";
+        zomcnt.text = $"{GameManager.instance.happy_cnt}명";
 
         canvas.SetActive(true);
 
@@ -77,5 +91,11 @@ public class Gameover : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
             yield return null;
         }
+    }
+
+    private float sec2km(float sec)
+    {
+        float speed = pc.truckRealSpeed; // km/h
+        return speed * sec / 3600f;
     }
 }

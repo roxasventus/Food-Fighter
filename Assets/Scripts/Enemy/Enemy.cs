@@ -105,6 +105,8 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator FoundFood(Transform food, Transform manager)
     {
+        GameManager.instance.happy_cnt++;
+        
         //| VFX
         VFX_Manager.i.PlayVFX("ZombieKill", transform.position, Quaternion.identity);
         //| SOUND

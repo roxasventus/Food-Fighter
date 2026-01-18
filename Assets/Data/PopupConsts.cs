@@ -12,4 +12,6 @@ public class PopupConsts : ScriptableObject
     [Header("게임오버 팝업")]
     public float gameoverShowDuration = 0.7f;
     public float textShowDuration = 0.3f;
+
+    public float truckRealSpeed = 60; // km/h
 }
