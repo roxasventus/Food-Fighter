@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -24,6 +25,8 @@ public class Controller : MonoBehaviour
     [SerializeField] Pause p;
 
     private Dictionary<FavoriteFood, Sprite> f2s = new Dictionary<FavoriteFood, Sprite>();
+
+    private Dictionary<FavoriteFood, int> foodCount = new Dictionary<FavoriteFood, int>();
 
     void Awake()
     {
@@ -76,7 +79,7 @@ public class Controller : MonoBehaviour
             
             // 음식 저장
             loadedFood = Recipe2food(GameManager.instance.chosenRecipe);
-
+            CheckFood(loadedFood);
         }
 
         // 장전되었는가?
@@ -89,6 +92,27 @@ public class Controller : MonoBehaviour
             UpdateFoodDisplay();
             foodDisplay.SetActive(true);
         }
+    }
+
+    private void CheckFood(FavoriteFood? f)
+    {
+        if (f == null)
+            return;
+        if (!foodCount.Keys.Contains((FavoriteFood) f))
+        {
+            foodCount[(FavoriteFood) f] = 1;
+        }
+        else
+        {
+            foodCount[(FavoriteFood) f]++;
+        }
+    }
+
+    public FavoriteFood GetMostFood()
+    {
+        if (foodCount.Count == 0) return FavoriteFood.RM;
+
+        return foodCount.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
     }
 
     private void Fire()

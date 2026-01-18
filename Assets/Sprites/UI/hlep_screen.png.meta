@@ -1,10 +1,113 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 2b24b6a7fb0152b46a810a785e31c9d0
+=======
+guid: 8341826460c6147458ad560f0b836241
+>>>>>>> Stashed changes
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: -2834789373601588349
     second: hlep_screen_0
+<<<<<<< Updated upstream
+=======
+  - first:
+      213: 4890571364101363137
+    second: hlep_screen_1
+  - first:
+      213: 6974403963201422876
+    second: hlep_screen_2
+  - first:
+      213: 6764090929457081861
+    second: hlep_screen_3
+  - first:
+      213: -5000312797037793565
+    second: hlep_screen_4
+  - first:
+      213: 6083750747563010229
+    second: hlep_screen_5
+  - first:
+      213: -6202771585011469725
+    second: hlep_screen_6
+  - first:
+      213: 6654675523713716163
+    second: hlep_screen_7
+  - first:
+      213: 3830099345773506760
+    second: hlep_screen_8
+  - first:
+      213: 2679559941220618768
+    second: hlep_screen_9
+  - first:
+      213: -911263002208729577
+    second: hlep_screen_10
+  - first:
+      213: -7597875210716541214
+    second: hlep_screen_11
+  - first:
+      213: 1670973375870630302
+    second: hlep_screen_12
+  - first:
+      213: 7639278070907060321
+    second: hlep_screen_13
+  - first:
+      213: 5767782613043005788
+    second: hlep_screen_14
+  - first:
+      213: -6245365608519024606
+    second: hlep_screen_15
+  - first:
+      213: 2048860720519626406
+    second: hlep_screen_16
+  - first:
+      213: -6135200088573310350
+    second: hlep_screen_17
+  - first:
+      213: 4218119294496533983
+    second: hlep_screen_18
+  - first:
+      213: -7625773924748800384
+    second: hlep_screen_19
+  - first:
+      213: -2649606430718993658
+    second: hlep_screen_20
+  - first:
+      213: 1963445300559300393
+    second: hlep_screen_21
+  - first:
+      213: -3961680501318096002
+    second: hlep_screen_22
+  - first:
+      213: 1862918605371883259
+    second: hlep_screen_23
+  - first:
+      213: 7028828386415243258
+    second: hlep_screen_24
+  - first:
+      213: -2114315289000523381
+    second: hlep_screen_25
+  - first:
+      213: -8413758675622291808
+    second: hlep_screen_26
+  - first:
+      213: 3751381799747625981
+    second: hlep_screen_27
+  - first:
+      213: -8945031257831545977
+    second: hlep_screen_28
+  - first:
+      213: 1117164187354796261
+    second: hlep_screen_29
+  - first:
+      213: 8993786661425977439
+    second: hlep_screen_30
+  - first:
+      213: -7695312679529933350
+    second: hlep_screen_31
+  - first:
+      213: 1771181555691788650
+    second: hlep_screen_32
+>>>>>>> Stashed changes
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +149,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
+<<<<<<< Updated upstream
   spriteMode: 2
+=======
+  spriteMode: 1
+>>>>>>> Stashed changes
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -96,6 +203,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< Updated upstream
   - serializedVersion: 4
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
@@ -109,6 +217,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+=======
+>>>>>>> Stashed changes
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -116,10 +226,17 @@ TextureImporter:
       name: hlep_screen_0
       rect:
         serializedVersion: 2
+<<<<<<< Updated upstream
         x: 979
         y: 83
         width: 942
         height: 928
+=======
+        x: 246
+        y: 721
+        width: 36
+        height: 26
+>>>>>>> Stashed changes
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,11 +251,722 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+<<<<<<< Updated upstream
+=======
+    - serializedVersion: 2
+      name: hlep_screen_1
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 727
+        width: 37
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c595f98ebcced340800000000000000
+      internalID: 4890571364101363137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_2
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 722
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1682bad37f0ac060800000000000000
+      internalID: 6974403963201422876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_3
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 722
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50e2bb6dcd0eedd50800000000000000
+      internalID: 6764090929457081861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_4
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 716
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eee8bef0025b9ab0800000000000000
+      internalID: -5000312797037793565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_5
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 705
+        width: 9
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b8a2826213dd6450800000000000000
+      internalID: 6083750747563010229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_6
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 721
+        width: 43
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 362318c6b145be9a0800000000000000
+      internalID: -6202771585011469725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_7
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 738
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cf417e71282a5c50800000000000000
+      internalID: 6654675523713716163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_8
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 709
+        width: 50
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c0394fef0f372530800000000000000
+      internalID: 3830099345773506760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_9
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 709
+        width: 32
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01252d2d195bf2520800000000000000
+      internalID: 2679559941220618768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_10
+      rect:
+        serializedVersion: 2
+        x: 599
+        y: 709
+        width: 31
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7168468a02b8a53f0800000000000000
+      internalID: -911263002208729577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_11
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 709
+        width: 35
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ee8e7940ccee8690800000000000000
+      internalID: -7597875210716541214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_12
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 0
+        width: 942
+        height: 1011
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9977e1ae6d703710800000000000000
+      internalID: 1670973375870630302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_13
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 709
+        width: 44
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 160c8dc4eea240a60800000000000000
+      internalID: 7639278070907060321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_14
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 712
+        width: 43
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c594a104ab74b0050800000000000000
+      internalID: 5767782613043005788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_15
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 703
+        width: 34
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22048c381110459a0800000000000000
+      internalID: -6245365608519024606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_16
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 703
+        width: 32
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6aeb2d058f30f6c10800000000000000
+      internalID: 2048860720519626406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_17
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 702
+        width: 33
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27a84ae66046bdaa0800000000000000
+      internalID: -6135200088573310350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_18
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 713
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fddefa85625c98a30800000000000000
+      internalID: 4218119294496533983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_19
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 559
+        width: 138
+        height: 138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08e49edb40fcb2690800000000000000
+      internalID: -7625773924748800384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_20
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 447
+        width: 422
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60b576e4df4ba3bd0800000000000000
+      internalID: -2649606430718993658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_21
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 344
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9274fbb191f8f3b10800000000000000
+      internalID: 1963445300559300393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_22
+      rect:
+        serializedVersion: 2
+        x: 595
+        y: 48
+        width: 37
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7be75de2984509c0800000000000000
+      internalID: -3961680501318096002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_23
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 59
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfe38a6f99a6ad910800000000000000
+      internalID: 1862918605371883259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_24
+      rect:
+        serializedVersion: 2
+        x: 668
+        y: 48
+        width: 37
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aff66775d2a6b8160800000000000000
+      internalID: 7028828386415243258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_25
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 62
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8942ff527178a2e0800000000000000
+      internalID: -2114315289000523381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_26
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 43
+        width: 27
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a61ca100135c3b80800000000000000
+      internalID: -8413758675622291808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_27
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 61
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df3a2d60fd59f0430800000000000000
+      internalID: 3751381799747625981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_28
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 54
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7836f2cb67ddcd380800000000000000
+      internalID: -8945031257831545977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_29
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 45
+        width: 14
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e0121fc8e6f08f00800000000000000
+      internalID: 1117164187354796261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_30
+      rect:
+        serializedVersion: 2
+        x: 937
+        y: 48
+        width: 37
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5811f3415950dc70800000000000000
+      internalID: 8993786661425977439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_31
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 56
+        width: 37
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad51f05b3e1c43590800000000000000
+      internalID: -7695312679529933350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hlep_screen_32
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 48
+        width: 37
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a699bb3ad30849810800000000000000
+      internalID: 1771181555691788650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+>>>>>>> Stashed changes
     outline: []
     customData: 
     physicsShape: []
     bones: []
+<<<<<<< Updated upstream
     spriteID: 
+=======
+    spriteID: 5e97eb03825dee720800000000000000
+>>>>>>> Stashed changes
     internalID: 0
     vertices: []
     indices: 
@@ -149,6 +977,41 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       hlep_screen_0: -2834789373601588349
+<<<<<<< Updated upstream
+=======
+      hlep_screen_1: 4890571364101363137
+      hlep_screen_10: -911263002208729577
+      hlep_screen_11: -7597875210716541214
+      hlep_screen_12: 1670973375870630302
+      hlep_screen_13: 7639278070907060321
+      hlep_screen_14: 5767782613043005788
+      hlep_screen_15: -6245365608519024606
+      hlep_screen_16: 2048860720519626406
+      hlep_screen_17: -6135200088573310350
+      hlep_screen_18: 4218119294496533983
+      hlep_screen_19: -7625773924748800384
+      hlep_screen_2: 6974403963201422876
+      hlep_screen_20: -2649606430718993658
+      hlep_screen_21: 1963445300559300393
+      hlep_screen_22: -3961680501318096002
+      hlep_screen_23: 1862918605371883259
+      hlep_screen_24: 7028828386415243258
+      hlep_screen_25: -2114315289000523381
+      hlep_screen_26: -8413758675622291808
+      hlep_screen_27: 3751381799747625981
+      hlep_screen_28: -8945031257831545977
+      hlep_screen_29: 1117164187354796261
+      hlep_screen_3: 6764090929457081861
+      hlep_screen_30: 8993786661425977439
+      hlep_screen_31: -7695312679529933350
+      hlep_screen_32: 1771181555691788650
+      hlep_screen_4: -5000312797037793565
+      hlep_screen_5: 6083750747563010229
+      hlep_screen_6: -6202771585011469725
+      hlep_screen_7: 6654675523713716163
+      hlep_screen_8: 3830099345773506760
+      hlep_screen_9: 2679559941220618768
+>>>>>>> Stashed changes
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

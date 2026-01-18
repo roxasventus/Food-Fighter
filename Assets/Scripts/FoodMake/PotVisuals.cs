@@ -29,9 +29,6 @@ public class PotVisuals : MonoBehaviour
     }
     public void ChangeFoodImage(CooKingDatac cooKData)
     {
-        Debug.Log(cooKData.broth.ToString() + cooKData.foodbase.ToString() + cooKData.sauce.ToString() + cooKData.eggfa.ToString());
-
-
         if(cooKData.status == CooKingDatac.Status.fail)
         {
             ResetVisuals ();

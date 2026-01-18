@@ -1,34 +1,37 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
-public class HelpImage : MonoBehaviour
-{
-    [SerializeField] Image img;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem; // 새로운 인풋 시스템 네임스페이스 추가
 
-    void OnMouseOver()
+public class HelpImage : MonoBehaviour, IPointerDownHandler
+{
+    [SerializeField] GameObject obj;
+
+    public void OnPointerDown(PointerEventData eventData)
     {
-        // | Ani
-    }
-    void OnMouseDown()
-    {
-        // 도움말 등장.
-        img.enabled = true;
+        obj.SetActive(true);
         GameTimeManager.instance.SetGameTimeScaleWithPercent(0f);
+        StartCoroutine(Co_StayPressF());
     }
 
     IEnumerator Co_StayPressF()
     {
-        // F 키를 뗄 때까지 루프
-        while (!Input.GetKeyUp(KeyCode.F))
+        // Keyboard.current.fKey.wasReleasedThisFrame은 
+        // Input.GetKeyUp(KeyCode.F)와 동일한 역할을 합니다.
+
+        bool isReleased = false;
+        while (!isReleased)
         {
-            // 타임스케일의 영향을 받지 않는 '실제 프레임' 단위로 대기
-            yield return new WaitForEndOfFrame();
+            // F 키가 떼어졌는지 확인
+            if (Keyboard.current != null && Keyboard.current.fKey.wasReleasedThisFrame)
+            {
+                isReleased = true;
+            }
+
+            yield return null;
         }
 
-        // 도움말 사라짐
-        img.enabled = false;
-
-        // 게임 속도 정상 복구
+        obj.SetActive(false);
         GameTimeManager.instance.ResetGameTimeScale();
     }
 }

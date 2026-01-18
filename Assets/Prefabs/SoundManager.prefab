@@ -123,3 +123,5 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 7cef901ace28f1c4fb919a7c5c0bafdb, type: 3}
   - name: FoodStamp
     clip: {fileID: 8300000, guid: 4d46ff0a9c55ddf42abccef4ebb1e61e, type: 3}
+  - name: Shine
+    clip: {fileID: 8300000, guid: 48c1834c82ac726479ef560140d39b4f, type: 3}

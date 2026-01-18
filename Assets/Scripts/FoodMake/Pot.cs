@@ -270,6 +270,8 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
         Vector3 yOffset = new Vector2(0,0.5f);
         //| SOUND
         //6SoundManager.instance.PlaySound("", 0.5f);
+        SoundManager.instance.PlaySound("FoodStamp", 1f, 0.5f);
+        SoundManager.instance.PlaySound("FoodStamp", 1f, 0.6f);
         //| VFX
         VFX_Manager.i.PlayVFX("Burned", transform.position + yOffset, Quaternion.identity);
     }
@@ -288,7 +290,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
     {
         gameObject.GetComponent<PotVisuals>().ChangeFoodImage(cooKData);
         //| SOUND
-        SoundManager.instance.PlaySound("shine", 0.5f);
+        SoundManager.instance.PlaySound("Shine", 0.5f);
         //| VFX
         VFX_Manager.i.PlayVFX("Cooked", transform.position, Quaternion.identity);
     }

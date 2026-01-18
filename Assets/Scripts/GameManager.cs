@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool _isPlay;
     public bool isPlay { get => _isPlay; }
 
-    [SerializeField] private int _roundCount = 15;
+    [SerializeField] private int _roundCount = 5;
     public int roundCount { get => _roundCount; }
     public void clearRound()
     {
@@ -85,6 +85,8 @@ public class GameManager : MonoBehaviour
     public float totalTime = 0f;
 
     [SerializeField] Gameover go;
+
+    public int happy_cnt = 0;
 
     public void getItem(int index)
     {
@@ -139,8 +141,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image progressBarFill;
     [SerializeField] private RectTransform heartContainers;
 
+    bool Tuto2Played = false;
     public void startNormalWave()
     {
+        if(!Tuto2Played)
+        {
+            wave.StartWave(901, () =>
+            {
+                Debug.Log("Start new normal wave!");
+                GameManager.instance.endWave();
+            });
+            return;
+        }
+
         int[] normal = { 100, 101, 102, 103, 104, 105, 106, 201, 202 };
         wave.StartWave(normal[Random.Range(0, normal.Length)], () =>
         {
@@ -151,6 +164,16 @@ public class GameManager : MonoBehaviour
 
     public void startHardWave()
     {
+        if (!Tuto2Played)
+        {
+            wave.StartWave(901, () =>
+            {
+                Debug.Log("Start new normal wave!");
+                GameManager.instance.endWave();
+            });
+            return;
+        }
+
         int[] hard = { 300, 301, 302 };
         wave.StartWave(hard[Random.Range(0, hard.Length)], () =>
         {
@@ -257,10 +280,6 @@ public class GameManager : MonoBehaviour
         sceneLoader.StartGame();
     }
 
-    void Start()
-    {
-        StartCoroutine(Test());
-    }
 
 
     public void GameClear()
