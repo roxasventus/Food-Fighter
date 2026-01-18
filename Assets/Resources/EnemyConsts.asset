@@ -22,10 +22,10 @@ MonoBehaviour:
   spawnY: 6.5
   jumpY: -1.7
   moveSpeed: 0.5
-  moveAmplitude: 0.75
-  moveFrequency: 0.6
+  moveAmplitude: 0.55
+  moveFrequency: 0.5
   changeCool: 0.4
-  changeDist: 1
+  changeDist: 0.9
   templateGapRange:
   - 0.1
   - 0.3
