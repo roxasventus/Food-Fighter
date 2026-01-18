@@ -7,6 +7,7 @@ public class Lid : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] TitleConsts tc;
     [SerializeField] Transform truck;
+    bool canClick = true;
 
     private Coroutine rattleCoroutine;
     private AsyncOperation op;
@@ -16,6 +17,9 @@ public class Lid : MonoBehaviour, IPointerDownHandler
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (!canClick) return;
+        canClick = false;
+        SoundManager.instance.PlaySound("PotPlace",1f);
         op = SceneManager.LoadSceneAsync("GameScene");
         op.allowSceneActivation = false;
         StartCoroutine(Open());
@@ -24,7 +28,6 @@ public class Lid : MonoBehaviour, IPointerDownHandler
     private IEnumerator Open()
     {
         StopCoroutine(rattleCoroutine);
-
         Vector2 startPos = transform.position;
         Vector3 startAng = Vector3.zero;
 
@@ -42,6 +45,7 @@ public class Lid : MonoBehaviour, IPointerDownHandler
             elapsed += Time.deltaTime;
             yield return null;
         }
+        canClick = true;
 
         // 트럭 나오기
         while (truck.position.x > 11.75f)

@@ -7,7 +7,7 @@ using static Recipe;
 
 public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
 {
-    // Animator ani => transform.GetChild(0).GetComponent<Animator>();
+    Animator ani => GetComponent<Animator>();
     private Recipe recipe;
 
     public CooKingDatac cooKData;
@@ -32,16 +32,24 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
     {
         Decidebroth();
         UpdateStatus();
+        gameObject.GetComponent<PotVisuals>().ChangeFoodImage(cooKData);
+        if(transform.position.y < 0) // 일정 이하 자동 세탁진행
+        {
+            mouseHand.Sethand(null);
+            SelfCollider.enabled = true;
+            PotReSet();
+        }
 
         //| Animation
-        // FIXME: ani.SetBool("Boiling", cooKData.broth == CooKingDatac.Broth.boiling);
+        ani.SetBool("Boiling", cooKData.broth == CooKingDatac.Broth.boiling);
     }
     public void PotReSet()
     {
         SelfCollider = gameObject.GetComponent<BoxCollider2D>();
-        transform.position = SpwanObject.transform.position;
+        transform.parent.position = SpwanObject.transform.position;
         cooKData.SetCookingData();
         gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(1);
+        gameObject.GetComponent<PotVisuals>().ResetVisuals();
         SelfCollider.enabled = true;
         recipe = ScriptableObject.CreateInstance<Recipe>();
         recipe.SetBase(Recipe.Base.none);
@@ -50,7 +58,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
         recipe.SetStatus(Recipe.Status.Cooking);
 
         //| ANI
-        // FIXME: ani.SetTrigger("Summon");
+        ani.SetTrigger("Summon");
         //| SOUND
         SoundManager.instance.PlaySound("WaterSplash", 1f); // 물버림
         SoundManager.instance.AfterSound(0.1f, "PotPlace"); // 재생성 철 소리
@@ -58,6 +66,10 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
 
     public void UpdateStatus()
     {
+        //끓는 상태
+        if (cooKData.CookingTime >= cooKData.BoilingTime) cooKData.broth = CooKingDatac.Broth.boiling;
+
+
         // 값 조건 확인.
 
         isFail = cooKData.GetCurrentStatus() == CooKingDatac.Status.fail;
@@ -66,12 +78,11 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
         if (isFail)
         {
             if(recipe.GetStatus != Recipe.Status.fail) { OnFailedCooked(); } // 일회성 발동 함수입니다.
+            cooKData.status = CooKingDatac.Status.fail;
             recipe.SetStatus(Recipe.Status.fail);
             gameObject.GetComponent<PotVisuals>().ChangeStatusSprite(0);
         }
 
-        //끓는 상태
-        if (cooKData.CookingTime >= cooKData.BoilingTime) cooKData.broth = CooKingDatac.Broth.boiling;
 
         // 
         if (cooKData.GetCurrentStatus() == CooKingDatac.Status.incomplete)
@@ -142,7 +153,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
             }
             else if (s == CooKingDatac.Status.fail)
             {
-                mouseHand.Sethand(gameObject);
+                mouseHand.Sethand(transform.parent.gameObject);
                 SelfCollider.enabled = false;
             }
             return;
@@ -193,6 +204,8 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
 
             default: Debug.Log("새로운 음식은 처리를 못해요."); break;
         }
+
+        gameObject.GetComponent<PotVisuals>().ChangeFoodImage (cooKData);
     }
     private void OverlapBase(Ingredient collEnum)
     {
@@ -253,9 +266,10 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
     /// </summary>
     void OnFailedCooked()
     {
+        gameObject.GetComponent<PotVisuals>().ChangeFoodImage(cooKData);
         Vector3 yOffset = new Vector2(0,0.5f);
         //| SOUND
-        // FIXME: SoundManager.instance.PlaySound("", 0.5f, 0.4f); 없음.. 필요!
+        //6SoundManager.instance.PlaySound("", 0.5f);
         //| VFX
         VFX_Manager.i.PlayVFX("Burned", transform.position + yOffset, Quaternion.identity);
     }
@@ -264,6 +278,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
     /// </summary>
     void OnIncompleteCooked()
     {
+        gameObject.GetComponent<PotVisuals>().ChangeFoodImage(cooKData);
     }
 
     /// <summary>
@@ -271,8 +286,9 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
     /// </summary>
     void OnCompleteCooked()
     {
+        gameObject.GetComponent<PotVisuals>().ChangeFoodImage(cooKData);
         //| SOUND
-        // FIXME: SoundManager.instance.PlaySound("", 0.5f, 0.4f); 없음.. 필요!
+        SoundManager.instance.PlaySound("shine", 0.5f);
         //| VFX
         VFX_Manager.i.PlayVFX("Cooked", transform.position, Quaternion.identity);
     }

@@ -35,7 +35,7 @@ public class CooKingDatac : MonoBehaviour
     }
     public enum Completion
     {
-        none,yesOrder,noOreder
+        none, yesOrder, noOreder
     }
     public enum FoodBase
     {
@@ -100,13 +100,12 @@ public class CooKingDatac : MonoBehaviour
 
         bool isBase = foodbase != FoodBase.none;
         bool isSauce = sauce != Sauce.none;
+        bool isEgg = eggfa != Eggfa.none;
 
         if (CookingTime >= DeadTime)
             return Status.fail;
-        else
-        if (isBase && isSauce && CookingTime >= BoilingTime) return Status.incomplete;
-        else
-        if (isBase && isSauce&& CookingTime >= ComplteTime) return Status.complete;
+        else if (isBase && isSauce && isEgg && CookingTime >= ComplteTime) return Status.complete;
+        else if (isBase && isSauce && CookingTime >= BoilingTime) return Status.incomplete;
 
         return Status.none;
     }
