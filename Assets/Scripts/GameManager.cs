@@ -86,6 +86,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Gameover go;
 
+    public int happy_cnt = 0;
+
     public void getItem(int index)
     {
         if (index == 0)
@@ -257,10 +259,6 @@ public class GameManager : MonoBehaviour
         sceneLoader.StartGame();
     }
 
-    void Start()
-    {
-        StartCoroutine(Test());
-    }
 
 
     public void GameClear()
