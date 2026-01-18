@@ -289,6 +289,10 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        StartCoroutine(Test());
+    }
     void Update()
     {
         totalTime += Time.deltaTime;
@@ -325,7 +329,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator Test()
     {
         yield return new WaitForSeconds(5);
-        go.StartShow();
+        GameClear();
     }
 
     private float sec2km(float sec)
