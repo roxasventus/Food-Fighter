@@ -63,6 +63,10 @@ public class GameManager : MonoBehaviour
     public Recipe chosenRecipe { get => _chosenRecipe; }
 
     [Header("Items")]
+    [SerializeField] private Item _miwon;
+    [SerializeField] private Item _hot;
+    [SerializeField] private Item _olive;
+
     [SerializeField] private int _miwonCount;
     public int getMiwon { get => _miwonCount; }
     [SerializeField] private int _hotCount;
@@ -103,6 +107,12 @@ public class GameManager : MonoBehaviour
         }
 
 
+    }
+
+    public void allButtonScaleInit() {
+        _miwon.buttonScaleInit();
+        _hot.buttonScaleInit();
+        _olive.buttonScaleInit();
     }
 
     [Header("UI")]
@@ -190,18 +200,20 @@ public class GameManager : MonoBehaviour
 
         if (_chosenRecipe.GetSpecial == Recipe.Special.miwon && _miwonCount > 0) {
             _miwonCount--;
+            _miwon.buttonScaleInit();
         }
 
         if (_chosenRecipe.GetSpecial == Recipe.Special.hot && _hotCount > 0)
         {
             _hotCount--;
+            _hot.buttonScaleInit();
         }
 
         if (_chosenRecipe.GetSpecial == Recipe.Special.olive && _oliveCount > 0)
         {
             _oliveCount--;
+            _olive.buttonScaleInit();
         }
-        _chosenRecipe.SetSpecial(Recipe.Special.none);
 
     }
 

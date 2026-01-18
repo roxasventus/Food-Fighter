@@ -95,6 +95,19 @@ public class Controller : MonoBehaviour
             transform.position
         );
         f.type = (FavoriteFood) loadedFood;
+
+        // 아이템 사용
+        if (GameManager.instance.chosenRecipe.GetSpecial == Recipe.Special.miwon)
+        {
+            Debug.Log("미원 사용");
+            Debug.Log(f.transform.GetChild(0).gameObject.name);
+            f.transform.GetChild(0).gameObject.transform.localScale = Vector3.one * 2;
+            GameManager.instance.chosenRecipe.SetSpecial(Recipe.Special.none);
+        }
+        else {
+            f.transform.GetChild(0).gameObject.transform.localScale = Vector3.one;
+        }
+
         //| Ani
         chefAnim.SetTrigger("Throw");
         //| SOUND

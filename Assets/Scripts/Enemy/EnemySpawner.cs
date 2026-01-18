@@ -71,6 +71,15 @@ public class EnemySpawner : MonoBehaviour
                     SoundManager.instance.AfterSound(1f, "ZombieEating" + Random.Range(1, 4).ToString()); //| SOUND
                     break;
                 }
+                // 아이템 사용시
+                if (touched && can_eat && GameManager.instance.chosenRecipe.GetSpecial == Recipe.Special.hot && f.isInit)
+                {
+                    f.countdown--;
+                    e.StartCoroutine(e.FoundFood(f.transform, manager));
+                    enemyList.RemoveAt(i);
+                    SoundManager.instance.AfterSound(1f, "ZombieEating" + Random.Range(1, 4).ToString()); //| SOUND
+                    break;
+                }
             }
         }
     }
