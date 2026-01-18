@@ -59,7 +59,7 @@ public class Pause : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, I
 
     private IEnumerator Show()
     {
-        display.text = GameManager.instance.GetTotalTimeString();
+        //display.text = GameManager.instance.GetTotalTimeString();
 
         Vector3 start = new Vector3(332f, -1100f, 0f);
         Vector3 end = new Vector3(332f, -55f, 0f);

@@ -18,7 +18,7 @@ public class Minimap : MonoBehaviour
     private void getRandomColor() {
 
         Color[] copy = (Color[])colorList.Clone();
-
+ 
         for (int i = 0; i < 3; i++)
         {
             int rand = Random.Range(i, copy.Length);
@@ -26,7 +26,7 @@ public class Minimap : MonoBehaviour
         }
 
         path1.color = copy[0];
-        path1_Arrow.color = copy[0];
+        path1_Arrow.color = copy[0]; 
         path2.color = copy[1];
         path2_Arrow.color = copy[1];
         path3.color = copy[2];
