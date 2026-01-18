@@ -61,7 +61,7 @@ public class Pot : MonoBehaviour, IPointerClickHandler, IEntity
         ani.SetTrigger("Summon");
         //| SOUND
         SoundManager.instance.PlaySound("WaterSplash", 1f); // 물버림
-        SoundManager.instance.AfterSound(0.1f, "PotPlace"); // 재생성 철 소리
+        SoundManager.instance.PlaySound("PotPlace"); // 재생성 철 소리
     }
 
     public void UpdateStatus()
