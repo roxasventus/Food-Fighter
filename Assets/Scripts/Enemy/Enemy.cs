@@ -172,6 +172,8 @@ public class Enemy : MonoBehaviour
 
         // 데미지 처리
         GameManager.instance.loseLife();
+        SoundManager.instance.PlaySound("EggCrack",1f,0.5f);
+        SoundManager.instance.PlaySound("PotPlace", 1f, 0.5f);
         Debug.Log("Crash!!");
         Release();
     }
