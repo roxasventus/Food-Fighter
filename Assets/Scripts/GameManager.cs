@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
         heartContainers.GetChild(_life - 1).gameObject.SetActive(false);
         _life -= 1;
         if (_life == 0)
-            SceneLoader.Instance.Load("GameOverScene");
+            go.StartShow();
     }
     public void getLife(int num)
     {
@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour
         }
         if (progressBar.value == 1.0f)
         {
-            SceneLoader.Instance.Load("GameOverScene");
+            SceneLoader.Instance.Load("GameClearScene");
         }
     }
 
@@ -273,6 +273,11 @@ public class GameManager : MonoBehaviour
         instance = this;
         initRecipe();
 
+    }
+
+    void Update()
+    {
+        totalTime += Time.deltaTime;
     }
 
     public void GameStart()
