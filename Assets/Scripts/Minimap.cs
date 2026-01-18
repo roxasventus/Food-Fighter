@@ -4,10 +4,14 @@ using static Unity.VisualScripting.Member;
 
 public class Minimap : MonoBehaviour
 {
-
+    [SerializeField] private RectTransform choosePathCanvas;
     [SerializeField] private Image path1;
     [SerializeField] private Image path2;
     [SerializeField] private Image path3;
+
+    [SerializeField] private Image path1_Arrow;
+    [SerializeField] private Image path2_Arrow;
+    [SerializeField] private Image path3_Arrow;
 
     Color[] colorList = {  Color.white, Color.green, Color.red, Color.magenta, Color.blue  };
 
@@ -22,8 +26,11 @@ public class Minimap : MonoBehaviour
         }
 
         path1.color = copy[0];
+        path1_Arrow.color = copy[0];
         path2.color = copy[1];
+        path2_Arrow.color = copy[1];
         path3.color = copy[2];
+        path3_Arrow.color = copy[2];
     }
 
     
