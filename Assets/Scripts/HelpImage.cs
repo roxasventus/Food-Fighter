@@ -6,7 +6,7 @@ using UnityEngine.InputSystem; // 새로운 인풋 시스템 네임스페이스 
 public class HelpImage : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] GameObject obj;
-
+ 
     public void OnPointerDown(PointerEventData eventData)
     {
         obj.SetActive(true);

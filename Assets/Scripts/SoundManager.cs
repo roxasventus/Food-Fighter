@@ -114,7 +114,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySound(string clipName, float volume = 1f, float pitch = 1f)
+    public void PlaySound(string clipName, float volume = 1f, float pitch = 1f, bool loop = false)
     {
         if (clip_map.ContainsKey(clipName))
         {
@@ -122,7 +122,7 @@ public class SoundManager : MonoBehaviour
             AudioSource source = adPool.Get();
 
             source.clip = clip_map[clipName];
-            source.loop = false;
+            source.loop = loop;
             source.volume = volume;
             source.pitch = pitch;
             source.Play();
