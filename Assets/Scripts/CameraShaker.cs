@@ -51,17 +51,23 @@ public class CameraShaker : MonoBehaviour
         float timer = 0.4f;
         while (timer > 0f)
         {
-            timer -= Time.deltaTime;
-            float offsetY = power*Random.Range(0f,1.5f);
-            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(defaultPos.x, defaultPos.y + offsetY, -10), 1- timer/0.4f);
+            if (Time.deltaTime > 0f)
+            {
+                timer -= Time.deltaTime;
+                float offsetY = power * Random.Range(0f, 1.5f);
+                transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(defaultPos.x, defaultPos.y + offsetY, -10), 1 - timer / 0.4f);
+            }
             yield return null;
         }
         timer = 0.1f;
         while (timer > 0f)
         {
-            timer -= Time.deltaTime;
-            float offsetY = -power*Random.Range(0f,1.5f);
-            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(defaultPos.x, defaultPos.y + offsetY, -10), 1 - timer / 0.1f);
+            if (Time.deltaTime > 0f)
+            {
+                timer -= Time.deltaTime;
+                float offsetY = -power * Random.Range(0f, 1.5f);
+                transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(defaultPos.x, defaultPos.y + offsetY, -10), 1 - timer / 0.1f);
+            }
             yield return null;
         }
         transform.localPosition = defaultPos;

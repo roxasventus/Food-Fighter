@@ -8,4 +8,8 @@ public class PopupConsts : ScriptableObject
     public float returnBtnDuration = 0.5f;
 
     public float pauseShowDuration = 0.5f;
+
+    [Header("게임오버 팝업")]
+    public float gameoverShowDuration = 0.7f;
+    public float textShowDuration = 0.3f;
 }
