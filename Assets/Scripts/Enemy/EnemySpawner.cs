@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
             }
             if (e.isBreathSound())
             {
-                SoundManager.instance.PlaySound("ZombieBreathing"+Random.Range(1, 4).ToString()); //| PlaySound
+                //SoundManager.instance.PlaySound("ZombieBreathing"+Random.Range(1, 4).ToString()); //| PlaySound
             }
         }
 

@@ -58,6 +58,7 @@ public class Enemy : MonoBehaviour
         isInit = true;
 
         StartCoroutine(Co_PlayVoiceOnWhile()); //| SOUND
+        StartCoroutine(Co_PlayFootstepOnWhile()); //| SOUND
 
         // 임시용
         /*Color c;
@@ -254,15 +255,23 @@ public class Enemy : MonoBehaviour
 
 
      // ========================================
-     //| SOUND
+     // | SOUND             asdasdasda         |
      // ========================================
      IEnumerator Co_PlayVoiceOnWhile()
      {
         while (isInit)
         {
-            yield return new WaitForSeconds(Random.Range(0f, 2f));
-            SoundManager.instance.PlaySound(voiceClipName + Random.Range(1, 4).ToString());
+            yield return new WaitForSeconds(Random.Range(0f, 6f));
+            SoundManager.instance.PlaySound(voiceClipName + Random.Range(1, 4).ToString(), 0.3f);
         }
      }
+    IEnumerator Co_PlayFootstepOnWhile()
+    {
+        while (isInit)
+        {
+            yield return new WaitForSeconds(0.2f);
+            SoundManager.instance.PlaySound("Run", 0.2f, Random.Range(0.8f, 1.2f));
+        }
+    }
 
 }

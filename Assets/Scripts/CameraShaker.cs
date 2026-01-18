@@ -48,20 +48,20 @@ public class CameraShaker : MonoBehaviour
 
     IEnumerator Co_Shake_Y(float power)
     {
-        float timer = 0.4f * power;
+        float timer = 0.4f;
         while (timer > 0f)
         {
             timer -= Time.deltaTime;
-            float offsetY = Time.deltaTime * power * 20f;
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + offsetY,transform.localPosition.z);
+            float offsetY = power*Random.Range(0f,1.5f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(defaultPos.x, defaultPos.y + offsetY, -10), 1- timer/0.4f);
             yield return null;
         }
-        timer = 0.1f * power;
+        timer = 0.1f;
         while (timer > 0f)
         {
             timer -= Time.deltaTime;
-            float offsetY = -Time.deltaTime * power * 90f;
-            transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + offsetY,transform.localPosition.z);
+            float offsetY = -power*Random.Range(0f,1.5f);
+            transform.localPosition = Vector3.Lerp(transform.localPosition, new Vector3(defaultPos.x, defaultPos.y + offsetY, -10), 1 - timer / 0.1f);
             yield return null;
         }
         transform.localPosition = defaultPos;

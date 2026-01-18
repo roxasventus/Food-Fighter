@@ -112,9 +112,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void allButtonScaleInit() {
-        _miwon.buttonScaleInit();
-        _hot.buttonScaleInit();
-        _olive.buttonScaleInit();
+        if (_miwon != null) _miwon.buttonScaleInit();
+        if (_hot != null) _hot.buttonScaleInit();
+        if(_olive != null) _olive.buttonScaleInit();
     }
 
     [Header("UI")]
