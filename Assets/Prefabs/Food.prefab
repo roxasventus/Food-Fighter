@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4827408156874161405}
   - component: {fileID: 8399879575350715414}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 8641733475149328210}
   - component: {fileID: 4404936632136263506}
   - component: {fileID: 5455746378907261046}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}

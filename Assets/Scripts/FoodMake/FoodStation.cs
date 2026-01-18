@@ -10,6 +10,7 @@ public class FoodStation : MonoBehaviour, IPointerClickHandler
     protected GameObject go;
     public virtual void OnPointerClick(PointerEventData eventData)
     {
+        gameObject.GetComponent<Animator>().SetTrigger("Shake");
         if (mouseHand.Gethand() != null)
             mouseHand.Gethand().GetComponent<IEntity>().SelfRelease();
 

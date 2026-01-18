@@ -22,7 +22,7 @@ MonoBehaviour:
   spawnY: 6.5
   jumpY: -1.7
   moveSpeed: 0.5
-  moveAmplitude: 1.3
+  moveAmplitude: 0.75
   moveFrequency: 0.6
   changeCool: 0.4
   changeDist: 1

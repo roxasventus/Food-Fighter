@@ -74,20 +74,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _oliveCount;
     public int getOlive { get => _oliveCount; }
 
+    public float totalTime = 0f;
+
     public void getItem(int index) {
         if (index == 0)
         {
             _miwonCount++;
+            _miwon.setcounterText(_miwonCount);
         }
 
         if (index == 1)
         {
             _hotCount++;
+            _hot.setcounterText(_hotCount);
         }
 
         if (index == 2)
         {
             _oliveCount++;
+            _olive.setcounterText(_oliveCount);
         }
     }
 
@@ -110,9 +115,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void allButtonScaleInit() {
-        _miwon.buttonScaleInit();
-        _hot.buttonScaleInit();
-        _olive.buttonScaleInit();
+        if (_miwon != null) _miwon.buttonScaleInit();
+        if (_hot != null) _hot.buttonScaleInit();
+        if(_olive != null) _olive.buttonScaleInit();
     }
 
     [Header("UI")]
@@ -200,18 +205,21 @@ public class GameManager : MonoBehaviour
 
         if (_chosenRecipe.GetSpecial == Recipe.Special.miwon && _miwonCount > 0) {
             _miwonCount--;
+            _miwon.setcounterText(_miwonCount);
             _miwon.buttonScaleInit();
         }
 
         if (_chosenRecipe.GetSpecial == Recipe.Special.hot && _hotCount > 0)
         {
             _hotCount--;
+            _hot.setcounterText(_hotCount);
             _hot.buttonScaleInit();
         }
 
         if (_chosenRecipe.GetSpecial == Recipe.Special.olive && _oliveCount > 0)
         {
             _oliveCount--;
+            _olive.setcounterText(_oliveCount);
             _olive.buttonScaleInit();
         }
 
@@ -232,6 +240,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        totalTime += Time.deltaTime;
+    }
 
+    public string GetTotalTimeString()
+    {
+        // totaltime을 분:초 로 반환한다 ex) 05:33
+        int minutes = (int)(totalTime / 60);
+        int seconds = (int)(totalTime % 60);
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }
