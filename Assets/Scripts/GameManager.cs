@@ -78,16 +78,19 @@ public class GameManager : MonoBehaviour
         if (index == 0)
         {
             _miwonCount++;
+            _miwon.setcounterText(_miwonCount);
         }
 
         if (index == 1)
         {
             _hotCount++;
+            _hot.setcounterText(_hotCount);
         }
 
         if (index == 2)
         {
             _oliveCount++;
+            _olive.setcounterText(_oliveCount);
         }
     }
 
@@ -200,18 +203,21 @@ public class GameManager : MonoBehaviour
 
         if (_chosenRecipe.GetSpecial == Recipe.Special.miwon && _miwonCount > 0) {
             _miwonCount--;
+            _miwon.setcounterText(_miwonCount);
             _miwon.buttonScaleInit();
         }
 
         if (_chosenRecipe.GetSpecial == Recipe.Special.hot && _hotCount > 0)
         {
             _hotCount--;
+            _hot.setcounterText(_hotCount);
             _hot.buttonScaleInit();
         }
 
         if (_chosenRecipe.GetSpecial == Recipe.Special.olive && _oliveCount > 0)
         {
             _oliveCount--;
+            _olive.setcounterText(_oliveCount);
             _olive.buttonScaleInit();
         }
 
