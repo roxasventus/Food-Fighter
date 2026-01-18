@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -87,6 +88,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] Gameover go;
 
     public int happy_cnt = 0;
+
+    public ClearInfo clearInfo;
+
+    [SerializeField] Controller c;
+    [SerializeField] PopupConsts pc;
+
+    private Dictionary<FavoriteFood, string> ff2s = new Dictionary<FavoriteFood, string>
+    {
+        {FavoriteFood.RM, "라면"},
+        {FavoriteFood.JRM, "짜장면"},
+        {FavoriteFood.TB, "떡볶이"},
+        {FavoriteFood.JTB, "짜장 떡볶이"}
+    };
 
     public void getItem(int index)
     {
@@ -272,7 +286,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         initRecipe();
-
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
@@ -289,6 +303,14 @@ public class GameManager : MonoBehaviour
 
     public void GameClear()
     {
+        clearInfo = new ClearInfo();
+        clearInfo.stageNum = 15 - roundCount;
+        clearInfo.burnFood = "미구현...";
+        clearInfo.madeFood = $"{ff2s[c.GetMostFood()]}";
+        
+        clearInfo.distance = sec2km(totalTime);
+        clearInfo.happy = happy_cnt;
+        
         SceneManager.LoadScene("GameClearScene");
     }
 
@@ -305,4 +327,19 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(5);
         go.StartShow();
     }
+
+    private float sec2km(float sec)
+    {
+        float speed = pc.truckRealSpeed; // km/h
+        return speed * sec / 3600f;
+    }
+}
+
+public class ClearInfo
+{
+    public int stageNum;
+    public string burnFood;
+    public string madeFood;
+    public float distance;
+    public int happy;
 }
