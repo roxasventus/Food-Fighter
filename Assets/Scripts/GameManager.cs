@@ -272,4 +272,12 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("GameClearScene");
     }
+
+    public string GetTotalTimeString()
+    {
+        // totaltime을 분:초 로 반환한다 ex) 05:33
+        int minutes = (int)(totalTime / 60);
+        int seconds = (int)(totalTime % 60);
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
 }
