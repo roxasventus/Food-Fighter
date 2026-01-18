@@ -21,6 +21,8 @@ public class Controller : MonoBehaviour
 
     [SerializeField] EnemySpawner spawner;
 
+    [SerializeField] Pause p;
+
     private Dictionary<FavoriteFood, Sprite> f2s = new Dictionary<FavoriteFood, Sprite>();
 
     void Awake()
@@ -59,6 +61,12 @@ public class Controller : MonoBehaviour
         if (inputActions.Player.Test.WasPressedThisFrame())
         {
             loadedFood = FavoriteFood.RM;
+        }
+
+        // 일시정지를 하는가?
+        if (inputActions.Player.Pause.WasPressedThisFrame())
+        {
+            p.StartShow();
         }
 
         // 로드 신호가 왔는가?
@@ -100,8 +108,13 @@ public class Controller : MonoBehaviour
         if (GameManager.instance.chosenRecipe.GetSpecial == Recipe.Special.miwon)
         {
             Debug.Log("미원 사용");
-            Debug.Log(f.transform.GetChild(0).gameObject.name);
             f.transform.GetChild(0).gameObject.transform.localScale = Vector3.one * 2;
+            GameManager.instance.chosenRecipe.SetSpecial(Recipe.Special.none);
+        }
+        else if (GameManager.instance.chosenRecipe.GetSpecial == Recipe.Special.olive)
+        {
+            Debug.Log("올리브 사용");
+            GameManager.instance.getLife(1);
             GameManager.instance.chosenRecipe.SetSpecial(Recipe.Special.none);
         }
         else {

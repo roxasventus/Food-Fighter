@@ -1,9 +1,17 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class Item : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] int itemIndex;
+
+    [SerializeField] private TMP_Text counterText;
+
+
+    public void setcounterText(int num) {
+        counterText.text = num.ToString();
+    }
 
     public void buttonScaleInit() {
 
