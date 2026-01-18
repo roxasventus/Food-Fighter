@@ -74,6 +74,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _oliveCount;
     public int getOlive { get => _oliveCount; }
 
+    public float totalTime = 0f;
+
     public void getItem(int index) {
         if (index == 0)
         {
@@ -232,6 +234,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        totalTime += Time.deltaTime;
+    }
 
+    public string GetTotalTimeString()
+    {
+        // totaltime을 분:초 로 반환한다 ex) 05:33
+        int minutes = (int)(totalTime / 60);
+        int seconds = (int)(totalTime % 60);
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }

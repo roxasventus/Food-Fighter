@@ -21,6 +21,8 @@ public class Controller : MonoBehaviour
 
     [SerializeField] EnemySpawner spawner;
 
+    [SerializeField] Pause p;
+
     private Dictionary<FavoriteFood, Sprite> f2s = new Dictionary<FavoriteFood, Sprite>();
 
     void Awake()
@@ -59,6 +61,12 @@ public class Controller : MonoBehaviour
         if (inputActions.Player.Test.WasPressedThisFrame())
         {
             loadedFood = FavoriteFood.RM;
+        }
+
+        // 일시정지를 하는가?
+        if (inputActions.Player.Pause.WasPressedThisFrame())
+        {
+            p.StartShow();
         }
 
         // 로드 신호가 왔는가?
