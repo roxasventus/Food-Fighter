@@ -108,8 +108,13 @@ public class Controller : MonoBehaviour
         if (GameManager.instance.chosenRecipe.GetSpecial == Recipe.Special.miwon)
         {
             Debug.Log("미원 사용");
-            Debug.Log(f.transform.GetChild(0).gameObject.name);
             f.transform.GetChild(0).gameObject.transform.localScale = Vector3.one * 2;
+            GameManager.instance.chosenRecipe.SetSpecial(Recipe.Special.none);
+        }
+        else if (GameManager.instance.chosenRecipe.GetSpecial == Recipe.Special.olive)
+        {
+            Debug.Log("올리브 사용");
+            GameManager.instance.getLife(1);
             GameManager.instance.chosenRecipe.SetSpecial(Recipe.Special.none);
         }
         else {
