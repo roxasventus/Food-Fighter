@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour
 
     public float totalTime = 0f;
 
+    [SerializeField] Gameover go;
+
     public void getItem(int index) {
         if (index == 0)
         {
@@ -229,6 +231,11 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         sceneLoader.StartGame();
+    }
+
+    void Start()
+    {
+        go.StartShow();
     }
 
     // Update is called once per frame
