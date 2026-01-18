@@ -5101,7 +5101,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!43 &834967953
+--- !u!43 &841212835
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6090,7 +6090,7 @@ MonoBehaviour:
     rid: -2
   m_ShadowCastingSource: 1
   m_ShadowMesh:
-    m_Mesh: {fileID: 834967953}
+    m_Mesh: {fileID: 841212835}
     m_LocalBounds:
       m_Center: {x: -0.41134045, y: -0.33935452, z: 0}
       m_Extent: {x: 0.09804937, y: 7.076208, z: 0}
@@ -8931,9 +8931,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05726ce3c4da6f04c8e1586ed3181e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Minimap
+  choosePathCanvas: {fileID: 0}
   path1: {fileID: 739373684}
   path2: {fileID: 733733488}
   path3: {fileID: 754246584}
+  path1_Arrow: {fileID: 1868235342}
+  path2_Arrow: {fileID: 1439939474}
+  path3_Arrow: {fileID: 874875239}
 --- !u!1 &1626890450
 GameObject:
   m_ObjectHideFlags: 0
