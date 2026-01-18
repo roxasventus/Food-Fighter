@@ -84,7 +84,7 @@ public class Food : MonoBehaviour
         isInit = true;
         eff.SetActive(true);
         //| SOUND
-        SoundManager.instance.PlaySound("PotPlace", 0.5f, 0.4f);
+        SoundManager.instance.PlaySound("FoodStamp", 1f, 1.2f);
         //| VFX
         VFX_Manager.i.PlayVFX("SourceSplash", transform.position, Quaternion.identity);
     }

@@ -109,7 +109,7 @@ public class PotVisuals : MonoBehaviour
             water = borthSprites[0].gameObject.activeSelf ? borthSprites[0].GetComponent<SpriteRenderer>() : borthSprites[1].GetComponent<SpriteRenderer>();
             if (cooKData.sauce == Sauce.none)
             {
-                water.color = new Color(0.5f, 0.5f, 1f, 1f);
+                water.color = new Color(0.7f, 0.7f, 1f, 1f);
             }
             else if (cooKData.sauce == Sauce.soup)
             {

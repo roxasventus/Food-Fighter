@@ -48,7 +48,7 @@ public class Lid : MonoBehaviour, IPointerDownHandler
         canClick = true;
 
         // 트럭 나오기
-        while (truck.position.x > 11.75f)
+        while (truck.position.x > -20f) // 기존 값: 11.75f
         {
             truck.position += Vector3.left * tc.slidingSpeed * Time.deltaTime;
             yield return null;
