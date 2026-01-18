@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -258,13 +259,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        go.StartShow();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        StartCoroutine(Test());
     }
 
 
@@ -279,5 +274,11 @@ public class GameManager : MonoBehaviour
         int minutes = (int)(totalTime / 60);
         int seconds = (int)(totalTime % 60);
         return string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    private IEnumerator Test()
+    {
+        yield return new WaitForSeconds(5);
+        go.StartShow();
     }
 }

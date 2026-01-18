@@ -25,17 +25,23 @@ public class Gameover : MonoBehaviour
         Time.timeScale = 0f;
 
         // text 값 설정하기
+        stage.text = $"{15 - GameManager.instance.roundCount}";
+        burn.text = "미구현...";
+        made.text = $"";
+
+        canvas.SetActive(true);
 
         StartCoroutine(Show());
     }
 
-    IEnumerator Show()
+    private IEnumerator Show()
     {
-        canvas.SetActive(true);
-        
         // 창 보이기
         Vector3 start = new Vector3(0f, -1000f, 0f);
         Vector3 end = Vector3.zero;
+
+        rt.anchoredPosition = start;
+        yield return null;
 
         float elapsed = 0f;
         float duration = pc.gameoverShowDuration;
@@ -46,6 +52,7 @@ public class Gameover : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
             yield return null;
         }
+        rt.anchoredPosition = end;
 
         // 글자 페이드인
         yield return StartCoroutine(FadeIn(stage));
