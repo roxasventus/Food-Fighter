@@ -6,12 +6,12 @@ using UnityEngine.InputSystem; // 새로운 인풋 시스템 네임스페이스 
 public class HelpImage : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] GameObject obj;
- 
+
     public void OnPointerDown(PointerEventData eventData)
     {
         obj.SetActive(true);
-        GameTimeManager.instance.SetGameTimeScaleWithPercent(0f);
         StartCoroutine(Co_StayPressF());
+        GameTimeManager.instance.SetGameTimeScaleWithPercent(0f);
     }
 
     IEnumerator Co_StayPressF()
@@ -22,6 +22,7 @@ public class HelpImage : MonoBehaviour, IPointerDownHandler
         bool isReleased = false;
         while (!isReleased)
         {
+            Debug.Log("Waiting for F key release...");
             // F 키가 떼어졌는지 확인
             if (Keyboard.current != null && Keyboard.current.fKey.wasReleasedThisFrame)
             {

@@ -203,7 +203,7 @@ public class GameManager : MonoBehaviour
 
     public void progressBarUpdate()
     {
-        progressBar.value = 1 - _roundCount / 15f;
+        progressBar.value = 1 - _roundCount / 5f;
         if (progressBar.value > 0.5)
         {
             progressBarFill.color = Color.yellow;
@@ -288,11 +288,6 @@ public class GameManager : MonoBehaviour
         initRecipe();
         DontDestroyOnLoad(gameObject);
     }
-
-    private void Start()
-    {
-        StartCoroutine(Test());
-    }
     void Update()
     {
         totalTime += Time.deltaTime;
@@ -308,7 +303,7 @@ public class GameManager : MonoBehaviour
     public void GameClear()
     {
         clearInfo = new ClearInfo();
-        clearInfo.stageNum = 15 - roundCount;
+        clearInfo.stageNum = 5 - roundCount;
         clearInfo.burnFood = "미구현...";
         clearInfo.madeFood = $"{ff2s[c.GetMostFood()]}";
         
@@ -324,12 +319,6 @@ public class GameManager : MonoBehaviour
         int minutes = (int)(totalTime / 60);
         int seconds = (int)(totalTime % 60);
         return string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
-
-    private IEnumerator Test()
-    {
-        yield return new WaitForSeconds(5);
-        GameClear();
     }
 
     private float sec2km(float sec)
